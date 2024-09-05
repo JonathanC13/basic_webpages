@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="J">
+        <meta name="desciption" content="My Little Dumpling Shop webpage contact">
+
+        <link rel="icon" href="img/dumpling_512x512.png" type="images/x-icon">
+        <title>LDS Contact</title>
+
+        <link rel="stylesheet" href="css/style.css" type="text/css">
+    </head>
+    <body>
+        <header>
+            <h1>Contact Us</h1>
+
+            <nav>
+                <ul>
+                    <li><a href="./index.html#">Home</a></li>
+                    <li><a href="./index.html#about">About</a></li>
+                    <li><a href="./index.html#menu">Our Menu</a></li>
+                    <li><a href="./hours.html">Store Hours</a></li>
+                </ul>
+            </nav>
+
+            <figure>
+                <img src="img/yeh-xintong-4q644NzRAtw-unsplash.jpg" alt="Four fried dumplings in a row" title="Four fried dumplings in a row" width="400">
+                <figcaption>Four fried dumplings in a row.</figcaption>
+            </figure>
+        </header>
+
+        <main>
+            <article id="contact">
+                <h2>Our Contact Form</h2>
+                <form action="http://httpbin.org/get" method="get">
+                    <fieldset>
+                        <legend>Send us a message</legend>
+                        <p>
+                            <label for="name">Name:</label>
+                            <input type="text" name="name" id="name" placeholder="your name" autofocus required>
+                        </p>
+                        <p>
+                            <label for="email">Email:</label>
+                            <input type="email" name="email" id="email" placeholder="your email" required>
+                        </p>
+                        <p>
+                            <label for="message">Your message:</label>
+                        </p>
+                        <p>
+                            <textarea name="message" id="message" placeholder="Type your message here" cols="30" rows="10" required></textarea>
+                        </p>
+                    </fieldset>
+                    <button type="submit">Submit</button>
+                    <button type="reset">Reset</button>
+                </form>
+            </article>
+
+            <article id="location">
+                <h2>Our Location</h2>
+                <address>
+                    789 Dumpling Dumpy Street<br>
+                    Ottawa, ON 123-456
+                    <br><br>
+                    Phone: <a href="tel:+1234567890">123-456-7890</a>
+                </address>
+            </article>
+
+            <p>
+                <a href="#">Back to top</a>
+            </p>
+        </main>
+
+        <hr>
+
+        <footer>
+            <p>
+                Copyright &copy; The Little Dumpling Shop
+            </p>
+        </footer>
+
+    </body>
+</html>
