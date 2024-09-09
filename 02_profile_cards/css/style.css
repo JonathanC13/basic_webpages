@@ -1,0 +1,242 @@
+/* RESET start */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    display: block;
+    /* keeps images from overflowing the container */
+    max-width: 100%;    
+    height: auto;
+}
+/* RESET end */
+
+
+/* UTILITY CLASSES start */
+.nowrap {
+    white-space: nowrap;
+}
+/* UTILITY CLASSES end */
+
+
+/* GENERAL STYLES start */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-size: 1.5rem;
+    font-family: Arial, Helvetica, sans-serif;
+
+    min-height: 100vh;
+
+    background-color: #475569;
+    background-image: radial-gradient(whitesmoke, #475569);
+
+    /* Flex(box) to lay out a collection of items in one dimension or control the spacing between items */
+    display: flex;
+    flex-direction: column;
+}
+
+header, footer {
+    position: sticky;
+
+    background-color:maroon;
+    border: 1px solid #333;  
+
+    color: whitesmoke;
+    text-align: center;
+}
+
+header {
+    top: 0px;
+}
+
+nav {
+    background-color: whitesmoke;
+    border: 1px solid #333;
+    padding: 0.5rem;
+
+    font-weight: bolder;
+
+    display: flex;
+    justify-content: space-evenly;
+}
+
+nav a, nav a:visited {
+    color: black;
+}
+
+nav a:hover, nav a:focus {
+    color: hsla(0, 0%, 20%, 0.6)
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+footer {
+    bottom:0px;
+}
+
+.profile_card {
+    /* scroll-margin-top, since href will put the section under the header, pick a value so that the offset puts the section under it. */
+    scroll-margin-top: 8rem;
+
+    /* grow to 100% of container, also max px */
+    width: min(100%, 350px);
+    background-color: gray;
+
+    border: 2px solid #333;
+    border-radius: 15%;
+    padding:1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile_pic_figure {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.profile_pic_figure img{
+
+    border: 5px double #333;
+    border-radius: 50%;
+
+}
+
+.profile_pic_figure figcaption {
+    font-weight: bolder;
+    font-size: 2rem;
+    margin: 1rem;
+    text-align: center;
+}
+
+/* GENERAL STYLES end */
+
+
+/* small start*/
+@media screen and (min-width: 576px) {
+
+    main {
+        justify-content: center;
+        flex-flow: row wrap;
+        padding: 1rem;
+    }
+
+    .profile_card {
+        width: min(100%, 400px)
+    }
+
+    .profile_card:last-child {
+        order: -1;
+    }
+
+}
+/* small end*/
+
+/* medium start*/
+@media screen and (min-width: 768px) {
+    nav {
+        display: none;
+    }
+
+    .profile_card {
+        width: min(100%, 325px)
+    }
+
+    .profile_pic_figure {
+        flex-flow: column-reverse
+    }
+
+    .profile_pic_figure figcaption {
+        margin: 0.1em 0;
+    }
+
+    .profile_card p {
+        margin-top: 1rem;
+    }
+}
+/* medium end*/
+
+/* large start*/
+@media screen and (min-width: 992px) {
+    .profile_card {
+        width: min(100%, 400px)
+    }
+
+    .profile_card:nth-child(2) {
+        order: -1;
+    }
+}
+/* large end*/
+
+/* xlarge start*/
+@media screen and (min-width: 1200px) {
+    .profile_card {
+        width: min(33% - 1rem, 500px)
+    }
+}
+/* xlarge end*/
+
+/* MOBILE DEVICE LANDSCAPE start*/
+@media screen and (max-height: 425px) and (min-aspect-ratio: 7/4) {
+
+    nav {
+        display: none;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    main {
+        flex-flow: row nowrap;
+        justify-content: space-evenly;
+        align-items: stretch;
+    }
+
+    .profile_card {
+        width: min(33% - 0.25rem, 200px)
+    }
+
+    .profile_card figcaption, .profile_card p {
+        font-size: 1.25rem;
+    }
+}
+
+@media screen and (max-height: 430px) and (min-aspect-ratio: 7/4) {
+
+    nav {
+        display: none;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    main {
+        flex-flow: row nowrap;
+        justify-content: space-evenly;
+        align-items: stretch;
+    }
+
+    .profile_card {
+        width: min(33% - 0.25rem, 400px)
+    }
+
+    .profile_card figcaption, .profile_card p {
+        font-size: 1.25rem;
+    }
+}
+/* MOBILE DEVICE LANDSCAPE end*/
