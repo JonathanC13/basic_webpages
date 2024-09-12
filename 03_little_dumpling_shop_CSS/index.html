@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="J">
+        <meta name="desciption" content="My Little Dumpling Shop webpage home">
+
+        <link rel="icon" href="img/dumpling_512x512.png" type="images/x-icon">
+        <title>My Little Dumpling Shop</title>
+
+        <link rel="stylesheet" href="css/style.css" type="text/css">
+        <script src="js/main.js" defer></script>
+    </head>
+
+    <body>
+        <header class="header">
+            <h1 class="header__h1">Little Dumpling Shop</h1>
+
+            <nav class="header__nav">
+                <ul class="header__ul">
+                    <li>
+                        <a href="#menu">Menu</a>
+                    </li>
+                    <li>
+                        <a href="./hours.html">Hours</a>
+                    </li>
+                    <li>
+                        <a href="./contact.html">Contact</a>
+                    </li>
+                    <li>
+                        <a href="./about.html">About</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        
+        <section class="hero">
+            <h2 class="hero__h2">Welcome!</h2>
+            <figure>
+                <img src="img/abhishek-sanwa-limbu-LR559Dcst70-unsplash_4288x2862.jpg" alt="Three dishes of dumplings" title="Three dishes of dumplings" width="4488" height="2862" loading="eager">
+                <figcaption class="offscreen">Three dishes of dumplings.</figcaption>
+            </figure>
+        </section>
+
+        <main class="main">
+            <article id="menu" class="main__article menu">
+                <h2 class="menu__h2">Our Menu</h2>
+                <table class="menu__container">
+                    <caption class="offscreen">Our Dumplings</caption>
+                    <thead>
+                        <tr>
+                            <th class="menu__header" scope="col">
+                                Dumplings
+                            </th>
+                            <th class="menu__header" scope="col">
+                                Quantity
+                            </th>
+                            <th class="menu__header" scope="col">
+                                Price
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th class="menu__item menu__bf" scope="row" rowspan="3">Beef</th>
+                            <td class="menu__item" >2</td>
+                            <td class="menu__item" >&dollar;1.50</td>
+                        </tr>
+                        <tr>
+                            <td class="menu__item" >4</td>
+                            <td class="menu__item" >&dollar;2.50</td>
+                        </tr>
+                        <tr>
+                            <td class="menu__item" >8</td>
+                            <td class="menu__item" >&dollar;3.25</td>
+                        </tr>
+                        <tr>
+                            <th class="menu__item menu__veg" scope="row" rowspan="3">Veggie</th>
+                            <td class="menu__item" >2</td>
+                            <td class="menu__item" >&dollar;1.00</td>
+                        </tr>
+                        <tr>
+                            <td class="menu__item" >4</td>
+                            <td class="menu__item" >&dollar;1.75</td>
+                        </tr>
+                        <tr>
+                            <td class="menu__item" >8</td>
+                            <td class="menu__item" >&dollar;2.50</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td class="menu__item menu__pb" colspan="3">Big pork bun &dollar;3.00</td>
+                        </tr>
+                    </tfoot>
+                </table>
+                
+                <p class="center">
+                    <a href="#">Back to top</a>
+                </p>
+            </article>
+        </main>
+
+        <footer class="footer">
+            <p>
+                <Span class="nowrap">Copyright &copy; <time id="year"></time></Span>
+                <Span class="nowrap">The Little Dumpling Shop</Span>
+            </p>
+        </footer>
+
+    </body>
+
+</html>
