@@ -16,4 +16,4 @@ Mazda Miata sources:
 - Production numbers: https://www.miata.net/faq/production.html
 - Models: https://www.miata.net/faq/america/1990.htm
 
-todo: hamburger nav
+todo: fill article content with Miata info.
