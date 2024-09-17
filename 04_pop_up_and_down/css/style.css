@@ -127,7 +127,7 @@ h3 {
 }
 
 p {
-    line-height: 1.5;
+    line-height: 2;
 }
 
 a:any-link {
@@ -162,30 +162,31 @@ a:active {
     background-color: var(--HEADER-BGCOLOR);
 }
 
-.header__div {
+.header__div,
+.header__h1,
+.header__div-button {
     background-color: var(--HEADER-BGCOLOR);
+}
+
+.header__div {
     grid-area: hd;
 }
 
 .header__h1 {
     text-align: center;
-    background-color: var(--HEADER-BGCOLOR);
     color: var(--HEADER-COLOR);
     padding: var(--PADDING-TOPBOT) var(--PADDING-SIDE);
     grid-area: hd1;
 }
 
 .header__div-button {
-    background-color: var(--HEADER-BGCOLOR);
     grid-area: hd2;
-
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .header__button {
-    grid-area: hd2;
     background-color: transparent;
     border: none;
     width: 20px;
@@ -247,8 +248,7 @@ a:active {
     box-shadow: 0 7px 20px 0px var(--BORDER-COLOR);
     transform-origin: top center;
     animation: showMenu 0.5s ease-in-out forwards;
-
-    
+    /* Not to move hero when display changes to block on focus */
     position: absolute;
     width: 100%;
 }
@@ -270,7 +270,9 @@ a:active {
 }
 
 .header__ul li a {
+    /* block so that transform: scale works */
     display: block;
+    /* since transform: scale > 1, reduce width so when it scales larger it does not create extra scrolling (page stays the same size)*/
     width: 80%;
     margin: auto;
 }
@@ -366,7 +368,7 @@ a:active {
 }
 
 .main__article {
-    scroll-margin-top: 6.5rem;
+    scroll-margin-top: 3rem;
     margin: var(--MARGIN);
 }
 
@@ -444,7 +446,9 @@ a:active {
 .footer__img-left,
 .footer__img-right {
     display: inline;
-    width: 10vw;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
     height: auto;
     z-index: 1;
 }
@@ -532,6 +536,8 @@ tr {
     .header__nav {
         display: block;
         animation: none;
+
+        position: relative;
     }
 
     .header__ul {
@@ -546,13 +552,7 @@ tr {
     }
 
     .love__img {
-        width: 30vw;
-    }
-
-    .footer__img-left,
-    .footer__img-right {
-        width: max(40px, 2vw);
-        height: auto;
+        width: 20vw;
     }
 
     .footer__p {
@@ -561,9 +561,9 @@ tr {
     }
 }
 
-@media screen and (min-height: 812px) {
+@media screen and (min-height: 813px) {
     .main__article {
-        scroll-margin-top: 13rem;
+        scroll-margin-top: 6rem;
     }
 }
 /* MEDIA QUERIES end */

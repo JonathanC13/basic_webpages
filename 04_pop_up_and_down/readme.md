@@ -1,8 +1,8 @@
+# Pop Up & Down
+## Description
+Couple pages for the awesome NA - Miata. Created for CSS practice.
 
-
-
-
-Image sources:
+## Image sources:
 - favicon.png: Cropped from https://www.blipshift.com/products/nalware-ii
 - left_pop_up.png: Cropped from https://www.blipshift.com/products/nalware-ii
 - right_pop_up.png: Cropped from https://www.blipshift.com/products/nalware-ii
@@ -12,8 +12,6 @@ Image sources:
 - miata_lineup_901x332.png: https://www.motorbiscuit.com/mazda-wants-its-internal-combustion-miata-around-forever/
 - miata colors: https://www.reddit.com/r/mazda/comments/p104c4/oc_i_illustrated_all_the_original_color_options/
 
-Mazda Miata sources:
+## Mazda Miata sources:
 - Production numbers: https://www.miata.net/faq/production.html
 - Models: https://www.miata.net/faq/america/1990.htm
-
-todo: fill article content with Miata info.
