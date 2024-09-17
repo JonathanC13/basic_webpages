@@ -1,0 +1,168 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+input, 
+button, 
+textarea {
+    /* These do not inherit font properties, you must explicitly enable */
+    font: inherit;
+}
+/* /RESET */
+
+/* VARIABLES */
+:root {
+    /* FONTS */
+    --FS: clamp(1rem, 2.2vh, 1.5rem);
+    --FF: Arial, Helvetica, sans-serif;
+    --FF-HEADINGS: sans-serif, Helvetica;
+    --FS-HEADING: clamp(1rem, 2.2vh, 1.5rem);
+    --FS-HERO-H1-small: clamp(2rem, 10vh, 3rem);
+    --FS-HERO-H1-large: clamp(2rem, 10vh, 6rem);
+    --FS-FOOTER: clamp(1rem, 2.2vh, 1.5rem);
+
+    /* COLORS */
+    --BGCOLOR: rgb(23, 23, 23);
+    --FONT-COLOR: whitesmoke;
+    --FONT-COLOR-NOT-ACTIVE: rgba(245, 245, 245, 60%);
+    --FONT-COLOR-ACTIVE: whitesmoke;
+    --BODY-BGCOLOR: rgb(23, 23, 23);
+
+    /* STANDARD PADDING */
+    --PADDING-TOPBOT: 0.25em;
+    --PADDING-SIDE: 2.5%;
+
+    /* STANDARD MARGIN */
+    --MARGIN: clamp(1em, 2.5vh, 1.5em) 0;
+}
+/* /VARIABLES */
+
+@media (prefers-color-scheme: dark) {
+}
+
+/* UTILITY */
+.offscreen {
+    position: absolute;
+    top: -1000px;
+}
+
+.center {
+    text-align: center;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.left {
+    float: left;
+    margin-right: 1em;
+}
+
+.right {
+    float: right;
+    margin-left: 1rem;
+}
+/* /UTILITY */
+
+/* GENERAL STYLES */
+html {
+    background-color: var(--BGCOLOR);
+    scroll-behavior: smooth;
+    font-size: var(--FS);
+    font-family: var(--FF);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    max-width: 800px;
+    min-height: 100vh;
+    margin: 0 auto;
+    background-color: var(--BODY-BGCOLOR);
+    color: var(--FONT-COLOR);
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--FF-HEADINGS);
+    letter-spacing: 0.01em;
+}
+
+p {
+    line-height: 1.5;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    color: var(--FONT-COLOR-NOT-ACTIVE);
+    text-decoration: none;
+}
+
+a:active,
+a:hover,
+a:focus {
+    color: var(--FONT-COLOR-ACTIVE);
+}
+/* /GENERAL STYLES */
+
+/* HEADER */
+.header {
+    display: flex;
+    flex: row nowrap;
+    justify-content: space-between;
+    font-size: var(--FS-HEADING);
+    margin: var(--MARGIN);
+    padding: var(--PADDING-TOPBOT) var(--PADDING-SIDE);
+}
+
+.header__button {
+    display: flex;
+    flex: column nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: transparent;
+    border: none;
+    color: var(--FONT-COLOR-NOT-ACTIVE);
+}
+
+:is(.header__button:hover, .header__button:focus) .header__button-nav-icon {
+    color: var(--FONT-COLOR-ACTIVE);
+    cursor: pointer;
+}
+
+.header__ul {
+    display: flex;
+    flex: row nowrap;
+    justify-content: space-evenly;
+    gap: 1em;
+}
+/* /HEADER */
+
+/* HERO */
+.hero__h1 {
+    font-size: var(--FS-HERO-H1-small);
+}
+/* /HERO */
+
+/* MEDIA QUERIES */
+@media screen and (min-width: 376px) {
+    .hero__h1 {
+        font-size: var(--FS-HERO-H1-large);
+    }
+}
+/* /MEDIA QUERIES */
