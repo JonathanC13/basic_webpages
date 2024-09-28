@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="J">
+
+    <link rel="icon" href="./images/favicon.png" type="image/x-icon">
+    <title>TODO NOW!</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/main.js"></script>
+</head>
+<body>
+    <header class="header">
+        <figure class="header__figure">
+            <img src="./images/dumpling_512x512.png" alt="Cartoon dumping logo" title="Cartoon dumpling logo" width="512" height="512">
+            <figcaption class="offscreen">Cartoon dumping logo.</figcaption>
+        </figure>
+        <h1 class="header__h1">To Do NOW!</h1>
+        <figure class="header__figure">
+            <img src="./images/dumpling_512x512.png" alt="Cartoon dumping logo" title="Cartoon dumpling logo" width="512" height="512">
+            <figcaption class="offscreen">Cartoon dumping logo.</figcaption>
+        </figure>
+    </header>
+    <main class="main">
+        <section class="main__section list-section">
+            <h2 class="list-section__h2 offscreen">The LIST</h2>
+            
+            <form class="list-section__form search-form" id="searchToDo">
+                <label class="search-form__label offscreen" for="searchText">Search bar</label>
+                <div class="search-form__bar">
+                    <input id="search-form-text" class="search-form__input" type="text" name="searchText" placeholder="Search">
+                    <input id="search-form-button" class="search-form__button" type="submit" value="GO">
+                </div>
+            </form>
+
+            <button class="list-section__add-button">Add new item</button>
+
+            <ul class="list-section__ul tasks">
+                <li class="tasks__task-empty offscreen">Empty! WHY?</li>
+                <li class="task_container task__non-edit-height">
+                    <textarea class="task-text border-rad-tl border-rad-bl" name="task-text">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
+                    </textarea>
+                    <div class="task__edit-options">
+                        <button class="task-buttons border-rad-tr border-rad-br border-full" type="button">todo</button>
+                    </div>
+                </li>
+                <li class="task_container task__edit-height">
+                    <textarea class="task-text  border-rad-tl border-rad-bl" name="task-text">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
+                    </textarea>
+                    <div class="task__edit-options">
+                        <button class="task-buttons border-rad-tr border-full" type="button">Del</button>
+                        <button class="task-buttons border-rad-br border-full" type="button">Cancel</button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </main>
+    <footer class="footer center">
+        <span class="footer__span center nowrap">DO IT!</span>
+        <span class="footer__span center nowrap">NOW!</span>
+    </footer>
+</body>
+</html>

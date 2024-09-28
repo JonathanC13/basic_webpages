@@ -1,0 +1,315 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.img {
+    display: block;
+}
+
+input, 
+button, 
+textarea {
+    /* These do not inherit font properties, you must explicitly enable */
+    font: inherit;
+}
+/* /RESET */
+
+/* VARIABLES */
+:root {
+    /* COLORS */
+    --BGCOLOR: rgb(154,83,65);
+    --HEADER-BGCOLOR: rgb(132,59,45);
+    --BODY-BGCOLOR: rgb(186,131,94);
+    --BORDER-COLOR: rgb(132,59,45);
+    --BUTTON-COLOR: rgb(231,205,167);
+    --COMPLETE-COLOR: greenyellow;
+    --DELETE-COLOR: firebrick;
+    --CANCEL-COLOR: whitesmoke;
+
+    /* FONTS */
+    --FF-HEADER: Arial, Helvetica, sans-serif;
+    --FF: Arial, Helvetica, sans-serif;
+    --FS-HEADER-SMALL: 1em;
+    --FS-HEADER-LARGE: 1.25em;
+    --FS-SMALL: 1em;
+    --FS-LARGE: 1.25em;
+
+    /* PADDING */
+    --PADDING-TOPBOT: 0.5em;
+    --PADDING-SIDE: 1em;
+
+    /* MARGIN */
+    --MARGIN-TOP: 0.5em;
+    --MARGIN-SIDE: 1em;
+
+    /* BORDER */
+    --BORDER: 1px solid var(--BORDER-COLOR);
+    --BORDER-RADIUS: 10px;
+    --TASK-BORDER: 1px outset rgb(132,59,45);
+    --BUTTON-BORDER: 2px solid var(--BGCOLOR);
+}
+/* /VARIABLES */
+
+/* @media (prefers-color-scheme: dark) {
+} */
+
+/* UTILITY */
+.offscreen {
+    position: absolute;
+    top: -1000px;
+}
+
+.center {
+    text-align: center;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.left {
+    float: left;
+    margin-right: 1em;
+}
+
+.right {
+    float: right;
+    margin-left: 1rem;
+}
+/* /UTILITY */
+
+/* GENERAL */
+html {
+    background-color: var(--BGCOLOR);
+    scroll-behavior: smooth;
+    font-size: var(--FS-SMALL);
+    font-family: var(--FF);
+}
+
+body {
+    max-width: 800px;
+    min-height: 100vh;
+    margin: 0 auto;
+    background-color: var(--BODY-BGCOLOR);
+    display: flex;
+    flex-flow: column wrap;
+    border: var(--BORDER);
+    box-shadow: 0 0 20px var(--BORDER-COLOR);
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--FF-HEADINGS);
+    letter-spacing: 0.01em;
+}
+
+p {
+    line-height: 2;
+}
+/* /GENERAL */
+
+/* HEADER */
+.header {
+    background-color: var(--HEADER-BGCOLOR);
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    padding: var(--PADDING-TOPBOT) var(--PADDING-SIDE);
+    font-size: var(--FS-HEADER-SMALL);
+}
+
+.header__figure img {
+    width: 36px;
+    height: auto;
+}
+/* /HEADER */
+
+/* MAIN */
+.main {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    min-height: calc(100vh - 35rem);
+}
+
+.main__section {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    width: 100%;
+}
+/* /MAIN */
+
+/* list-section */
+.list-section__h2 {
+    padding: var(--PADDING-TOPBOT) 0;
+}
+
+.list-section__form {
+    display: flex;
+    flex-flow: column nowrap;
+    padding: var(--PADDING-TOPBOT) 0;
+    width: 80%;
+}
+
+.form__bar {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.list-section__form label {
+    text-align: center;
+}
+
+.search-form__bar {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.search-form__input,
+.search-form__button {
+    text-align: center;
+    padding: var(--PADDING-TOPBOT) 0;
+}
+
+.search-form__input {
+    border-top-left-radius: var(--BORDER-RADIUS);
+    border-bottom-left-radius: var(--BORDER-RADIUS);
+    border: var(--BUTTON-BORDER);
+    flex-grow: 2;
+}
+
+.search-form__button,
+.list-section__add-button {
+    background-color: var(--BUTTON-COLOR);
+    border: var(--BUTTON-BORDER);
+}
+
+.search-form__button {
+    border-top-right-radius: var(--BORDER-RADIUS);
+    border-bottom-right-radius: var(--BORDER-RADIUS);
+    flex-grow: 1;
+}
+
+.list-section__add-button {
+    margin: var(--MARGIN-TOP) 0;
+    padding: var(--PADDING-TOPBOT) 0;
+    border-radius: var(--BORDER-RADIUS);
+    width: 80%;
+}
+/* /list-section */
+
+/* TASKS */
+.tasks{
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+    padding: var(--PADDING-TOPBOT) var(--PADDING-SIDE);
+}
+
+.tasks li {
+    list-style-type: none;
+}
+
+.tasks__task-empty {
+    text-align: center;
+    font-weight: bolder;
+}
+
+.tasks:last-child {
+    min-height: calc(100vh - 35rem);
+}
+/* /TASKS */
+
+/* classes */
+.task_container {
+    border: var(--TASK-BORDER);
+    margin: var(--MARGIN-TOP) 0;
+    display: flex;
+    flex-flow: row nowrap;
+    z-index: 1;
+    border-radius: var(--BORDER-RADIUS);
+}
+
+.task-text {
+    flex-grow: 1;
+    resize: none;
+    padding: var(--PADDING-TOPBOT) var(--PADDING-SIDE);
+}
+
+.task__edit-options {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.task-buttons {
+    width: 75px;
+    height: 100%;
+}
+
+/* non-edit task */
+.task__non-edit-height {
+    height: 75px;
+}
+/* /non-edit task */
+
+/* edit task */
+.task__edit-height {
+    height: 100px;
+}
+/* /edit task */
+/* Scroll is OK, when clicked changes current to editing div and all others to non-edit div. */
+
+.border-rad-tl {
+    border-top-left-radius: var(--BORDER-RADIUS);
+}
+
+.border-rad-bl {
+    border-bottom-left-radius: var(--BORDER-RADIUS);
+}
+
+.border-rad-tr {
+    border-top-right-radius: var(--BORDER-RADIUS);
+}
+
+.border-rad-br {
+    border-bottom-right-radius: var(--BORDER-RADIUS);
+}
+
+.border-full {
+    border: var(--BUTTON-BORDER);
+}
+
+.complete-color {
+    color: var(--COMPLETE-COLOR);
+}
+
+.del-color {
+    color: var(--DELETE-COLOR);
+}
+
+.cancel-color {
+    color: var(--CANCEL-COLOR);
+}
+/* /classes */
+
+/* FOOTER */
+.footer {
+    background-color: var(--HEADER-BGCOLOR);
+    display: sticky;
+    bottom: 0;
+    padding: var(--PADDING-TOPBOT) var(--PADDING-SIDE);
+}
+/* /FOOTER */
+
+/* Media queries */
+@media screen and (min-width: 376px) {
+    .header {
+        font-size: var(--FS-HEADER-LARGE);
+    }
+}
+/* /Media queries */
