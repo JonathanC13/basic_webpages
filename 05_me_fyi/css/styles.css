@@ -150,10 +150,6 @@ a:visited {
 }
 
 .header__button {
-    display: flex;
-    flex: column nowrap;
-    align-items: center;
-    justify-content: space-evenly;
     background-color: transparent;
     border: none;
     color: var(--FONT-COLOR-NOT-ACTIVE);
@@ -245,9 +241,16 @@ a:visited {
 }
 
 .artie_tags__ul li {
-    padding: var(--PADDING-TOPBOT) var(--PADDING-SIDE);
+    padding: var(--PADDING-TOPBOT) 0;
     background-color: var(--ARTIE-TAG-BGCOLOR);
     border-radius: var(--BORDER-RADIUS-ARTIE-TAG);
+}
+
+.artie_tags__ul li a {
+    width: 100%;
+    height: 100%;
+    /* padding for li and a is neccesary. To ensure a matches li size, adjust padding. */
+    padding: var(--PADDING-TOPBOT) var(--PADDING-TAG-SIDE);
 }
 
 .artie__div {
@@ -263,7 +266,7 @@ a:visited {
 }
 
 .artie__p {
-    padding: var(--PADDING-TOPBOT) 0;
+    margin: var(--MARGIN);
 }
 
 .artie__img {
@@ -275,7 +278,7 @@ a:visited {
 /* tags */
 .tags__h2,
 .tips__h2 {
-    padding: var(--PADDING-TOPBOT) 0;
+    margin: var(--MARGIN);
 }
 
 .tags__ul,

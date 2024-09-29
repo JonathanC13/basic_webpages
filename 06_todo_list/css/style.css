@@ -25,7 +25,7 @@ textarea {
     --BODY-BGCOLOR: rgb(186,131,94);
     --BORDER-COLOR: rgb(132,59,45);
     --BUTTON-COLOR: rgb(231,205,167);
-    --COMPLETE-COLOR: greenyellow;
+    --COMPLETE-COLOR: green;
     --DELETE-COLOR: firebrick;
     --CANCEL-COLOR: whitesmoke;
 
@@ -145,11 +145,11 @@ p {
 /* /MAIN */
 
 /* list-section */
-.list-section__h2 {
+.list_section__h2 {
     padding: var(--PADDING-TOPBOT) 0;
 }
 
-.list-section__form {
+.list_section__form {
     display: flex;
     flex-flow: column nowrap;
     padding: var(--PADDING-TOPBOT) 0;
@@ -161,41 +161,42 @@ p {
     flex-flow: row nowrap;
 }
 
-.list-section__form label {
+.list_section__form label {
     text-align: center;
 }
 
-.search-form__bar {
+.search_form__bar {
     display: flex;
     flex-flow: row nowrap;
 }
 
-.search-form__input,
-.search-form__button {
+.search_form__input,
+.search_form__button {
     text-align: center;
     padding: var(--PADDING-TOPBOT) 0;
 }
 
-.search-form__input {
-    border-top-left-radius: var(--BORDER-RADIUS);
-    border-bottom-left-radius: var(--BORDER-RADIUS);
+.search_form__input {
+    /* border-top-left-radius: var(--BORDER-RADIUS);
+    border-bottom-left-radius: var(--BORDER-RADIUS); */
+    border-radius: var(--BORDER-RADIUS);
     border: var(--BUTTON-BORDER);
     flex-grow: 2;
 }
 
-.search-form__button,
-.list-section__add-button {
+.search_form__button,
+.list_section__add_button {
     background-color: var(--BUTTON-COLOR);
     border: var(--BUTTON-BORDER);
 }
 
-.search-form__button {
+.search_form__button {
     border-top-right-radius: var(--BORDER-RADIUS);
     border-bottom-right-radius: var(--BORDER-RADIUS);
     flex-grow: 1;
 }
 
-.list-section__add-button {
+.list_section__add_button {
     margin: var(--MARGIN-TOP) 0;
     padding: var(--PADDING-TOPBOT) 0;
     border-radius: var(--BORDER-RADIUS);
@@ -215,7 +216,7 @@ p {
     list-style-type: none;
 }
 
-.tasks__task-empty {
+.tasks__task_empty {
     text-align: center;
     font-weight: bolder;
 }
@@ -235,65 +236,69 @@ p {
     border-radius: var(--BORDER-RADIUS);
 }
 
-.task-text {
+.task_text {
     flex-grow: 1;
     resize: none;
     padding: var(--PADDING-TOPBOT) var(--PADDING-SIDE);
 }
 
-.task__edit-options {
+.task__edit_options {
     display: flex;
     flex-flow: column nowrap;
 }
 
-.task-buttons {
+.task_buttons {
     width: 75px;
     height: 100%;
 }
 
 /* non-edit task */
-.task__non-edit-height {
+.task__non_edit_height {
     height: 75px;
 }
 /* /non-edit task */
 
 /* edit task */
-.task__edit-height {
-    height: 100px;
+.task__edit_height {
+    height: 125px;
 }
 /* /edit task */
 /* Scroll is OK, when clicked changes current to editing div and all others to non-edit div. */
 
-.border-rad-tl {
+.border_rad_tl {
     border-top-left-radius: var(--BORDER-RADIUS);
 }
 
-.border-rad-bl {
+.border_rad_bl {
     border-bottom-left-radius: var(--BORDER-RADIUS);
 }
 
-.border-rad-tr {
+.border_rad_tr {
     border-top-right-radius: var(--BORDER-RADIUS);
 }
 
-.border-rad-br {
+.border_rad_br {
     border-bottom-right-radius: var(--BORDER-RADIUS);
 }
 
-.border-full {
+.border_full {
     border: var(--BUTTON-BORDER);
 }
 
-.complete-color {
-    color: var(--COMPLETE-COLOR);
+.complete_bgcolor {
+    background-color: var(--COMPLETE-COLOR);
 }
 
-.del-color {
-    color: var(--DELETE-COLOR);
+.del_bgcolor {
+    background-color: var(--DELETE-COLOR);
 }
 
-.cancel-color {
-    color: var(--CANCEL-COLOR);
+.cancel_bgcolor {
+    background-color: var(--CANCEL-COLOR);
+}
+
+.display_none {
+    display: none;
 }
 /* /classes */
 

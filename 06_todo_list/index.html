@@ -24,36 +24,21 @@
         </figure>
     </header>
     <main class="main">
-        <section class="main__section list-section">
-            <h2 class="list-section__h2 offscreen">The LIST</h2>
+        <section class="main__section list_section">
+            <h2 class="list_section__h2 offscreen">The LIST</h2>
             
-            <form class="list-section__form search-form" id="searchToDo">
-                <label class="search-form__label offscreen" for="searchText">Search bar</label>
-                <div class="search-form__bar">
-                    <input id="search-form-text" class="search-form__input" type="text" name="searchText" placeholder="Search">
-                    <input id="search-form-button" class="search-form__button" type="submit" value="GO">
+            <form class="list_section__form search_form" id="searchToDo">
+                <label class="search_form__label offscreen" for="searchText">Search bar</label>
+                <div class="search_form__bar">
+                    <input id="search_form_text" class="search_form__input" type="text" name="searchText" placeholder="Search">
+                    <!-- <input id="search_form-button" class="search_form__button" type="submit" value="GO"> -->
                 </div>
             </form>
 
-            <button class="list-section__add-button">Add new item</button>
+            <button id="add_task_button"class="list_section__add_button">Add new task</button>
 
-            <ul class="list-section__ul tasks">
-                <li class="tasks__task-empty offscreen">Empty! WHY?</li>
-                <li class="task_container task__non-edit-height">
-                    <textarea class="task-text border-rad-tl border-rad-bl" name="task-text">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
-                    </textarea>
-                    <div class="task__edit-options">
-                        <button class="task-buttons border-rad-tr border-rad-br border-full" type="button">todo</button>
-                    </div>
-                </li>
-                <li class="task_container task__edit-height">
-                    <textarea class="task-text  border-rad-tl border-rad-bl" name="task-text">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
-                    </textarea>
-                    <div class="task__edit-options">
-                        <button class="task-buttons border-rad-tr border-full" type="button">Del</button>
-                        <button class="task-buttons border-rad-br border-full" type="button">Cancel</button>
-                    </div>
-                </li>
+            <ul id="task_list" class="list_section__ul tasks">
+                <li id="task_empty" class="tasks__task_empty offscreen">Empty! WHY?</li>
             </ul>
         </section>
     </main>
