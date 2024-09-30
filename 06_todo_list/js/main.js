@@ -1,23 +1,3 @@
-/*
--- Task container templates.
-<li class="task_container task__non_edit_height">
-    <textarea class="task_text border_rad_tl border_rad_bl" name="task_text">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
-    </textarea>
-    <div class="task__edit_options">
-        <button class="task_buttons border_rad_tr border_rad_br border_full task__done" type="button">todo</button>
-    </div>
-</li>
-<li class="task_container task__edit_height">
-    <textarea class="task_text  border_rad_tl border_rad_bl" name="task_text">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
-    </textarea>
-    <div class="task__edit_options">
-        <button class="task_buttons border_rad_tr border_full task__del" type="button">Del</button>
-        <button class="task_buttons border_rad_tr border_full task__save" type="button">Save</button>
-        <button class="task_buttons border_rad_br border_full task__cancel" type="button">Cancel</button>
-    </div>
-</li>
-*/
-
 // Create a simple to-do list app that allows users to search, add, edit, and delete items. Use local storage to store the data.
 
 "use strict";
@@ -48,13 +28,14 @@ const taskObj = {
 function searchTasks(event){
     event.preventDefault();
     event.stopPropagation();
-    const searchText = document.querySelector("#search-form-text").value;
+    const searchText = document.querySelector("#search_form_text").value;
     // const regex = / {2,}/g;
     // const searchTextClean = searchText.replaceAll(regex, " ").trim();
 
     if (searchText.length > 0) {
-        console.log(searchText);
-        // TODO: auto displaying tasks that have the searchText
+        buildTaskList(searchText);
+    } else {
+        buildTaskList(null);
     }
 }
 
@@ -70,14 +51,14 @@ function addTask(event) {
     const taskList = getTaskListLocal();
     const task = Object.create(taskObj);
 
-    task.taskId = "task_".concat(taskList.size);
+    const taskId = "task_".concat(taskList.size);
     task.taskState = taskState.get("EDIT");
-    task.taskText = "asdfasfdasa                      123";
+    task.taskText = "";
     task.taskStatus = taskStatus.get("PENDING");
-    const taskItem = taskList.set(task.taskId, task);
+    const taskItem = taskList.set(taskId, task);
     saveTaskListLocal(taskList);
-    
-    createTaskContainer(task.taskId, taskItem.get(task.taskId));
+
+    createTaskContainer(taskId, taskItem.get(taskId));
     
     const task_empty = document.querySelector("#task_empty");
     if (taskList.size > 0) {
@@ -112,32 +93,32 @@ function createTaskContainer(taskId, taskItem) {
 
     // Edit options
     const newDelButton = document.createElement("button");
-    newDelButton.classList.add("task_buttons", "border_rad_tr", "border_full", "del_bgcolor", "task__del");
+    newDelButton.classList.add("cursor_pointer", "task_buttons", "border_rad_tr", "border_full", "del_bgcolor", "task__del");
     newDelButton.id = "del_button";
     newDelButton.textContent = "Del"
     newDiv.appendChild(newDelButton);
 
     const newSaveButton = document.createElement("button");
-    newSaveButton.classList.add("task_buttons", "border_full", "complete_bgcolor", "task__save");
+    newSaveButton.classList.add("cursor_pointer", "task_buttons", "border_full", "complete_bgcolor", "task__save");
     newSaveButton.id = "save_button";
     newSaveButton.textContent = "Save"
     newDiv.appendChild(newSaveButton);
 
     const newCancelButton = document.createElement("button");
-    newCancelButton.classList.add("task_buttons", "border_rad_br", "border_full", "cancel_bgcolor", "task__cancel");
+    newCancelButton.classList.add("cursor_pointer", "task_buttons", "border_rad_br", "border_full", "cancel_bgcolor", "task__cancel");
     newCancelButton.id = "cancel_button";
     newCancelButton.textContent = "Cancel"
     newDiv.appendChild(newCancelButton);
 
     // Non edit option
     const newDoneButton = document.createElement("button");
-    newDoneButton.classList.add("task_buttons", "border_rad_tr", "border_rad_br", "border_full", "task__done");
+    newDoneButton.classList.add("cursor_pointer", "task_buttons", "border_rad_tr", "border_rad_br", "border_full", "task__done");
 
     if (taskItem.taskStatus === taskStatus.get("COMPLETE")) {
         newDoneButton.classList.add("complete_bgcolor");
         newDoneButton.textContent = "Done";
     } else {
-        newDoneButton.textContent = "todo";
+        newDoneButton.textContent = "To-Do";
     }
 
     newDoneButton.id = "done_button";
@@ -171,9 +152,12 @@ function deleteTask(event) {
 
     const taskList = getTaskListLocal();
 
+    // Remove from HTML
     currTask.remove();
-
+    
+    // Remove from map
     taskList.delete(currTask.id);
+
     saveTaskListLocal(taskList);
 }
 
@@ -200,6 +184,38 @@ function getTaskListLocal() {
 }
 
 /**
+ * Event listener to toggle task complettion.
+ * @param {object} event
+ * @return {}
+ */
+function doneTask(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const taskList = getTaskListLocal();
+
+    const currTask = event.currentTarget.task;
+    const doneOption = currTask.querySelector(".task__done");
+
+    if (taskList.get(currTask.id)["taskStatus"] === taskStatus.get("PENDING")) {
+        taskList.get(currTask.id)["taskStatus"] = taskStatus.get("COMPLETE");
+        // instead of toggle, be explicit.
+        if (!doneOption.classList.contains("complete_bgcolor")) {
+            doneOption.classList.add("complete_bgcolor");
+            doneOption.textContent = "Done";
+        }
+    } else {
+        taskList.get(currTask.id)["taskStatus"] = taskStatus.get("PENDING");
+        if (doneOption.classList.contains("complete_bgcolor")) {
+            doneOption.classList.remove("complete_bgcolor");
+            doneOption.textContent = "To-Do";
+        }
+    }
+
+    saveTaskListLocal(taskList);
+}
+
+/**
  * Event listener for saving the current task changes.
  * @param {object} event
  * @return {}
@@ -216,9 +232,9 @@ function saveTask(event) {
     currTask.querySelector(".task_text").textContent = newText;
     taskList.get(currTask.id)["taskText"] = newText;
 
-    saveTaskListLocal(taskList);
-
     toggleTaskState(event, taskList);
+
+    saveTaskListLocal(taskList);
 }
 
 /**
@@ -238,6 +254,29 @@ function closeTaskEdit(event) {
     taskText.value = taskList.get(currTask.id)["taskText"];
 
     toggleTaskState(event, taskList);
+
+    saveTaskListLocal(taskList);
+}
+
+/**
+ * Event listener for the text area for the task.
+ * @param {object} event Current task element
+ * @return {}
+ */
+function textAreaListener(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const currTask = event.currentTarget.task;
+    const taskList = getTaskListLocal();
+
+    if (taskList.get(currTask.id)["taskState"] === taskState.get("EDIT")) {
+        return;
+    }
+
+    toggleTaskState(event, taskList);
+
+    saveTaskListLocal(taskList);
 }
 
 /**
@@ -248,28 +287,65 @@ function closeTaskEdit(event) {
  */
 function toggleTaskState(event, taskList) {
     const currTask = event.currentTarget.task;
+    const delOption = currTask.querySelector(".task__del");
+    const saveOption = currTask.querySelector(".task__save");
+    const cancelOption = currTask.querySelector(".task__cancel");
+    const DoneOption = currTask.querySelector(".task__done");
 
     if (taskList.get(currTask.id)["taskState"] === taskState.get("EDIT")) {
-        taskList.set(currTask.id)["taskState"] = taskState.get("NONEDIT")
+        taskList.get(currTask.id)["taskState"] = taskState.get("NONEDIT");
+
+        // instead of toggling the class, explicitly set.
+        if (currTask.classList.contains("task__edit_height")) {
+            currTask.classList.remove("task__edit_height");
+        }
+        
+        if (!currTask.classList.contains("task__non_edit_height")) {
+            currTask.classList.add("task__non_edit_height");
+        }
+
+        if (!delOption.classList.contains("display_none")) {
+            delOption.classList.add("display_none");
+        }
+        
+        if (!saveOption.classList.contains("display_none")) {
+            saveOption.classList.add("display_none");
+        }
+        
+        if (!cancelOption.classList.contains("display_none")) {
+            cancelOption.classList.add("display_none");
+        }
+
+        if (DoneOption.classList.contains("display_none")) {
+            DoneOption.classList.remove("display_none");
+        }
     } else {
-        taskList.set(currTask.id)["taskState"] = taskState.get("EDIT")
+        taskList.get(currTask.id)["taskState"] = taskState.get("EDIT");
+
+        if (!currTask.classList.contains("task__edit_height")) {
+            currTask.classList.add("task__edit_height");
+        }
+        
+        if (currTask.classList.contains("task__non_edit_height")) {
+            currTask.classList.remove("task__non_edit_height");
+        }
+
+        if (delOption.classList.contains("display_none")) {
+            delOption.classList.remove("display_none");
+        }
+        
+        if (saveOption.classList.contains("display_none")) {
+            saveOption.classList.remove("display_none");
+        }
+        
+        if (cancelOption.classList.contains("display_none")) {
+            cancelOption.classList.remove("display_none");
+        }
+
+        if (!DoneOption.classList.contains("display_none")) {
+            DoneOption.classList.add("display_none");
+        }
     }
-
-    // console.log("close edit, return to nonedit task container");
-    currTask.classList.toggle("task__edit_height");
-    currTask.classList.toggle("task__non_edit_height");
-
-    const delOption = currTask.querySelector(".task__del");
-    delOption.classList.toggle("display_none");
-    
-    const saveOption = currTask.querySelector(".task__save");
-    saveOption.classList.toggle("display_none");
-
-    const cancelOption = currTask.querySelector(".task__cancel");
-    cancelOption.classList.toggle("display_none");
-
-    const DoneOption = currTask.querySelector(".task__done");
-    DoneOption.classList.toggle("display_none");
 }
 
 /**
@@ -278,6 +354,10 @@ function toggleTaskState(event, taskList) {
  * @return {}
  */
 function addTaskEditListeners(taskItem) {
+    const doneOption = taskItem.querySelector(".task__done");
+    doneOption.addEventListener("click", doneTask, false);
+    doneOption.task = taskItem;
+
     const delOption = taskItem.querySelector(".task__del");
     delOption.addEventListener("click", deleteTask, false);
     delOption.task = taskItem;
@@ -289,14 +369,36 @@ function addTaskEditListeners(taskItem) {
     const cancelOption = taskItem.querySelector(".task__cancel");
     cancelOption.addEventListener("click", closeTaskEdit, false);
     cancelOption.task = taskItem;
+
+    const textAreaElem = taskItem.querySelector(".task_text");
+    textAreaElem.addEventListener("click", textAreaListener, false);
+    textAreaElem.task = taskItem;
 }
 
 /**
- * Contruct the initial task list from the map from local storage.
+ * Remove all current tasks.
  * @param {}
  * @return {}
  */
-function buildTaskList() {
+function clearTasks() {
+    const taskUl = document.querySelector("#task_list");
+    const taskLi = taskUl.querySelectorAll(".task_container");
+    
+    if (taskLi !== null) {
+        for (let i = 0; i < taskLi.length; i++) {
+            taskLi[i].remove();
+        }
+    }
+}
+
+/**
+ * Contruct the task list from the map from local storage.
+ * @param {}
+ * @return {}
+ */
+function buildTaskList(filterText) {
+    clearTasks();
+
     const taskList = getTaskListLocal();
     const task_empty = document.querySelector("#task_empty");
 
@@ -304,7 +406,11 @@ function buildTaskList() {
         task_empty.classList.add("offscreen");
 
         for (let [key, value] of taskList) {
-            console.log(key + " is " + value);
+            if (filterText !== null && (value["taskText"].toLowerCase()).indexOf(filterText.toLowerCase()) === -1) {
+                // if filterText does not have a match in the taskText
+                continue;
+            }
+            createTaskContainer(key, value);
         }
     } else {
         task_empty.classList.remove("offscreen");
@@ -319,11 +425,14 @@ function buildTaskList() {
 const initApp = () => {
     const searchToDo = document.querySelector("#searchToDo");
     searchToDo.addEventListener("input", searchTasks, false);
+    searchToDo.addEventListener("submit", (event) => {
+        event.preventDefault();
+    }, false);
 
     const addTaskButton = document.querySelector("#add_task_button");
     addTaskButton.addEventListener("click", addTask, false);
 
-    buildTaskList();
+    buildTaskList(null);
 }
 
 /**
@@ -336,3 +445,23 @@ document.addEventListener("readystatechange", (event) => {
         initApp();
     }
 });
+
+/*
+-- Task container templates.
+<li class="task_container task__non_edit_height">
+    <textarea class="task_text border_rad_tl border_rad_bl" name="task_text">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
+    </textarea>
+    <div class="task__edit_options">
+        <button class="task_buttons border_rad_tr border_rad_br border_full task__done" type="button">todo</button>
+    </div>
+</li>
+<li class="task_container task__edit_height">
+    <textarea class="task_text  border_rad_tl border_rad_bl" name="task_text">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
+    </textarea>
+    <div class="task__edit_options">
+        <button class="task_buttons border_rad_tr border_full task__del" type="button">Del</button>
+        <button class="task_buttons border_rad_tr border_full task__save" type="button">Save</button>
+        <button class="task_buttons border_rad_br border_full task__cancel" type="button">Cancel</button>
+    </div>
+</li>
+*/

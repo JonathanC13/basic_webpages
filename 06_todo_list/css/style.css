@@ -90,13 +90,14 @@ html {
 }
 
 body {
-    max-width: 800px;
+    display: flex;
+    flex-flow: column nowrap;
     min-height: 100vh;
+    max-width: 800px;
     margin: 0 auto;
     background-color: var(--BODY-BGCOLOR);
-    display: flex;
-    flex-flow: column wrap;
-    border: var(--BORDER);
+    border-left: var(--BORDERS);
+    border-right: var(--BORDERS);
     box-shadow: 0 0 20px var(--BORDER-COLOR);
 }
 
@@ -299,6 +300,10 @@ p {
 
 .display_none {
     display: none;
+}
+
+.cursor_pointer {
+    cursor: pointer;
 }
 /* /classes */
 
