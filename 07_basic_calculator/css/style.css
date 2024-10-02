@@ -1,0 +1,134 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+input, 
+button, 
+textarea {
+    /* These do not inherit font properties, you must explicitly enable */
+    font: inherit;
+}
+/* /RESET */
+
+/* VARIABLES */
+:root {
+    /* COLORS */
+    --BGCOLOR: rgb(24, 24, 24);
+    --BODY-BGCOLOR: papayawhip;
+    --FONT-HEADER-COLOR: papayawhip;
+    --FONT-COLOR: black;
+    --BORDER-COLOR: black;
+
+    /* BORDERS */
+    --BORDERS: 1px solid var(--BORDER-COLOR);
+    --BORDER-RAD: 10px;
+
+    /* PADDING */
+    --PADDING-TOPBOT: 0.75em;
+    --PADDING-SIDE: 0.5em;
+}
+/* /VARIABLES */
+
+/* UTILITY */
+.center {
+    text-align: center;
+}
+
+.offscreen {
+    position: absolute;
+    left: -5000px;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.width_full {
+    width: 100%;
+}
+
+.cursor_pointer {
+    cursor: pointer;
+}
+/* /UTILITY */
+
+/* GENERAL */
+html {
+    scroll-behavior: smooth;
+    background-color: var(--BGCOLOR);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    min-height: 100vh;
+    max-width: 800px;
+    background-color: var(--BODY-BGCOLOR);
+    color: var(--FONT-COLOR);
+    margin: 0 auto;
+    border-left: var(--BORDERS);
+    border-right: var(--BORDERS);
+    box-shadow: 0 0 20px var(--BORDER-COLOR);
+}
+
+header {
+    display: flex;
+    flex-flow: row nowrap;
+    background-color: var(--BGCOLOR);
+    color: var(--FONT-HEADER-COLOR);
+    justify-content: center;
+    padding: var(--PADDING-TOPBOT) 0;
+}
+
+main {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+table {
+    table-layout: fixed;
+}
+/* /GENERAL */
+
+/* TABLE */
+#table_calc {
+    width: 75%;
+    height: auto;
+}
+
+#td_input,
+#td_entry,
+#td_result {
+    padding: var(--PADDING-TOPBOT) 0;
+}
+
+#ta_input,
+#ta_result {
+    resize: none;
+    height: 75px;
+    border: var(--BORDERS);
+    border-radius: var(--BORDER-RAD);
+    padding: var(--PADDING-TOPBOT) var(--PADDING-SIDE);
+}
+
+#div_input,
+#div_entry {
+    border: var(--BORDERS);
+    border-radius: var(--BORDER-RAD);
+    background-color: white;
+    height: 45px;
+    padding: var(--PADDING-TOPBOT) var(--PADDING-SIDE);
+}
+/* /TABLE */

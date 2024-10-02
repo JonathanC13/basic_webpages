@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="J">
+
+    <link rel="icon" href="images/favicon.png" type="images/x-icon">
+    <title>Basic Calculator</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="./js/main.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Calculator</h1>
+    </header>
+    <main>
+        <table id="table_calc">
+            <caption class="offscreen">Calculator</caption>
+            <thead>
+                <tr>
+                    <th scope="col" colspan="4"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td  id="td_input" scope="row" colspan="4">
+                        <div class="center width_full">
+                            Input
+                        </div>
+                        <textarea name="ta_input" id="ta_input" class="width_full" readonly></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="td_entry" scope="row" colspan="4">
+                        <div class="center width_full">
+                            Entry
+                        </div>
+                        <div id="div_entry" class="center width_full">0</div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td scope="row" colspan="2">
+                        <button id="button_clear"class="cursor_pointer center width_full">C</button>
+                    </td>
+                    <td scope="row" colspan="1">
+                        <button id="button_clear_entry"class="cursor_pointer center width_full">CE</button>
+                    </td>
+                    <td scope="row" colspan="1">
+                        <button id="button_backspace"class="cursor_pointer center width_full">«</button>
+                    </td>
+
+                <tr>
+                    <td scope="row" colspan="1">
+                        <button class="cursor_pointer center width_full operand">7</button>
+                    </td>
+                    <td scope="row" colspan="1">
+                        <button class="cursor_pointer center width_full operand">8</button>
+                    </td>
+                    <td scope="row" colspan="1">
+                        <button class="cursor_pointer center width_full operand">9</button>
+                    </td>
+                    <td scope="row" colspan="1">
+                        <button class="cursor_pointer center width_full operator">/</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td scope="row" colspan="1">
+                        <button class="cursor_pointer center width_full operand">4</button>
+                    </td>
+                    <td scope="row" colspan="1">
+                        <button class="cursor_pointer center width_full operand">5</button>
+                    </td>
+                    <td scope="row" colspan="1">
+                        <button class="cursor_pointer center width_full operand">6</button>
+                    </td>
+                    <td scope="row" colspan="1">
+                        <button class="cursor_pointer center width_full operator">x</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td scope="row" colspan="1">
+                        <button class="cursor_pointer center width_full operand">1</button>
+                    </td>
+                    <td scope="row" colspan="1">
+                        <button class="cursor_pointer center width_full operand">2</button>
+                    </td>
+                    <td scope="row" colspan="1">
+                        <button class="cursor_pointer center width_full operand">3</button>
+                    </td>
+                    <td scope="row" colspan="1">
+                        <button class="cursor_pointer center width_full operator">-</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td scope="row" colspan="1">
+                        <button class="cursor_pointer center width_full signed">+/-</button>
+                    </td>
+                    <td scope="row" colspan="1">
+                        <button class="cursor_pointer center width_full operand">0</button>
+                    </td>
+                    <td scope="row" colspan="1">
+                        <button class="cursor_pointer center width_full decimal">.</button>
+                    </td>
+                    <td scope="row" colspan="1">
+                        <button class="cursor_pointer center width_full operator">+</button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td scope="row" colspan="4">
+                        <button class="cursor_pointer center width_full evaluate">〓</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="td_result" scope="row" colspan="4">
+                        <div class="center width_full">
+                            Result
+                        </div>
+                        <textarea name="ta_result" id="ta_result" class="width_full" readonly></textarea>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </main>
+</body>
+</html>
