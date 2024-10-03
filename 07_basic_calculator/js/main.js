@@ -30,7 +30,7 @@ function isOperator(symbol) {
 
 /**
  * Convert infix expression string to Postfix (Reverse Polish Notation)
- * @param {String} expression The Infix expression
+ * @param {String} expression The Infix expression that will come in with the operands and operators partitioned by a single space. e.g. "5 + -2"
  * @return {String} Postfix expression
  */
 function convertInfixToRPN(expression) {
@@ -41,7 +41,8 @@ function convertInfixToRPN(expression) {
 
     for (let i = 0; i < expression.length; i ++) {
         const symbol = expression[i];
-        if (!isOperator(symbol)) {
+        // 2nd part is to handle values like -2 if the user used the +/- button in an expression like 5 + -2. Must keep the negative and number together in the RPN
+        if (!isOperator(symbol) || (symbol == "-" && i < expression.length - 1 && expression[i + 1] != " ")) {
             RPN = RPN.concat(symbol);
         } else {
             if (symbol == "(") {
@@ -66,6 +67,8 @@ function convertInfixToRPN(expression) {
         }
     }
     while (stack[stack.length - 1] != "#") {
+        // adding a space before the popped operator to keep consistency of the RPN, since infix comes in with single spaces between the operands and operators. e.g. Infix: 5 + -2. RPN: 5 -2 + instead of 5 -2+
+        RPN = RPN.concat(" ");
         RPN = RPN.concat(stack.pop());
     }
     return RPN;
@@ -90,20 +93,37 @@ function evaluateRPN(postfix) {
     let max_len = 0;
     let i = 0
     while (i < postfix.length) {
-        if (isDigitOrDecimal(postfix[i])) {
+        // 2nd part is to handle negative values if the user used the +/- button. Since the RPN will keep the negative symbol and number together, must keep together on stack. 5 + -2.
+        // If the following char of the "-" symbol is a number or decimal it indicates it is together
+        if (isDigitOrDecimal(postfix[i]) || (postfix[i] == "-" && i < postfix.length - 1 && isDigitOrDecimal(postfix[i + 1]))) {
             let num = "";
+
+            // if negative determined to be part of the number, concat it first and move to the number portion.
+            if (postfix[i] == "-") {
+                num = num.concat(postfix[i]);
+                i ++;
+            }
+
+            // capture the entire number if multiple digits.
             while (i < postfix.length && isDigitOrDecimal(postfix[i]) && postfix[i] != " ") {
                 num = num.concat(postfix[i]);
                 i ++;
             }
-            stack_res.push(Number.parseFloat(num).toFixed(num.length - 1));
+            stack_res.push(Number.parseFloat(Number.parseFloat(num)));
         } else if (postfix[i] == " ") {
             i ++;
         } else {
             const operand2 = stack_res.pop();
             const operand1 = stack_res.pop();
-            max_len = Math.max(max_len, operand2);
-            max_len = Math.max(max_len, operand1);
+
+            // precision if decimal was used.
+            if (String(operand2).indexOf(".") != -1){
+                max_len = Math.max(max_len, String(operand2).slice(String(operand2).indexOf(".")).length - 1);
+            }
+            if (String(operand1).indexOf(".") != -1){
+                max_len = Math.max(max_len, String(operand1).slice(String(operand1).indexOf(".")).length - 1);
+            }
+
 
             if (postfix[i] == "+") {
                 stack_res.push(operand1 + operand2);
@@ -121,7 +141,22 @@ function evaluateRPN(postfix) {
             i ++;
         }
     }
-    return stack_res[0].toFixed(max_len - 1);
+    return stack_res[0].toFixed(max_len);
+}
+
+/**
+ * If the equal button was the most recent clicked, must clear taInput and divEntry for certain buttons
+ * @param {Element} taInput
+ * @param {Element} divEntry
+ * @param {boolean} equalUsed
+ * @return {}
+ */
+function equalUsedClear(taInput, divEntry, equalUsed) {
+    if (equalUsed) {
+        taInput.value = "";
+        divEntry.textContent = "0";
+        return false;
+    }
 }
 
 /**
@@ -138,9 +173,13 @@ function initApp() {
     divEntry.textContent = "0";
     taResult.value = "";
 
+    let equalUsed = false;
+
     const buttonClear = document.querySelector("#button_clear");
     buttonClear.addEventListener("click", (event) => {
         event.preventDefault();
+
+        equalUsed = false;
 
         taInput.value = "";
         divEntry.textContent = "0";
@@ -150,12 +189,16 @@ function initApp() {
     buttonClearEntry.addEventListener("click", (event) => {
         event.preventDefault();
 
+        equalUsed = false;
+
         divEntry.textContent = "0";
     }, false);
 
     const buttonBackSpace = document.querySelector("#button_backspace");
     buttonBackSpace.addEventListener("click", (event) => {
         event.preventDefault();
+
+        equalUsed = false;
 
         if (divEntry.textContent.length > 0) {
             divEntry.textContent = divEntry.textContent.slice(0, divEntry.textContent.length - 1);
@@ -171,6 +214,8 @@ function initApp() {
         operands[i].addEventListener("click", (event) => {
             event.preventDefault();
 
+            equalUsed = equalUsedClear(taInput, divEntry, equalUsed);
+
             if (divEntry.textContent === "0") {
                 divEntry.textContent = event.target.innerHTML;
             } else {
@@ -183,6 +228,8 @@ function initApp() {
     const signed = document.querySelector(".signed");
     signed.addEventListener("click", (event) => {
         event.preventDefault();
+
+        equalUsed = equalUsedClear(taInput, divEntry, equalUsed);
 
         let entry = divEntry.textContent;
         if (entry.length > 0 && entry != "0") {
@@ -198,6 +245,8 @@ function initApp() {
     decimal.addEventListener("click", (event) => {
         event.preventDefault();
 
+        equalUsed = equalUsedClear(taInput, divEntry, equalUsed);
+
         if (divEntry.textContent.indexOf(event.target.innerHTML) == -1) {
             divEntry.textContent = divEntry.textContent.concat(event.target.innerHTML);
         }
@@ -207,6 +256,8 @@ function initApp() {
     for (let i = 0; i < operators.length; i ++) {
         operators[i].addEventListener("click", (event) => {
             event.preventDefault();
+
+            equalUsed = false;
             
             taInput.value = taInput.value.concat(divEntry.textContent.concat(" ", event.target.innerHTML)) + " ";
 
@@ -217,6 +268,8 @@ function initApp() {
     const evaluate = document.querySelector(".evaluate");
     evaluate.addEventListener("click", (event) => {
         event.preventDefault();
+
+        equalUsed = true;
 
         const regex = /\s{2,}/g;
 
