@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" class="profile-html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="J">
+
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+    <title>Profile</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js"></script>
+</head>
+<body class="profile-body">
+    <header class="profile-header">
+        <h1 class="profile-header__h1">
+            GitHub Lookup
+        </h1>
+    </header>
+    <main class="profile-main">
+        <section class="search">
+            <form action="javascript:void(0);" class="home-search__form search-form">
+                <label for="github-search" class="search-form__label center offscreen">GitHub Lookup</label>
+                <div class="search-form-bar">
+                    <input type="text" id="search-form__input" class="search-form__input center" name="GitHub-search" placeholder="GitHub Username">
+                    <input id="search-form__button" class="search-form__button center cursor_pointer" type="submit" value="GO">
+                </div>
+            </form>
+        </section>
+
+        <section class="profile-main__section profile-content">
+            <section class="profile-content__personal personal">
+                <h2 class="offscreen">Personal information</h2>
+
+                <figure class="personal__pic">
+                    <img src="images/koi.png" alt="placeholder profile picture" name="placeholder profile picture" title="placeholder profile picture" width="500px" height="500px">
+                    <figcaption class="offscreen">Placeholder profile picture</figcaption>
+                </figure>
+
+                <section class="personal__names names">
+                    <h2 class="names__name">Placeholder</h2>
+                    <div class="names__username-pronoun">
+                        Placeholder ⋅ placeholder
+                    </div>
+                </section>
+
+                <section class="personal__desc">
+                    <h2 class="offscreen">Personal description</h2>
+                    <textarea name="ta_personal-desc" id="ta_personal-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, adipisci harum magnam, quo at expedita modi cumque iste consequuntur, quidem excepturi corporis dicta. Ipsam minus accusantium velit vero, dolorum autem.</textarea>
+                </disectionv>
+
+                <section class="personal__follow follow">
+                    <h2 class="offscreen">Personal follow</h2>
+                    <span class="follow__followers">
+                        <span class="follow__followers-num">
+                            0
+                        </span>
+                        <span class="follow__followers-text">&nbsp;followers</span>
+                    </span>
+                    <span class="follow__following">
+                        <span class="follow__following-num">
+                            0
+                        </span>
+                        <span class="follow__following-text">&nbsp;following</span>
+                    </span>
+                </section>
+
+                <section class="personal__locations locations">
+                    <h2 class="offscreen">Personal locations</h2>
+                    <ul class="locations__ul"></ul>
+                </section>
+
+                <section class="personal__socials socials">
+                    <h2 class="offscreen">Personal locations</h2>
+                    <ul class="socials__ul"></ul>
+                </section>
+            </section>
+
+            <section class="profile-content__repos repos">
+                <h2 class="repos__h2">Repos</h2>
+                <ul class="repos__ul"></ul>
+            </section>
+        </section>
+    </main>
+</body>
+</html>
