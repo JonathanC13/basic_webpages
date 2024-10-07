@@ -149,6 +149,7 @@ textarea {
     border-bottom-left-radius: var(--SEARCH-BORDER-RAD);
     border-color: var(--BORDER-COLOR-GENERAL);
     width: 80%;
+    padding-left: 25px;
 }
 
 .search-form__button {
@@ -229,11 +230,9 @@ textarea {
     border-radius: var(--PROFILE-PIC-BORDER-RAD);
 }
 
-#ta_personal-desc {
-    width: 100%;
-    resize: none;
-    background-color: var(--BG-COLOR-TRANS);
+.personal__desc__text {
     color: var(--FONT-COLOR);
+    background-color: var(--BG-COLOR-TRANS);
     border: none;
     box-shadow: 0px 0px 5px 1px var(--BORDER-COLOR-GENERAL);
 }
