@@ -80,6 +80,13 @@ textarea {
 .content_margin-topbot {
     margin: var(--MARGIN-TOPBOT) 0;
 }
+
+.abbr_no_underline {
+    /* Chrome */
+    border-bottom: none;
+    /* Firefox */
+    text-decoration: none;
+}
 /* /UTILITY */
 
 /* GENERAL */
@@ -207,6 +214,12 @@ textarea {
     align-items: center;
 }
 
+.locations__ul,
+.socials__ul {
+    list-style-type: none;
+    margin: var(--MARGIN-TOPBOT) 0;
+}
+
 .names__name {
     color: var(--EXPRESS-COLOR);
 }
@@ -235,6 +248,7 @@ textarea {
     background-color: var(--BG-COLOR-TRANS);
     border: none;
     box-shadow: 0px 0px 5px 1px var(--BORDER-COLOR-GENERAL);
+    padding: var(--PADDING-TOPBOT) var(--PADDING-CONTENT-SIDES);
 }
 /* /PROFILE content */
 
@@ -245,7 +259,7 @@ textarea {
 }
 
 .repos__h2 {
-    color: var(--EXPRESS-COLOR);
+    color: var(--FONT-COLOR);
 }
 
 .repos__h2,

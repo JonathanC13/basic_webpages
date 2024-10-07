@@ -1,3 +1,6 @@
-#image sources
+# Github lookup
+## Description
+Allows the user to enter a Github username to retrieve a brief overview of that profile.
 
-koi.png: https://wallhaven.cc/w/lmxmxy
+## image sources
+- koi.png: https://wallhaven.cc/w/lmxmxy
