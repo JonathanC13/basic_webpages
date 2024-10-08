@@ -244,7 +244,7 @@ textarea {
 .profile-main__section {
     display: flex;
     flex-flow: column nowrap;
-    align-items: center;
+    justify-content: start;
 }
 
 .profile-content__personal {
@@ -279,11 +279,11 @@ textarea {
     color: var(--EXPRESS-HOVER-COLOR);
 }
 
-.locations__ul,
+/* .locations__ul,
 .socials__ul {
     list-style-type: none;
     margin: var(--MARGIN-TOPBOT) 0;
-}
+} */
 
 .names__name {
     color: var(--EXPRESS-COLOR);

@@ -1,11 +1,5 @@
-// if locations__ul is empty, ensure locations__ul and personal__locations do not have padding: var(--PADDING-HEADER-TOPBOT) var(--PADDING-SIDES);
-// if socials__ul is empty, ensure socials__ul and personal__socials do not have padding: var(--PADDING-HEADER-TOPBOT) var(--PADDING-SIDES); . Just remove padding. if has items, must add .content_padding-sides and .content_margin-topbot (why? margins collapse and this is a vertical list. *collapse mean if there is an overlap, it will merge, unlike padding since it is inside it's respective element it will not collapse)
-
-/* TODO: 
-    1. @media screen and (min-width: 500px) * HERE
-    3. Hovering followers and following will list the usernames
-        if none, no container and cursor. else yes.
-
+'use strict';
+/* 
     https://api.github.com/users/JonathanC13
     https://api.github.com/users/JonathanC13/repos
     const response = await fetch(`https://api.github.com/users/${username}`);
@@ -427,10 +421,21 @@ const populateGithubProfileInfo = () => {
     if (jsonResponseData['blog'] !== null && jsonResponseData['blog'].length > 0) {
         createProfileListItem('🗀', jsonResponseData['blog'], 'Blog', locationsList);
     }
+    if (locationsList.querySelectorAll('li').length > 0) {
+        locationsList.classList.add('no_list_style', 'content_margin-topbot')
+    } else {
+        locationsList.classList.remove('no_list_style', 'content_margin-topbot')
+    }
     
     if (jsonResponseData['twitter_username'] !== null && jsonResponseData['twitter_username'].length > 0) {
         createProfileListItem('🦅', jsonResponseData['twitter_username'], 'Twitter', socialsList);
     }
+    if (socialsList.querySelectorAll('li').length > 0) {
+        socialsList.classList.add('no_list_style', 'content_margin-topbot')
+    } else {
+        socialsList.classList.remove('no_list_style', 'content_margin-topbot')
+    }
+
 
     if (jsonResponseData['repos_url'].length == 0) {
         reposH3.classList.remove('offscreen');
