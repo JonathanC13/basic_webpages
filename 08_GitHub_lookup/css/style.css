@@ -28,8 +28,11 @@ textarea {
     /* COLORS */
     --BG-COLOR: rgb(31, 36, 46);
     --FONT-COLOR: papayawhip;
+    --FONT-HOVER-COLOR: rgba(255, 239, 213, 0.8);
     --EXPRESS-COLOR: rgb(205, 104, 0);
+    --EXPRESS-HOVER-COLOR: rgba(205, 104, 0, 0.8);
     --BUTTON-COLOR: rgb(205, 104, 0);
+    --BUTTON-HOVER-COLOR: rgba(205, 104, 0, 0.8);
     --BUTTON-FONT-COLOR: rgb(31, 36, 46);
     --BG-COLOR-TRANS: rgba(31, 36, 46, 0.95);
     --BORDER-COLOR-GENERAL: papayawhip;
@@ -86,6 +89,11 @@ textarea {
     border-bottom: none;
     /* Firefox */
     text-decoration: none;
+}
+
+.no_a_text_deco {
+    text-decoration: none;
+    color: var(--FONT-COLOR);
 }
 /* /UTILITY */
 
@@ -144,6 +152,10 @@ textarea {
     font-weight: bold;
 }
 
+.search-form__button:hover {
+    background-color: var(--BUTTON-HOVER-COLOR);
+}
+
 .search-form-bar {
     display: flex;
     flex-flow: row nowrap;
@@ -177,6 +189,10 @@ textarea {
     flex-flow: row nowrap;
     align-items: center;
     justify-content: center;
+}
+
+.profile-header__h1:hover {
+    color: var(--FONT-HOVER-COLOR);
 }
 /* /PROFILE Header */
 
@@ -276,6 +292,10 @@ textarea {
     border-bottom: var(--GENERAL-BORDER);
     background-color: var(--BG-COLOR-TRANS);
     margin: var(--MARGIN-TOPBOT) 0;
+}
+
+.repos__li:hover :is(.repartie__h3, .repartie__visibility) {
+    color: var(--EXPRESS-HOVER-COLOR);
 }
 
 .repos__artie {

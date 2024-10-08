@@ -3,10 +3,11 @@
 
 /* TODO: 
     1. @media screen and (min-width: 500px) * HERE
-    2. Each repo container is a link to the actual repo on github.com. response['html_url']
     3. Hovering followers and following will list the usernames
         if none, no container and cursor. else yes.
 
+    https://api.github.com/users/JonathanC13
+    https://api.github.com/users/JonathanC13/repos
     const response = await fetch(`https://api.github.com/users/${username}`);
 */
 
@@ -137,12 +138,18 @@ const requestProfileRepos = async(url) => {
 
 const createRepoListItem = (item, ulElem) => {
     const newLi = document.createElement('li');
-    newLi.classList.add('repos__li');
+    newLi.classList.add('repos__li', 'cursor_pointer');
     ulElem.appendChild(newLi);
+
+    const newA = document.createElement('a');
+    newA.classList.add('no_a_text_deco');
+    newA.setAttribute("href", item['html_url']);
+    newA.setAttribute("target",'_blank');
+    newLi.appendChild(newA);
 
     const newArtie = document.createElement('article');
     newArtie.classList.add('repos__artie', 'repartie');
-    newLi.appendChild(newArtie);
+    newA.appendChild(newArtie);
 
     const newH2 = document.createElement('h2');
     newH2.classList.add('offscreen');
