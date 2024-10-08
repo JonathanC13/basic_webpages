@@ -16,8 +16,8 @@
  * @param {}
  * @return {boolean} if existing username request to github
  */
-const existUsernameRequest = () => {
-    const jsonResponseData = JSON.parse(sessionStorage.getItem("jsonResponseData"));
+const existSessionKey = (key) => {
+    const jsonResponseData = JSON.parse(sessionStorage.getItem(key));
 
     if (jsonResponseData === null || ('status' in jsonResponseData) && jsonResponseData['status'] === '404') {
         return false;
@@ -62,6 +62,11 @@ const managePageLocation = (dest) => {
     return false;
 }
 
+const setSearchMessage = (msg) => {
+    const searchMessage = document.querySelector('#search-form__message');
+    searchMessage.textContent = msg;
+}
+
 /**
  * Build the URL for the API request.
  * @param {object} requestData Data for the URL params
@@ -88,7 +93,12 @@ const requestGithubProfile = async(url) => {
 
     const jsonResponseData = await response.json();
 
-    sessionStorage.setItem('jsonResponseData', JSON.stringify(jsonResponseData));
+    if (('status' in jsonResponseData) && jsonResponseData['status'] === '403' || response.status === 403) {
+        const msg = 'API limit met. Try again later.'
+        setSearchMessage(msg)
+        throw msg
+    }
+    sessionStorage.setItem('profileGeneralInfo', JSON.stringify(jsonResponseData));
 }
 
 /**
@@ -121,7 +131,12 @@ const createProfileListItem = (emoji, text, hint, ulElem) => {
     ulElem.appendChild(newli);
 }
 
-const requestProfileRepos = async(url) => {
+/**
+ * General request to API url
+ * @param {string} url API url
+ * @return {}
+ */
+const requestAPI = async(url) => {
     const response = await fetch(url, 
         {
             method: "GET",
@@ -133,12 +148,18 @@ const requestProfileRepos = async(url) => {
 
     const jsonResponseData = await response.json();
 
+    if (('status' in jsonResponseData) && jsonResponseData['status'] === '403' || response.status === 403) {
+        const msg = 'API limit met. Try again later.'
+        setSearchMessage(msg)
+        throw msg
+    }
+
     return jsonResponseData;
 }
 
 const createRepoListItem = (item, ulElem) => {
     const newLi = document.createElement('li');
-    newLi.classList.add('repos__li', 'cursor_pointer');
+    newLi.classList.add('repos__li');
     ulElem.appendChild(newLi);
 
     const newA = document.createElement('a');
@@ -195,20 +216,138 @@ const createRepoListItem = (item, ulElem) => {
 }
 
 /**
- * Control function to construct the repos list
- * @param {String} reposURL 
+ * Control function to construct the repos list. Only is called if previous work flow has guarenteed data exists.
+ * @param {object} ulElem parent element
  * @return {}
  */
-const buildRepoListItem = async(reposURL, ulElem) => {
-    const jsonResponseData = await requestProfileRepos(reposURL);
-    const { compare } = Intl.Collator('en-US');
-    // sorted in desc update_at
-    jsonResponseData.sort((a, b) => {
-        return compare(a.updated_at, b.updated_at)
-    }).reverse();
-    
-    for (let i = 0; i < jsonResponseData.length; i ++) {
-        createRepoListItem(jsonResponseData[i], ulElem);
+const buildRepoListItem = async(ulElem) => {
+    const jsonRepoData = JSON.parse(sessionStorage.getItem('profileRepoInfo'));
+    for (let i = 0; i < jsonRepoData.length; i ++) {
+        createRepoListItem(jsonRepoData[i], ulElem);
+    }
+}
+
+/**
+ * Request to API for Repo data
+ * @param {String} reposURL API URL for the user's repos
+ * @param {object} ulElem parent element
+ * @return {}
+ */
+const requestRepoData = async(reposURL, ulElem) => {
+    try {
+        const jsonResponseData = await requestAPI(reposURL);
+        const { compare } = Intl.Collator('en-US');
+        // sorted in desc update_at
+        jsonResponseData.sort((a, b) => {
+            return compare(a.updated_at, b.updated_at)
+        }).reverse();
+
+        sessionStorage.setItem('profileRepoInfo', JSON.stringify(jsonResponseData));
+
+        buildRepoListItem(ulElem);
+    } catch (error) {
+        return;
+    }
+}
+
+/**
+ * Construct the div for the follow mouseenter and add eventlistener
+ * @param {object} parent Parent element 
+ * @param {object} data 
+ * @return {}
+ */
+const createFollowDiv = (parent, data) => {
+    const followUlName = (parent.id).concat('__ul');
+    let followUl;
+
+    const checkDivName = (parent.id).concat('__div');
+    const checkDiv = document.querySelector('#'.concat(checkDivName));
+    if (checkDiv === null) {
+        const followUsers = document.createElement('div');
+        followUsers.id = checkDivName;
+        followUsers.classList.add('content_padding', 'general_border-all', 'offscreen', 'general_background-color', 'scrollable-div', 'nowrap');
+        parent.appendChild(followUsers);
+
+        const newH3 = document.createElement('h3');
+        newH3.classList.add('content_margin-topbot', 'content_padding-sides', 'default_color');
+        newH3.textContent = '30 Users --';
+        followUsers.appendChild(newH3);
+
+        parent.addEventListener('mouseover', (event) => {
+            followUsers.classList.remove('offscreen');
+            followUsers.classList.add('overlapping');
+        }, false);
+
+        parent.addEventListener('mouseout', (event) => {
+            followUsers.classList.remove('overlapping');
+            followUsers.classList.add('offscreen');
+        }, false);
+
+        // followUsers.addEventListener('mouseover', (event) => {
+        //     followUsers.classList.remove('offscreen');
+        //     followUsers.classList.add('overlapping');
+        // }, false);
+
+        // followUsers.addEventListener('mouseout', (event) => {
+        //     followUsers.classList.remove('overlapping');
+        //     followUsers.classList.add('offscreen');
+        // }, false);
+
+        followUl = document.createElement('ul');
+        followUl.id = followUlName;
+        followUsers.append(followUl);
+    } else {
+        followUl = document.querySelector('#'.concat(followUlName));
+        clearList(followUl);
+    }
+
+    for (let i = 0; i < data.length; i ++) {
+        const newLi = document.createElement('li');
+        newLi.classList.add('content_margin-topbot', 'content_padding-sides', 'bullet_inside', 'default_color');
+        newLi.textContent = data[i]['login'];
+        followUl.appendChild(newLi);
+
+        newLi.addEventListener('mouseover', (event) => {
+            newLi.classList.remove('default_color');
+            newLi.classList.add('express-color');
+        }, false);
+
+        newLi.addEventListener('mouseout', (event) => {
+            newLi.classList.remove('express-color');
+            newLi.classList.add('default_color');
+        }, false);
+
+        newLi.addEventListener('click', (event) => {
+            // search for this username
+            document.querySelector("#search-form__input").value = data[i]['login'];
+            githubUsernameSearch(event);
+        }, false);
+    }
+}
+
+/**
+ * Construct follow section mouseenter
+ * @param {object} jsonResponseData 
+ * @return {}
+ */
+const populateFollowMouseroverSection = async(jsonResponseData) => {
+    try {
+        const max = 30;
+
+        // Followers
+        const followers = document.querySelector('.follow__followers');
+        followers.classList.add('cursor_pointer');
+        const arrFollowers = await requestAPI(jsonResponseData['followers_url']);
+        createFollowDiv(followers, arrFollowers.slice(0, max));
+
+        // Following
+        const following = document.querySelector('.follow__following');
+        following.classList.add('cursor_pointer');
+        const followingURL = jsonResponseData['following_url'].slice(0, jsonResponseData['following_url'].indexOf('{'));
+        const arrFollowing = await requestAPI(followingURL);
+        createFollowDiv(following, arrFollowing.slice(0, max));
+    } catch (error) {
+        return;
     }
 }
 
@@ -218,11 +357,18 @@ const buildRepoListItem = async(reposURL, ulElem) => {
  * @return {}
  */
 const populateGithubProfileInfo = () => {
-    const jsonResponseData = JSON.parse(sessionStorage.getItem("jsonResponseData"));
+    const jsonResponseData = JSON.parse(sessionStorage.getItem("profileGeneralInfo"));
+    if (('status' in jsonResponseData) && jsonResponseData['status'] === '403') {
+        const msg = 'API limit met. Try again later.'
+        setSearchMessage(msg)
+        throw msg
+    }
+
     const searchInput = document.querySelector('#search-form__input');
     searchInput.value = jsonResponseData['login'];
 
     const profilePic = document.querySelector('#personal__pic__img');
+    const profileLink = document.querySelector('.names__a');
     const profileName = document.querySelector('.names__name');
     const profileUsername = document.querySelector('.names__username');
     const profileDesc = document.querySelector('.personal__desc__text');
@@ -247,20 +393,24 @@ const populateGithubProfileInfo = () => {
 
     // Populate
     profilePic.src = jsonResponseData['avatar_url'];
+    profileLink.setAttribute("href", jsonResponseData['html_url']);
+    profileLink.setAttribute("target", "_blank");
     profileName.textContent = jsonResponseData['name'];
     profileUsername.textContent = jsonResponseData['login'];
     profileDesc.textContent = jsonResponseData['bio'];
     followersNum.textContent = jsonResponseData['followers'];
     followingNum.textContent = jsonResponseData['following'];
 
-    if (jsonResponseData['company'].length > 0) {
+    populateFollowMouseroverSection(jsonResponseData);
+
+    if (jsonResponseData['company'] !== null && jsonResponseData['company'].length > 0) {
         // 'None' is OK
         createProfileListItem('🏢', jsonResponseData['company'], 'Company', locationsList);
     }
-    if (jsonResponseData['location'].length > 0) {
+    if (jsonResponseData['location'] !== null && jsonResponseData['location'].length > 0) {
         createProfileListItem('🏡', jsonResponseData['location'], 'Location' ,locationsList);
     }
-    if (jsonResponseData['blog'].length > 0) {
+    if (jsonResponseData['blog'] !== null && jsonResponseData['blog'].length > 0) {
         createProfileListItem('🗀', jsonResponseData['blog'], 'Blog', locationsList);
     }
     
@@ -271,7 +421,12 @@ const populateGithubProfileInfo = () => {
     if (jsonResponseData['repos_url'].length == 0) {
         reposH3.classList.remove('offscreen');
     } else {
-        buildRepoListItem(jsonResponseData['repos_url'], reposList);
+        // if (existSessionKey('profileRepoInfo' && check if user is owner of all)) {
+        //     buildRepoListItem(reposList);
+        // } else {
+        requestRepoData(jsonResponseData['repos_url'], reposList); // Better to fire new api request so that the info is up to date.
+        //}
+            
     }
 }
 
@@ -283,27 +438,32 @@ const populateGithubProfileInfo = () => {
 async function githubUsernameSearch(event) {
     event.preventDefault();
 
-    // Save the username into session storage in case the page needs to be changed.
-    const searchMessage = document.querySelector('#search-form__message');
-    const requestObj = getDataFromSearchBar();
-    if (requestObj['username'].length == 0) {
-        searchMessage.textContent = 'Please enter a username.'
-        return;
-    } else {
-        searchMessage.textContent = ''
-        const url = buildGithubRequestUrl(requestObj);
-        await requestGithubProfile(url);
-
-        if (existUsernameRequest()) {
-            const change = managePageLocation("profile");
-            // if page had to redirect to profile.html, the current JS executing is on the previous page, must return out. When on load of the profile.html page, the JS must check in initApp() if there a requestObj exists and if true and on profile.html, build the profile.
-            if (change) {
-                return;
-            }
-            populateGithubProfileInfo();
+    try {
+        // Save the username into session storage in case the page needs to be changed.
+        const requestObj = getDataFromSearchBar();
+        if (requestObj['username'].length == 0) {
+            const msg = 'Please enter a username.'
+            setSearchMessage(msg)
+            return;
         } else {
-            searchMessage.textContent = 'Not Found'
+            setSearchMessage('')
+            const url = buildGithubRequestUrl(requestObj);
+            await requestGithubProfile(url);    // could save a request by checking entered username and if existing sessionStorage has that user's data already, BUT in case the profile has been changed just fire another request to pull the latest!
+
+            if (existSessionKey('profileGeneralInfo')) {
+                const change = managePageLocation("profile");
+                // if page had to redirect to profile.html, the current JS executing is on the previous page, must return out. When on load of the profile.html page, the JS must check in initApp() if there a requestObj exists and if true and on profile.html, build the profile.
+                if (change) {
+                    return;
+                }
+                populateGithubProfileInfo();
+            } else {
+                const msg = 'Not Found'
+                setSearchMessage(msg)
+            }
         }
+    } catch (error) {
+        return;
     }
 }
 
@@ -319,9 +479,9 @@ const initialPage = () => {
         pageName = currhref.slice(currhref.lastIndexOf("/") + 1, currhref.lastIndexOf("."));
     }
 
-    if (!existUsernameRequest() && pageName === 'profile') {
+    if (!existSessionKey('profileGeneralInfo') && pageName === 'profile') {
         managePageLocation("index");
-    } else if (existUsernameRequest() && pageName === 'profile') {
+    } else if (existSessionKey('profileGeneralInfo') && pageName === 'profile') {
         populateGithubProfileInfo();
     }
     // Else stay on index.html without any action.
@@ -333,6 +493,8 @@ const initialPage = () => {
  * @return {}
  */
 function initApp() {
+    initialPage();
+
     // Profile page header
     const header = document.querySelector('.profile-header');
     if (header !== null) {
@@ -344,8 +506,6 @@ function initApp() {
     // username search listener
     const searchUsernameBtn = document.querySelector("#search-form__button");
     searchUsernameBtn.addEventListener("click", githubUsernameSearch, false);
-
-    initialPage();
 }
 
 /**
@@ -365,12 +525,12 @@ document.addEventListener("readystatechange", (event) => {
     1.1. If on profile.html, but no session storage of jsonResponseData > redirect to index
         - initApp()
         - initialPage()
-            - !existUsernameRequest() && pageName === 'profile' > managePageLocation("index")
+            - !existSessionKey('profileGeneralInfo') && pageName === 'profile' > managePageLocation("index")
         
     1.2. If on profile.html and has session storage of requestObj with valid username > build profile.html
         - initApp()
         - initialPage()
-            - existUsernameRequest() && pageName === 'profile'
+            - existSessionKey('profileGeneralInfo') && pageName === 'profile'
             - populateGithubProfileInfo()
 
     1.3. search-form__button click with empty username > display message

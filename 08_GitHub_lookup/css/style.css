@@ -54,7 +54,7 @@ textarea {
     /* BORDERS */
     --SEARCH-BORDER-RAD: 10px;
     --PROFILE-PIC-BORDER-RAD: 50%;
-    --GENERAL-BORDER: 1px solid 
+    --GENERAL-BORDER: 1px solid var(--BORDER-COLOR-GENERAL);
 }
 /* /VARIABLES */
 
@@ -84,6 +84,25 @@ textarea {
     margin: var(--MARGIN-TOPBOT) 0;
 }
 
+.content_padding-all {
+    padding: var(--PADDING-TOPBOT) var(--PADDING-CONTENT-SIDES);
+}
+
+.general_border-all {
+    border: var(--GENERAL-BORDER);
+}
+
+.overlapping {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 99;
+}
+
+.no_list_style {
+    list-style-type: none;
+}
+
 .abbr_no_underline {
     /* Chrome */
     border-bottom: none;
@@ -94,6 +113,31 @@ textarea {
 .no_a_text_deco {
     text-decoration: none;
     color: var(--FONT-COLOR);
+}
+
+.general_background-color {
+    background-color: var(--BG-COLOR-TRANS);
+}
+
+.width_100 {
+    width: 100%;
+}
+
+.bullet_inside {
+    list-style-position: inside;
+}
+
+.default_color {
+    color: var(--FONT-COLOR);
+}
+
+.express-color {
+    color: var(--EXPRESS-COLOR);
+}
+
+.scrollable-div {
+    max-height: 250px;
+    overflow: scroll;
 }
 /* /UTILITY */
 
@@ -217,6 +261,7 @@ textarea {
 .profile-content__personal,
 .personal__pic,
 .personal__names,
+.names__a,
 .personal__desc,
 .personal__locations,
 .locations__ul,
@@ -228,6 +273,10 @@ textarea {
     flex-flow: column nowrap;
     width: 100%;
     align-items: center;
+}
+
+.personal__names:hover :is(.names__name, .names__username) {
+    color: var(--EXPRESS-HOVER-COLOR);
 }
 
 .locations__ul,
@@ -265,6 +314,15 @@ textarea {
     border: none;
     box-shadow: 0px 0px 5px 1px var(--BORDER-COLOR-GENERAL);
     padding: var(--PADDING-TOPBOT) var(--PADDING-CONTENT-SIDES);
+}
+
+.follow__followers,
+.follow__following {
+    position: relative;
+}
+
+:is(.follow__followers, .follow__following):hover {
+    color: var(--EXPRESS-HOVER-COLOR);
 }
 /* /PROFILE content */
 
