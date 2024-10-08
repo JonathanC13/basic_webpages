@@ -62,6 +62,11 @@ const managePageLocation = (dest) => {
     return false;
 }
 
+/**
+ * Set the message in the search form message div
+ * @param {string} msg Text to be set in the search form message div
+ * @return {}
+ */
 const setSearchMessage = (msg) => {
     const searchMessage = document.querySelector('#search-form__message');
     searchMessage.textContent = msg;
@@ -80,6 +85,7 @@ const buildGithubRequestUrl = (requestData) => {
  * Send request to the API
  * @param {String} url API URL
  * @return {}
+ * @throws {string} If 403 status, throw error.
  */
 const requestGithubProfile = async(url) => {
     const response = await fetch(url, 
@@ -135,6 +141,7 @@ const createProfileListItem = (emoji, text, hint, ulElem) => {
  * General request to API url
  * @param {string} url API url
  * @return {}
+ * @throws {string} If 403 status, throw error.
  */
 const requestAPI = async(url) => {
     const response = await fetch(url, 
@@ -157,6 +164,12 @@ const requestAPI = async(url) => {
     return jsonResponseData;
 }
 
+/**
+ * If requested username exists from API return.
+ * @param {object} item Repo object
+ * @param {object} ulElem parent element of the list
+ * @return {}
+ */
 const createRepoListItem = (item, ulElem) => {
     const newLi = document.createElement('li');
     newLi.classList.add('repos__li');
@@ -355,6 +368,7 @@ const populateFollowMouseroverSection = async(jsonResponseData) => {
  * With the json data from the API request, populate the profile page.
  * @param {object} jsonData API URL
  * @return {}
+ * @throws {string} If 403 status, throw error.
  */
 const populateGithubProfileInfo = () => {
     const jsonResponseData = JSON.parse(sessionStorage.getItem("profileGeneralInfo"));
