@@ -1,16 +1,22 @@
-function initApp() {
+function updateTimeCard(timezone, time, date) {
     const myDate = Date();
     const timeFormatted = dayjs(myDate).format('HH:mm:ss');
-    const dateFormatted = dayjs(myDate).format('dddd, D MMMM, YYYY');
+    const dateFormatted = dayjs(myDate).format('dddd, MMMM, D, YYYY');
 
+    timezone.textContent = dayjs.tz.guess();
+    time.textContent = timeFormatted;
+    date.textContent = dateFormatted;
+}
+
+function initApp() {
     const timecardTimezone = document.querySelector('.timecard__timezone');
-    timecardTimezone.textContent = dayjs.tz.guess();
-
     const timecardTime = document.querySelector('.timecard__time');
-    timecardTime.textContent = timeFormatted;
-
     const timecardDate = document.querySelector('.timecard__date');
-    timecardDate.textContent = dateFormatted;
+
+    // Initial set
+    updateTimeCard(timecardTimezone, timecardTime, timecardDate)
+    // update interval
+    setInterval(updateTimeCard, 1000, timecardTimezone, timecardTime, timecardDate);
 }
 
 /**
