@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="J">
+
+    <link rel="icon" href="./images/favicon.png" type="images/x-icon">
+    <title>Timecard</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+
+    <script src="./js/main.js"></script>
+    <!-- Allowed in browser -->
+    <script src="./node_modules/dayjs/dayjs.min.js"></script>
+    <script src="./node_modules/dayjs/plugin/timezone.js"></script>
+    <!-- Load plugin as window.dayjs_plugin_NAME -->
+    <script>
+        dayjs.extend(window.dayjs_plugin_timezone);
+    </script>
+
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__h1">Timecard</h1>
+    </header>
+    <main class="main">
+        <section class="main__section timecard">
+            <h2 class="timecard__h2 offscreen">Timecard info</h2>
+            <div class="timecard__internal align_right">
+                <div class="timecard__timezone">Timezone</div>
+                <div class="timecard__time">Time</div>
+                <div class="timecard__date">Date</div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
