@@ -1,0 +1,265 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+input, 
+button, 
+textarea {
+    /* These do not inherit font properties, you must explicitly enable */
+    font: inherit;
+}
+/* /RESET */
+
+/* VARIABLES */
+:root {
+    /* FONT */
+    --FF: Arial, Helvetica, sans-serif;
+    --FS-LARGE: 3rem;
+
+    /* COLOR */
+    --BG-COLOR: rgb(31, 36, 46);
+    --FONT-COLOR: papayawhip;
+    --FONT-FADED-COLOR: rgba(255, 239, 213, 0.75);
+    --BUTTON-COLOR: rgb(205, 104, 0);
+    --BUTTON-HOVER-COLOR: rgba(205, 104, 0, 0.8);
+    
+    /* PADDING */
+    --PADDING-TOPBOT: 0.5em;
+    --PADDING-SIDES: 0.25em;
+    --PADDING-TIMECARD-TOPBOT: 1em;
+
+    /* MARGIN */
+    --MARGIN-TOPBOT: 0.5em;
+    --MARGIN-SIDES: 0.5em;
+}
+/* /VARIABLES */
+
+/* UTILITY */
+.offscreen {
+    position: absolute;
+    top: -10000px;
+}
+
+.align_right {
+    text-align: right;
+}
+
+.cursor_pointer {
+    cursor: pointer;
+}
+/* /UTILITY */
+
+/* GENERAL */
+html {
+    scroll-behavior: smooth;
+    font-family: var(--FF);
+    background-color: var(--BG-COLOR);
+    background-image: url(../images/koi.png);
+    color: var(--FONT-COLOR);
+    background-position: 50% 0;
+}
+
+body {
+    max-width: 800px;
+    min-height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: start;
+}
+/* /GENERAL */
+
+/* HEADER */
+.header {
+    width: 100%;
+    padding: var(--PADDING-TOPBOT)var(--PADDING-SIDES);
+    background-color: var(--BG-COLOR);
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+/* /HEADER */
+
+/* MAIN */
+.main {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: start;
+    width: 100%;
+}
+/* /MAIN */
+
+/* Timecard */
+.timecard {
+    border: 1px solid var(--FONT-COLOR);
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    margin: var(--MARGIN-TOPBOT) var(--MARGIN-SIDES);
+}
+
+.timecard__internal {
+    margin: var(--MARGIN-TOPBOT) 0;
+}
+
+:is(.timecard__timezone, .timecard__time, .timecard__date) {
+    margin: var(--MARGIN-TOPBOT) 0;
+}
+
+.timecard__timezone {
+    color: var(--FONT-FADED-COLOR);
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: end;
+}
+
+.timezone__div {
+    padding: 0 var(--PADDING-SIDES);
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: end;
+}
+
+.timezone_modal_button {
+    background-color: var(--BUTTON-COLOR);
+    border-radius: 5px;
+    padding: 0 var(--PADDING-SIDES);
+}
+
+.timezone_modal_button:hover {
+    background-color: var(--BUTTON-HOVER-COLOR);
+}
+
+.timecard__time {
+    font-size: var(--FS-LARGE);
+}
+/* /Timecard */
+
+/* MODAL */
+.micromodal {
+    display: none;
+}
+
+.micromodal.is-open {
+    display: block;
+}
+
+.micromodal__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.65);
+}
+
+.micromodal__container {
+    box-sizing: border-box;
+    overflow-y: auto;
+    min-width: 400px;
+    max-width: 500px;
+    max-height: 100vh;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 4px;
+    margin: 0 var(--MARGIN-SIDES);
+
+    overflow-y: visible;
+}
+
+.modal__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+.modal__title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 1.25rem;
+    line-height: 1.25;
+    color: #00449e;
+    box-sizing: border-box;
+}
+
+.modal__close {
+    background: transparent;
+    border: 0;
+}
+
+.modal__header .modal__close:before { content: "\2715"; }
+
+.modal__content {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+    color: rgba(0,0,0,.8);
+}
+
+.micromodal[aria-hidden="false"] .micromodal__overlay {
+    animation: microModalFadeIn .2s cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+.micromodal[aria-hidden="false"] .micromodal__container {
+    animation: microModalSlideIn .2s cubic-bezier(0, 0, .2, 1);
+}
+
+.micromodal .micromodal__container,
+.micromodal .micromodal__overlay {
+    will-change: transform;
+}
+
+@keyframes microModalFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes microModalSlideIn {
+    from { transform: translateY(15%); }
+    to { transform: translateY(0); }
+}
+
+.apply_timezone {
+    padding: var(--PADDING-TOPBOT) var(--PADDING-SIDES);
+}
+/* /MODAL */
+
+/* TIMEZONE SELECT */
+.timezone_div {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+.sel_timezone_container {
+	display:inline-block;
+	position:relative;
+	background:#f9f9f9;
+}
+
+.sel_timezone {
+	position:absolute;
+	left:0;
+	top:0;
+    width: 100%;
+    min-height: 100%;
+}
+
+.sel_timezone option {
+    padding: 0 var(--PADDING-SIDES);
+}
+/* /TIMEZONE SELECT */
