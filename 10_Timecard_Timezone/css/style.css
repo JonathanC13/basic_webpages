@@ -251,6 +251,18 @@ body {
 	background:#f9f9f9;
 }
 
+/* Data list with input method for selecting timezone */
+#timezoneName {
+    width: 100%;
+    min-height: 100%;
+    padding: 0 var(--PADDING-SIDES);
+}
+
+#timezoneNames option {
+    padding: 0 var(--PADDING-SIDES);
+}
+
+/* Drop down list method for selecting timezone */
 .sel_timezone {
 	position:absolute;
 	left:0;

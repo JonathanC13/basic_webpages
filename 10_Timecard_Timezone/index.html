@@ -53,8 +53,15 @@
                     <div class="timezone_div">
                         <div class="sel_timezone_container">
                             <!-- onfocus="if(this.options.length>6){this.size=6;}" onmousedown="if(this.options.length>6){this.size=6;}" onblur="this.size=0;"  -->
-                            <select class="sel_timezone" name="sel_timezone" >
-                            </select>
+                            <!-- Drop down list method for selecting timezone -->
+                            <!-- <select class="sel_timezone" name="sel_timezone" >
+                            </select> -->
+
+                            <!-- Datalist method for selecting timezones -->
+                            <!-- datalist id and input list must match to bind -->
+                            <label for="timezoneName" class="offscreen">Timezone selection:</label>
+                            <input list="timezoneNames" name="timezoneName" id="timezoneName">
+                            <datalist id="timezoneNames"></datalist>
                         </div>
                         <button id="apply_timezone" class="apply_timezone cursor_pointer" type="button">Apply</button>
                     </div>

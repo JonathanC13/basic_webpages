@@ -46,7 +46,10 @@ async function requestTimezoneNames() {
 }
 
 async function populateTimezones(currentTimezone) {
-    const selTimezones = document.querySelector('.sel_timezone');
+    // Drop down list method for selecting timezone
+    // const selTimezones = document.querySelector('.sel_timezone');
+    const inputTimezones = document.querySelector('#timezoneName');
+    const dlSelTimezones = document.querySelector('#timezoneNames');
 
     await requestTimezoneNames();
 
@@ -55,16 +58,31 @@ async function populateTimezones(currentTimezone) {
     if (timezoneNames === null) {
         return;
     } else {
+        // Datalist method for selecting timezone
         // <option value="volvo">Volvo</option>
         for (let i = 0; i < timezoneNames.length; i ++) {
             const timezoneOption = document.createElement('option');
-            timezoneOption.value = timezoneNames[i];
-            timezoneOption.innerText = timezoneNames[i];
-            if (currentTimezone == timezoneNames[i]) {
-                timezoneOption.setAttribute('selected', 'selected');
+            const currTimezone = timezoneNames[i]
+            timezoneOption.value = currTimezone;
+            timezoneOption.innerText = currTimezone;
+            if (currentTimezone == currTimezone) {
+                inputTimezones.value = currTimezone;
             }
-            selTimezones.appendChild(timezoneOption)
+            dlSelTimezones.appendChild(timezoneOption);
         }
+
+
+        // Drop down list method for selecting timezone
+        // <option value="volvo">Volvo</option>
+        // for (let i = 0; i < timezoneNames.length; i ++) {
+        //     const timezoneOption = document.createElement('option');
+        //     timezoneOption.value = timezoneNames[i];
+        //     timezoneOption.innerText = timezoneNames[i];
+        //     if (currentTimezone == timezoneNames[i]) {
+        //         timezoneOption.setAttribute('selected', 'selected');
+        //     }
+        //     selTimezones.appendChild(timezoneOption)
+        // }
     }
 }
 
@@ -104,24 +122,34 @@ function initApp() {
     populateTimezones(currTimezone);
     // console.log(dayjs("2013-11-18 11:55:20").tz("WET")['$d']);
 
-    const selTimezone = document.querySelector('.sel_timezone');
+    // Datalist method for selecting timezone
+    const timezoneName = document.querySelector('#timezoneName');
+    const timezoneNames = document.querySelector('#timezoneNames');
+    // ['click'].forEach( function(event) {
+    //     timezoneName.addEventListener(event, (event) => {
+    //         timezoneName.value = "";
+    //     }, false);
+    // });
 
-    ['click','mousedown'].forEach( function(event) {
-        selTimezone.addEventListener(event, (event) => {
-            if(selTimezone.options.length > 6){
-                selTimezone.size = 20;
-            }
-            selTimezone.focus();
-        }, false);
-    });
+    // // Drop down list method for selecting timezone
+    // const selTimezone = document.querySelector('.sel_timezone');
+    // ['click','mousedown'].forEach( function(event) {
+    //     selTimezone.addEventListener(event, (event) => {
+    //         if(selTimezone.options.length > 6){
+    //             selTimezone.size = 20;
+    //         }
+    //         selTimezone.focus();
+    //     }, false);
+    // });
 
-    selTimezone.addEventListener('mouseleave', (event) => {
-        selTimezone.size = 0;
-    });
+    // selTimezone.addEventListener('mouseleave', (event) => {
+    //     selTimezone.size = 0;
+    // });
 
     const applyTimezone = document.querySelector('#apply_timezone');
     applyTimezone.addEventListener('click', (event) => {
-        const newTimezone = selTimezone.value;
+        // const newTimezone = selTimezone.value;
+        const newTimezone = timezoneName.value;
         updateTimeCard(newTimezone, timecardTimezone, timecardTime, timecardDate);
         clearInterval(timeUpdater);
         timeUpdater = setInterval(updateTimeCard, 1000, newTimezone, timecardTimezone, timecardTime, timecardDate);
