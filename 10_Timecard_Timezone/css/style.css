@@ -274,4 +274,8 @@ body {
 .sel_timezone option {
     padding: 0 var(--PADDING-SIDES);
 }
+
+#modal_msg {
+    color: red;
+}
 /* /TIMEZONE SELECT */

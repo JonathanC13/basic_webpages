@@ -100,12 +100,8 @@ function initApp() {
     const timecardTimezoneChange = document.querySelector('.timezone_modal_button')
     const timecardTime = document.querySelector('.timecard__time');
     const timecardDate = document.querySelector('.timecard__date');
-
-    timecardTimezoneChange.addEventListener('click', (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        MicroModal.show('modal-1');
-    }, false);
+    const timezoneName = document.querySelector('#timezoneName');
+    const timezoneNames = document.querySelector('#timezoneNames');
 
     // const micromodalContainer = document.querySelector('.micromodal__container');
     // micromodalContainer.addEventListener('click', (event) => {
@@ -123,8 +119,8 @@ function initApp() {
     // console.log(dayjs("2013-11-18 11:55:20").tz("WET")['$d']);
 
     // Datalist method for selecting timezone
-    const timezoneName = document.querySelector('#timezoneName');
-    const timezoneNames = document.querySelector('#timezoneNames');
+    // const timezoneName = document.querySelector('#timezoneName');
+    // const timezoneNames = document.querySelector('#timezoneNames');
     // ['click'].forEach( function(event) {
     //     timezoneName.addEventListener(event, (event) => {
     //         timezoneName.value = "";
@@ -146,13 +142,31 @@ function initApp() {
     //     selTimezone.size = 0;
     // });
 
+    timecardTimezoneChange.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        const currTimezone = document.querySelector('.timezone__div');
+        const tzModalMsg = document.querySelector('#modal_msg');
+        timezoneName.value = currTimezone.innerText;
+        tzModalMsg.textContent = '';
+
+        MicroModal.show('modal-1');
+    }, false);
+
     const applyTimezone = document.querySelector('#apply_timezone');
     applyTimezone.addEventListener('click', (event) => {
         // const newTimezone = selTimezone.value;
-        const newTimezone = timezoneName.value;
-        updateTimeCard(newTimezone, timecardTimezone, timecardTime, timecardDate);
+        const tzModalMsg = document.querySelector('#modal_msg');
+        tzModalMsg.textContent = '';
+        const timezoneNamesList = JSON.parse(sessionStorage.getItem('timezoneNames'));
+        const newTimezoneInput = timezoneName.value;
+        if (!timezoneNamesList.includes(newTimezoneInput)) {
+            tzModalMsg.textContent = 'Please enter a valid timezone from the list.';
+            return;
+        }
+        updateTimeCard(newTimezoneInput, timecardTimezone, timecardTime, timecardDate);
         clearInterval(timeUpdater);
-        timeUpdater = setInterval(updateTimeCard, 1000, newTimezone, timecardTimezone, timecardTime, timecardDate);
+        timeUpdater = setInterval(updateTimeCard, 1000, newTimezoneInput, timecardTimezone, timecardTime, timecardDate);
         MicroModal.close('modal-1');
     }, false);
 }
