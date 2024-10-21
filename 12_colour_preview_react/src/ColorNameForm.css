@@ -1,0 +1,12 @@
+.colorNameForm input  {
+    width: 400px;
+    height: 100%;
+    border-radius: 0.5rem;
+    background-color: white;
+    border: 1px solid black;
+    box-shadow: 1px 1px 5px #888888;
+    color:black;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    outline: none;
+}

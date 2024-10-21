@@ -1,0 +1,67 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+input, 
+button, 
+textarea {
+  /* These do not inherit font properties, you must explicitly enable */
+  font: inherit;
+}
+/* /RESET */
+
+/* VARIABLES */
+:root {
+  /* COLOURS */
+  --FONT-COLOR: papayawhip;
+  --HEADER-COLOR: #222222;
+  --BG-COLOR: #444444;
+
+}
+/* /VARIABLES */
+
+/* UTILITY */
+.offscreen {
+  position: absolute;
+  left: -9001px;
+}
+/* /UTILITY */
+
+/* GENERAL */
+.App {
+  color: var(--FONT-COLOR);
+  scroll-behavior: smooth;
+  background-image: URL('./images/koi.png');
+  background-color: var(--BG-COLOR);
+}
+
+.body {
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: start;
+}
+
+.main {
+  width: 100%;
+  max-width: 800px;
+  min-height: calc(100vh - 64px);
+  background-color: var(--BG-COLOR);
+  margin: 0 auto;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+/* /GENERAL */
