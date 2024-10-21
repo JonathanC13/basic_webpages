@@ -38,18 +38,15 @@ textarea {
 
 /* GENERAL */
 .App {
-  color: var(--FONT-COLOR);
-  scroll-behavior: smooth;
-  background-image: URL('./images/koi.png');
-  background-color: var(--BG-COLOR);
-}
-
-.body {
   min-height: 100vh;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   justify-content: start;
+  color: var(--FONT-COLOR);
+  scroll-behavior: smooth;
+  background-image: URL('./images/koi.png');
+  background-color: var(--BG-COLOR);
 }
 
 .main {
@@ -60,6 +57,16 @@ textarea {
   margin: 0 auto;
   display: flex;
   flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.colorPreview__section {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-flow: column;
   align-items: center;
   justify-content: center;
   gap: 1rem;

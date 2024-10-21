@@ -12,20 +12,20 @@ function App() {
 
   return (
     <div className="App">
-      <div className="body">
         <Header 
           title="Color Preview"
         />
         <main className="main">
-          <ColorDisplay
-            color={color}
-          />
-          <ColorNameForm
-            color={color}
-            setColor={setColor}
-          />
+          <section className="colorPreview__section">
+            <ColorDisplay
+              color={color}
+            />
+            <ColorNameForm
+              color={color}
+              setColor={setColor}
+            />
+          </section>
         </main>
-      </div>
     </div>
   );
 }
