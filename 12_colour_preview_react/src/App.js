@@ -9,6 +9,8 @@ import ColorNameForm from './ColorNameForm';
 function App() {
 
   const [color, setColor] = useState('')
+  const [hexValue, setHexValue] = useState('')
+  const [isDarkText, setIsDarkText] = useState(true)
 
   return (
     <div className="App">
@@ -19,10 +21,15 @@ function App() {
           <section className="colorPreview__section">
             <ColorDisplay
               color={color}
+              hexValue={hexValue}
+              isDarkText={isDarkText}
             />
             <ColorNameForm
               color={color}
               setColor={setColor}
+              setHexValue={setHexValue}
+              isDarkText={isDarkText}
+              setIsDarkText={setIsDarkText}
             />
           </section>
         </main>

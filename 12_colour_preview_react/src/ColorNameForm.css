@@ -1,10 +1,14 @@
 .colorNameForm {
     width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
 }
 
-.colorNameForm input  {
+.colorNameForm :is(input, button)  {
     width: 100%;
-    height: 100%;
     border-radius: 0.5rem;
     background-color: white;
     border: 1px solid black;
@@ -13,4 +17,9 @@
     font-size: 1.5rem;
     padding: 0.5rem;
     outline: none;
+}
+
+.colorNameForm :is(button:hover, button:focus) {
+    cursor: pointer;
+    background-color: #888888;
 }

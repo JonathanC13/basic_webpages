@@ -37,16 +37,24 @@ textarea {
 /* /UTILITY */
 
 /* GENERAL */
+html {
+  font-size: 16px;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--FONT-COLOR);
+  scroll-behavior: smooth;
+  background-image: URL('./images/koi.png');
+  background-color: var(--BG-COLOR);
+}
+
 .App {
   min-height: 100vh;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   justify-content: start;
-  color: var(--FONT-COLOR);
-  scroll-behavior: smooth;
-  background-image: URL('./images/koi.png');
-  background-color: var(--BG-COLOR);
 }
 
 .main {
