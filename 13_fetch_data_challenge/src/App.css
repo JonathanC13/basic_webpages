@@ -1,0 +1,49 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+input, 
+button, 
+textarea {
+  /* These do not inherit font properties, you must explicitly enable */
+  font: inherit;
+}
+/* /RESET */
+
+/* VARIABLES */
+:root {
+  /* COLROS */
+  --FONT-COLOR: papayawhip;
+  --BG-COLOR: #333333;
+}
+/* /VARIABLES */
+
+/* GENERAL */
+html {
+  font-size: 16px;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--FONT-COLOR);
+  scroll-behavior: smooth;
+  background-color: var(--BG-COLOR);
+}
+/* /GENERAL */
+
+/* App */
+.App {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+}
+/* /App */
