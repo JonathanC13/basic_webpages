@@ -4,6 +4,7 @@ import Tabs from './Tabs';
 import ItemsList from './ItemsList';
 import apiRequest from './apiRequest';
 import { useState, useEffect } from 'react'
+import Table from './Table';
 
 function App() {
 
@@ -77,8 +78,14 @@ function App() {
       />
       {fetchErrMsg && <p style={{color:'red', textAlign:'center'}}>{fetchErrMsg}</p>}
       {isLoading && <p style={{textAlign:'center'}}>List is loading!</p>}
-      {!fetchErrMsg && !isLoading &&
+      {/* Part A list {!fetchErrMsg && !isLoading &&
         <ItemsList
+          objects={objects}
+        />
+      } */}
+      {/* Part B table*/}
+      {!fetchErrMsg && !isLoading &&
+        <Table
           objects={objects}
         />
       }

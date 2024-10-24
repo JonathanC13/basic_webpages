@@ -4,7 +4,7 @@ import './LineItem.css'
 const LineItem = ( { object = {} } ) => {
   return (
     <li className='item'>
-        {object}
+        {JSON.stringify(object)}
     </li>
   )
 }
