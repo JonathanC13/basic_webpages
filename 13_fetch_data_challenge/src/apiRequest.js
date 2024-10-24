@@ -1,15 +1,18 @@
-const apiRequest = async(url = '', optionsObj = null, errMsg = null) => {
+const apiRequest = async(url = '', optionsObj = null, result = null) => {
     try {
         const response = await fetch(url, optionsObj);
 
         if (!response.ok) {
-            throw Error({'Error': 'API error'})
+            throw Error({'status':'Error', 'message': 'API error'})
         }
+
+        const responseJSON = await response.json()
+        result = {'status':'ok', 'message':responseJSON}
         
     } catch (err) {
-        errMsg = err.message;
+        result = err.message;
     } finally {
-        return errMsg
+        return result
     }
 }
 

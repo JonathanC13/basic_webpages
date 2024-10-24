@@ -23,23 +23,37 @@ function App() {
 
     const fetchItems = async() => {
       // GET
-      try {
-        const reqURL = `${API_ROOT}${tabSelected}`
-        const response = await fetch(reqURL);
+      const reqURL = `${API_ROOT}${tabSelected}`
+      const response = await apiRequest(reqURL)
 
-        if (!response.ok) {
-          throw Error('Error API error')
-        }
-
-        const responseJSON = await response.json();
-        
-        setObjects(responseJSON);
+      if (response['status'] === 'Error') {
+        setFetchErrMsg(response['message']);
+      } else {
+        setObjects(response['message']);
         setFetchErrMsg(null);
-      } catch (err) {
-          setFetchErrMsg(err.message);
-      } finally {
-        setIsLoading(false)
       }
+
+      setIsLoading(false)
+
+      // 
+
+    //   try {
+    //     const reqURL = `${API_ROOT}${tabSelected}`
+    //     const response = await fetch(reqURL);
+
+    //     if (!response.ok) {
+    //       throw Error('Error API error')
+    //     }
+
+    //     const responseJSON = await response.json();
+        
+    //     setObjects(responseJSON);
+    //     setFetchErrMsg(null);
+    //   } catch (err) {
+    //       setFetchErrMsg(err.message);
+    //   } finally {
+    //     setIsLoading(false)
+    //   }
     }
 
     // simulate delay from API. Exposed the message 'List is empty' when in reality it is still loading!
