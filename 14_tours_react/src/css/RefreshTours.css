@@ -1,0 +1,12 @@
+.refresh_tours__button {
+    padding: 1rem 2rem;
+    background-color: rgb(98, 174, 204);
+    color: papayawhip;
+    font-weight: bold;
+    margin: 2rem 0;
+    border-radius: 10px;
+}
+
+:is(.refresh_tours__button:hover, .refresh_tours__button:focus) {
+    background-color: rgba(98, 174, 204, 75%);
+}

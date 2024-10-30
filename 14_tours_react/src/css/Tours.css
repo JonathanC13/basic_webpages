@@ -1,0 +1,10 @@
+.Tours {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1rem;
+    width: 100%;
+    margin: 2rem 0;
+    padding: 0 1rem;
+}

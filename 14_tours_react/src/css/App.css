@@ -1,0 +1,12 @@
+.App {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    min-height: 100vh;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    /* temp border to see */
+    /* border: 1px solid black; */
+}
+
