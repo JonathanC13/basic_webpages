@@ -10,7 +10,7 @@ function App() {
   const url = 'http://localhost:3500/tours'
 
   const [tours, setTours] = useState([])
-  const { data, isLoading, APIError, fetchData } = useAPIFetch(url);
+  const { data, isLoading, APIError, fetchDataCB } = useAPIFetch(url);
 
   // on load, set the tours
   useEffect(() => {
@@ -43,7 +43,7 @@ function App() {
   }
 
   const handleRefreshTours = () => {
-    fetchData();
+    fetchDataCB();
   }
 
   return (
@@ -69,6 +69,7 @@ export default App;
 const App2 = () => {
   // ref for mount
   const isMounted = useRef(false)
+  
   const controller = useRef(new AbortController())
   const signal = useRef(controller.signal)
 
@@ -82,7 +83,7 @@ const App2 = () => {
 
     const paramsObj = {
       method:'get',
-      signal: signal.current
+      signal: signal
     }
 
     const response = await apiRequest(url, paramsObj);
@@ -105,6 +106,10 @@ const App2 = () => {
     // on first render
     isMounted.current = true
 
+    // Must create new AbortController for each request
+    controller.current = new AbortController()
+    signal.current = controller.current.signal
+
     fetchData()
 
     const cleanUp = () => {
@@ -114,10 +119,18 @@ const App2 = () => {
     }
 
     return cleanUp
-  }, [controller])
+  }, [])
+
+  const fetchDataCB = () => {
+    // Must create new AbortController for each request
+    controller.current = new AbortController()
+    signal.current = controller.current.signal
+
+    fetchData()
+  }
 
   const handleRefresh = () => {
-    fetchData()
+    fetchDataCB()
   }
 
   return (
