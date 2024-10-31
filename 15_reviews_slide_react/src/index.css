@@ -1,0 +1,181 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  width: auto;
+  height: auto;
+  display: block;
+}
+/* /RESET */
+
+/* UTILITY */
+.offscreen {
+  position: absolute;
+  left: -9001px;
+}
+
+.cursor_pointer {
+  cursor: pointer;
+}
+/* /UTILITY */
+
+/* VARIABLES */
+/* :root {} */
+/* /VARIABLES */
+
+/* GENERAL */
+html {
+  font-size: 1.5rem;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #222222;
+  display: flex;
+  color: papayawhip;
+}
+
+#root {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+/* /GENERAL */
+
+/* App */
+.App {
+  max-width: 800px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+}
+/* App */
+
+/* Header */
+.Header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Header__section {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.title__h1,
+.title__div {
+  margin: 0 auto;
+}
+
+.title__div {
+  width: 50%;
+  height: 0.25rem;
+  background-color: skyblue;
+  border-radius: 10px;
+}
+/* /Header */
+
+/* Review_section */
+.Review_section {
+  max-height: 600px;
+  height: 100%;
+  width: 100%;
+  margin: 1rem 1rem;
+  box-shadow: 0 0 3px papayawhip;
+  border-radius: 10px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+}
+/* /Review_section */
+
+/* Review */
+.Review {
+  flex-basis: 80%;
+  display: flex;
+  flex-flow:column nowrap;
+  align-items: center;
+  justify-content: space-around;
+  padding: 1rem 2rem;
+}
+
+.Review__fig {
+  position:relative;
+  max-width: 200px;
+}
+
+.Review__fig img {
+  max-width: 100%;
+  height: auto;
+  box-shadow: 5px -5px 1px aquamarine;
+  border-radius: 50%;
+}
+
+.bg_quote {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: aquamarine;
+  display: grid;
+  place-content: center;
+  position: absolute;
+  top: 0;
+}
+
+
+.Review__role {
+  color: aquamarine;
+}
+/* /Review */
+
+/* Review Navigation */
+.ReviewNavigate {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav_arrow {
+  color: skyblue;
+  margin: 0.25rem 0.5rem;
+}
+
+.nav_arrow_disabled {
+  color: gray;
+  margin: 0.25rem 0.5rem;
+}
+
+.nav_arrow:hover, .nav_arrow:focus {
+  color: aquamarine;
+}
+
+.Surprise {
+  margin: 0.25rem 1rem;
+  padding: 0.25rem 1rem;
+  border-color:skyblue;
+  background-color: skyblue;
+  border-radius: 10px;
+}
+
+:is(.Surprise:hover, .Surprise:focus) {
+  background-color: aquamarine;
+  border-color: aquamarine;
+}
+/* /Review Navigation */

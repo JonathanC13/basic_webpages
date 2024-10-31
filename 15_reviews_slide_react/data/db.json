@@ -1,0 +1,32 @@
+{
+    "reviews": [
+        {
+            "id": "1",
+            "image": "https://avatar.iran.liara.run/public/boy",
+            "name": "reviewer a",
+            "role": "INTERN",
+            "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        },
+        {
+            "id": "2",
+            "image": "https://avatar.iran.liara.run/public/boy",
+            "name": "reviewer b",
+            "role": "INTERN",
+            "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, incididunt ut labore et dolore magna!"
+        },
+        {
+            "id": "3",
+            "image": "https://avatar.iran.liara.run/public/boy",
+            "name": "reviewer c",
+            "role": "INTERN",
+            "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        },
+        {
+            "id": "4",
+            "image": "https://avatar.iran.liara.run/public/boy",
+            "name": "reviewer d",
+            "role": "INTERN",
+            "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, incididunt ut labore et dolore magna aliqua."
+        }
+    ]
+}
