@@ -1,0 +1,24 @@
+{
+    "FAQ": [
+        {
+            "id": "1",
+            "question": "Is comparision the thief of joy?",
+            "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, incididunt ut labore et dolore magna!"
+        },
+        {
+            "id": "2",
+            "question": "Is life's purpose just to make money?",
+            "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        },
+        {
+            "id": "3",
+            "question": "How to gain self-esteem?",
+            "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore?"
+        },
+        {
+            "id": "4",
+            "question": "How to find what I enjoy?",
+            "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, incididunt ut labore."
+        }
+    ]
+}
