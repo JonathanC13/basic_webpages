@@ -35,9 +35,9 @@ html {
 body {
   width: 100%;
   min-height: 100vh;
-  background-color: #222222;
+  background-color: #4C5454;
   display: flex;
-  color: papayawhip;
+  color: #FFFFFF;
 }
 
 #root {
@@ -84,7 +84,7 @@ body {
 .title__div {
   width: 50%;
   height: 0.25rem;
-  background-color: skyblue;
+  background-color: #FF715B;
   border-radius: 10px;
 }
 /* /Header */
@@ -95,12 +95,13 @@ body {
   height: 100%;
   width: 100%;
   margin: 1rem 1rem;
-  box-shadow: 0 0 3px papayawhip;
+  box-shadow: 0 0 5px #444140;
   border-radius: 10px;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
+  background-color: #FF715B;
 }
 /* /Review_section */
 
@@ -122,7 +123,7 @@ body {
 .Review__fig img {
   max-width: 100%;
   height: auto;
-  box-shadow: 5px -5px 1px aquamarine;
+  box-shadow: 5px -5px 1px #1EA896;
   border-radius: 50%;
 }
 
@@ -130,16 +131,23 @@ body {
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
-  background-color: aquamarine;
+  background-color: #1EA896;
   display: grid;
   place-content: center;
   position: absolute;
   top: 0;
 }
 
+.Review__name {
+  color: #FFFFFF;
+}
 
 .Review__role {
-  color: aquamarine;
+  color: #FFFFFF;
+}
+
+.Review__review {
+  color: #523F38;
 }
 /* /Review */
 
@@ -153,29 +161,29 @@ body {
 }
 
 .nav_arrow {
-  color: skyblue;
+  color: #1EA896;
   margin: 0.25rem 0.5rem;
 }
 
 .nav_arrow_disabled {
-  color: gray;
+  color: #523F38;
   margin: 0.25rem 0.5rem;
 }
 
 .nav_arrow:hover, .nav_arrow:focus {
-  color: aquamarine;
+  color: rgba(30, 168, 150, 75%);
 }
 
 .Surprise {
   margin: 0.25rem 1rem;
   padding: 0.25rem 1rem;
-  border-color:skyblue;
-  background-color: skyblue;
+  border-color:#1EA896;
+  background-color: rgb(30, 168, 150);
   border-radius: 10px;
 }
 
 :is(.Surprise:hover, .Surprise:focus) {
-  background-color: aquamarine;
-  border-color: aquamarine;
+  background-color: rgba(30, 168, 150, 75%);
+  border-color: rgba(30, 168, 150, 75%);
 }
 /* /Review Navigation */

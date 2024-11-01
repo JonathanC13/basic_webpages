@@ -8,15 +8,15 @@ const Review = ( { reviews, activeIndex }) => {
   return (
     <article className='Review'>
         <figure className='Review__fig'>
-            <img src={review.image} alt="User image" title='User image' />
-            <figcaption className='offscreen'>User image</figcaption>
+            <img src={review.image} alt="User profile pic" title='User profile pic' />
+            <figcaption className='offscreen'>User profile pic</figcaption>
             <div className='bg_quote'>
                 <FaQuoteRight className='quote'/>
             </div>
         </figure>
-        <h2>{review.name}</h2>
+        <h2 className='Review__name'>{review.name}</h2>
         <p className='Review__role'>{review.role}</p>
-        <p>{review.review}</p>
+        <p className='Review__review'>{review.review}</p>
     </article>
   )
 }
