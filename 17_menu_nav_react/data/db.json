@@ -6,21 +6,21 @@
                 "title": "Buttermilk pancakes",
                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, incididunt ut labore.",
                 "imageRelDir": "/images/breakfast/breakfast-pancakes.jpg",
-                "price": "11.99"
+                "price": "$11.99"
             },
             {
                 "id": "2",
                 "title": "French Toast",
                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, incididunt ut labore.",
                 "imageRelDir": "/images/breakfast/breakfast-frenchtoast.jpg",
-                "price": "10.99"
+                "price": "$10.99"
             },
             {
                 "id": "3",
                 "title": "Eggs and Bacon",
                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, incididunt ut labore.",
                 "imageRelDir": "/images/breakfast/breakfast-eggsAndBacon.jpg",
-                "price": "12.99"
+                "price": "$12.99"
             }
         ],
         "lunch": [
@@ -29,21 +29,21 @@
                 "title": "Bacon Cheese Burger",
                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, incididunt ut labore.",
                 "imageRelDir": "/images/lunch/lunch-baconCheeseBurger.jpg",
-                "price": "12.99"
+                "price": "$12.99"
             },
             {
                 "id": "5",
                 "title": "Bacon Lettuce Tomato Sandwich",
                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, incididunt ut labore.",
                 "imageRelDir": "/images/lunch/lunch-BLTSandwich.jpg",
-                "price": "11.99"
+                "price": "$11.99"
             },
             {
                 "id": "6",
                 "title": "Steak and Fries",
                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, incididunt ut labore.",
                 "imageRelDir": "/images/lunch/lunch-steakAndFries.jpg",
-                "price": "16.99"
+                "price": "$16.99"
             }
         ],
         "shakes": [
@@ -52,14 +52,14 @@
                 "title": "Strawberry Milkshake",
                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, incididunt ut labore.",
                 "imageRelDir": "images/shakes/shakes-strawberryMilkShake.jpg",
-                "price": "6.99"
+                "price": "$6.99"
             },
             {
                 "id": "8",
                 "title": "Oreo Milkshake",
                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, incididunt ut labore.",
                 "imageRelDir": "/images/shakes/shakes-oreoMilkShake.jpg",
-                "price": "5.99"
+                "price": "$5.99"
             }
         ]
     }

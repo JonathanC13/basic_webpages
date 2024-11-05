@@ -6,8 +6,8 @@ const createItemComponents = (categorySelected, menuInfo, all=false) => {
     let categoryMenu = []
 
     if (all) {
-        for (let cate in menuInfo) {
-            for (let item of menuInfo[cate]) {
+        for (let cate in menuInfo) {    // gets keys
+            for (let item of menuInfo[cate]) {  // for each array in the value of the key
                 categoryMenu.push(item)
             }
         }

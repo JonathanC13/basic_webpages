@@ -3,7 +3,7 @@ import Button from './Buttons'
 
 const extractCategories = (menuInfo, categories) => {
   for (let prop in menuInfo) {
-    categories.push(prop.slice(0,1).toUpperCase() + prop.slice(1))
+    categories.push(prop)
   }
 }
 

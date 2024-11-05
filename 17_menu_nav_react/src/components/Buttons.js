@@ -2,14 +2,14 @@ import React from 'react'
 
 const Buttons = ( {value='', categorySelected='', handleCatSelected=()=>{}}) => {
 
-    const classname = 'category__btn' + (value === categorySelected ? ' selected' : '')
+    const classname = 'category__btn cursor_pointer' + (value === categorySelected ? ' selected' : '')
 
   return (
     <button
         value={value}
         className={classname}
         onClick={(e) => handleCatSelected(e.target.value)}
-    >{value}</button>
+    >{value.slice(0,1).toUpperCase() + value.slice(1)}</button>
   )
 }
 

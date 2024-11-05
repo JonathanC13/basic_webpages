@@ -13,6 +13,8 @@ const Item = ( {id='', item={}}) => {
                 <h3 className='head__h3'>{item['title']}</h3>
                 <p className='head__p'>{item['price']}</p>
             </section>
+            <div className="head__div"></div>
+            
             <section className='article__desc desc'>
                 <p className="desc__p">{item['description']}</p>
             </section>
