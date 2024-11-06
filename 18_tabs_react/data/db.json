@@ -1,0 +1,40 @@
+{
+    "jobs" : [
+        {
+            "id": 0,
+            "title": "Reese cups",
+            "role": "placeholder1",
+            "company": "The company1",
+            "employed_range": "January 2020 - January 2022",
+            "bullets": [
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do!",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+                "Lorem ipsum dolor sit amet"
+            ]
+        },
+        {
+            "id": 1,
+            "title": "Milk duds",
+            "role": "placeholder1, placeholder2, placeholder3",
+            "company": "The company2",
+            "employed_range": "January 2022 - January 2023",
+            "bullets": [
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Oreo Milkshake",
+            "role": "placeholder1, placeholder2, placeholder3, placeholder4",
+            "company": "The company3",
+            "employed_range": "January 2023 - Present",
+            "bullets": [
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed.",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+            ]
+        }
+    ]
+}
