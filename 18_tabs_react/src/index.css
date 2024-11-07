@@ -1,0 +1,251 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    width: auto;
+    height: auto;
+    display: block;
+}
+/* /RESET */
+
+/* VARIABLES */
+/* :root {} */
+/* /VARIABLES */
+
+/* UTILITY */
+.offscreen {
+    position: absolute;
+    left: -9001px;
+}
+
+.cursor_pointer {
+    cursor: pointer;
+}
+/* /UTILITY */
+
+/* ANIMATATIONS */
+@keyframes showMenu {
+    0% {
+        transform: scaleY(0)
+    }
+    80% {
+        transform: scaleY(1.2)
+    }
+    100% {
+        transform: scaleY(1)
+    }
+}
+/* /ANIMATATIONS */
+
+/* GENERAL */
+html {
+    font-size: 1.25rem;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #2D3047;
+    color: #FFDBB5;
+    display: flex;
+}
+
+#root {
+    width: 100%;
+    height: 100%;
+    flex-grow: 1;
+}
+
+.App {
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    padding: 0.5rem;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    margin: 0 auto;
+}
+/* /GENERAL */
+
+/* HEADER */
+.header {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5rem 0;
+}
+
+.title {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+.title__div {
+    width: 66%;
+    height: 0.25rem;
+    border-radius: 10px;
+    background-color: #419D78;
+    margin: 0.25rem 0;
+}
+/* /HEADER */
+
+/* CONTENT */
+.section_experience {
+    width: 100%;
+    padding: 0.5rem 0;
+}
+/* /CONTENT */
+
+/* TABS */
+.company_menu {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    text-align: center;
+}
+
+/* When the container for the company_menu is hovered or focused, cause companies to transform */
+:is(.company_menu:hover, .company_menu:focus) .companies{
+    transition: all 0.5s;
+    transform: rotate(360deg);
+    color:#DE3C4B;
+}
+
+/* when the companu_menu is hovered or focues, display the tabs by changing the display */
+:is(.company_menu:hover, .company_menu:focus) .tabs {
+    display: block;
+}
+
+/* initial display of none to hide the drop menu */
+/* transform-origin where the animation starts from */
+.tabs {
+    display: none;
+    background-color:#2D3047;
+    border-bottom: 1px solid #419D78;
+    font-weight: bold;
+    box-shadow: 0 7px 20px 0px #FFDBB5;
+    transform-origin: top center;
+    animation: showMenu 0.5s ease-in-out forwards;
+    /* Not to move content below when display changes to block on focus */
+    position: absolute; /* the root element is the closest relative element */
+    left: 0;    /* left 0 because tabs initial left will start at the left of company_menu so since root is the closest relative 0 to go flush on the side*/
+    width: 100%;
+}
+
+.tab {
+    display: block;
+    width: 100%;
+    background-color: #2D3047;
+    text-align: center;
+    padding: 1rem 0;
+    color: #E0A458;
+    background-color: #2D3047;
+    font-size: 1rem;
+    border: none;
+}
+
+:is(.tab:hover) {
+    color:#DE3C4B;
+    border-left: 3px solid #DE3C4B;
+}
+
+.tab_selected {
+    color:#419D78;
+    border-left: 3px solid #419D78;
+}
+/* /TABS */
+
+/* JOB */
+.job {
+    padding: 0.5rem 0;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.job__h2 {
+    margin: 0.5rem 0;
+}
+
+.job__h3 {
+    padding: 0.25rem 0.5rem;
+    margin: 0.5rem 0;
+    width: fit-content;
+    background-color: #DE3C4B;
+    color: rgb(255, 219, 181);
+    border-radius: 10px;
+}
+
+.job__h4 {
+    margin: 0.5rem 0;
+    color: rgba(255, 219, 181, 80);
+}
+
+.job__ul {
+    list-style-type: none;
+}
+
+.job__ul li {
+    margin: 0.5rem 0;
+}
+
+.fa_bullets {
+    color:#419D78;
+}
+/* /JOB */
+
+/* MEDIA QUERIES */
+@media screen and (min-width: 769px) {
+    .section_experience {
+        display: flex;
+        flex-flow: row nowrap;
+    }
+
+    .company_menu {
+        flex-basis: 33%;
+    }
+
+    .companies {
+        display: none;
+    }
+
+    .tabs {
+        margin: 0.5rem 0;
+        padding: 0.5rem 0;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: start;
+        border: none;
+        font-weight: bold;
+        box-shadow: none;
+        transform-origin: none;
+        animation: none;
+        /* Not to move content below when display changes to block on focus */
+        position: initial;
+        /* left: 0; */
+        /* width: 100%; */
+    }
+
+    .tab {
+        display: initial;
+        width: 100%;
+        font-size: 1rem;
+        padding: 0.5rem 0;
+        background-color: #2D3047;
+        color: #E0A458;
+        border-style: none;
+    }
+    
+    :is(.tab:hover) {
+        color:#DE3C4B;
+        border-left: 3px solid #DE3C4B;
+    }
+}
+/* /MEDIA QUERIES */

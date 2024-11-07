@@ -23,10 +23,12 @@ const JobInfo = ( {jobs=[], tabSelected=''} ) => {
 
   return (
     <article className='article__job job'>
-        <h2 className="job__h2">{job['role']}</h2>
-        <h3 className="job__h3">{job.company}</h3>
+        <h2 className="job__h2">{job['title']}</h2>
+        <h3 className="job__h3">{job['company']}</h3>
         <h4 className="job__h4">{job.employed_range}</h4>
-        {createBullets(job)}
+        <ul className="job__ul">
+            {createBullets(job)}
+        </ul>
     </article>
   )
 }

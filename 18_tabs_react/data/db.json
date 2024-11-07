@@ -3,7 +3,6 @@
         {
             "id": 0,
             "title": "Reese cups",
-            "role": "placeholder1",
             "company": "The company1",
             "employed_range": "January 2020 - January 2022",
             "bullets": [
@@ -15,7 +14,6 @@
         {
             "id": 1,
             "title": "Milk duds",
-            "role": "placeholder1, placeholder2, placeholder3",
             "company": "The company2",
             "employed_range": "January 2022 - January 2023",
             "bullets": [
@@ -27,7 +25,6 @@
         {
             "id": 2,
             "title": "Oreo Milkshake",
-            "role": "placeholder1, placeholder2, placeholder3, placeholder4",
             "company": "The company3",
             "employed_range": "January 2023 - Present",
             "bullets": [

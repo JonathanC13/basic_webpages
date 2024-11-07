@@ -2,7 +2,7 @@ import React from 'react'
 
 const Tab = ( {id='', company='', tabSelected='', handleTabChange} ) => {
 
-    const classes = 'tab cursor_pointer' + (id === tabSelected) ? (' tab_selected') : ('')
+    const classes = 'tab cursor_pointer' + ((id.toString() === tabSelected.toString()) ? (' tab_selected') : (''))
 
   return (
     <button 

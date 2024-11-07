@@ -1,5 +1,6 @@
 import React from 'react'
 import Tab from './Tab'
+import { FaArrowDownWideShort } from 'react-icons/fa6'
 
 const createTabComponents = (jobs, tabSelected, handleTabChange) => {
     let components = []
@@ -22,9 +23,12 @@ const createTabComponents = (jobs, tabSelected, handleTabChange) => {
 const Tabs = ( {jobs=[], tabSelected='', handleTabChange=()=>{}} ) => {
 
   return (
-    <section className='tabs'>
-        {createTabComponents(jobs, tabSelected, handleTabChange)}
-    </section>
+    <div className='cursor_pointer company_menu'>
+        <div className='companies'>Companies <FaArrowDownWideShort/></div>
+        <section className='tabs'>
+            {createTabComponents(jobs, tabSelected, handleTabChange)}
+        </section>
+    </div>
   )
 }
 

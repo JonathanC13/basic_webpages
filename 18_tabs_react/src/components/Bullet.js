@@ -1,8 +1,9 @@
 import React from 'react'
+import { FaAngleDoubleRight } from 'react-icons/fa'
 
 const Bullet = ({ info='' }) => {
   return (
-    <li>{info}</li>
+    <li><FaAngleDoubleRight className='fa_bullets'/> {info}</li>
   )
 }
 
