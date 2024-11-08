@@ -19,7 +19,7 @@ const useAPIFetch = (dataUrl) => {
     
     // useCallback caches the function between renders if the dependencies are the same
     // Needed this in here because I made this a custom hook and it may re-render often if not useCallback
-    const fetchData = useCallback( async() => {
+    const fetchData = useCallback(async() => {
         setIsLoading(true);
 
         const paramObj = {
@@ -71,7 +71,7 @@ const useAPIFetch = (dataUrl) => {
         return cleanUp
     }, [fetchData]) // cleanupChk   **2. Add state as dependency so that when changed it will cause re-render and it will run cleanup function first and then setup
 
-    const fetchDataCB = () => {
+    const fetchDataCB = useCallback(() => {
         // Must create new AbortController for each request
         controller.current = new AbortController()
         signal.current = controller.current.signal
@@ -80,7 +80,7 @@ const useAPIFetch = (dataUrl) => {
         fetchData()
         //setCleanupChk(true)  // **3. change the state to cause useEffect to run since it has this state as a dependency. Want to check that the controller created here is the one being aborted.
         
-    }
+    }, [fetchData])
 
     return { 
         data, isLoading, APIError, fetchDataCB

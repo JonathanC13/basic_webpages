@@ -1,0 +1,32 @@
+{
+    "Reviews" : [
+        {
+            "id": 1,
+            "img": "https://avatar.iran.liara.run/public",
+            "name": "Oreo Milkshake",
+            "role": "placeholder1",
+            "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, incididunt ut labore."
+        },
+        {
+            "id": 2,
+            "img": "https://avatar.iran.liara.run/public",
+            "name": "Strawberry Milkshake",
+            "role": "placeholder2",
+            "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
+        },
+        {
+            "id": 3,
+            "img": "https://avatar.iran.liara.run/public",
+            "name": "Mango Smoothie",
+            "role": "placeholder3",
+            "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, incididunt ut labore. Lorem ipsum dolor sit amet."
+        },
+        {
+            "id": 4,
+            "img": "https://avatar.iran.liara.run/public",
+            "name": "Milk Tea",
+            "role": "placeholder4",
+            "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, incididunt ut labore. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        }
+    ]
+}

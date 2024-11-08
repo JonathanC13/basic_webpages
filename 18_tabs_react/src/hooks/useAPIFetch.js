@@ -57,9 +57,11 @@ const useAPIFetch = (dataURL) => {
         return cleanup
     }, [APIFetch])
 
-    const APIFetchCb = () => {
+    const APIFetchCb = useCallback(() => {
+        controller.current = new AbortController()
+        signal.current = controller.current.signal
         execAPIFetch()
-    }
+    }, [execAPIFetch])
 
     return {data, isLoading, APIErr, APIFetchCb}
 }
