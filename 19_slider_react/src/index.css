@@ -5,12 +5,24 @@
   box-sizing: border-box;
 }
 
-img {
+img,
+svg {
   width: auto;
   height: auto;
   display: block;
 }
 /* /RESET */
+
+/* UTILITY */
+.offscreen {
+  position: absolute;
+  left: -9001px;
+}
+
+.cursor_pointer {
+  cursor: pointer;
+}
+/* /UTILITY */
 
 /* VARIABLES */
 :root {
@@ -18,14 +30,15 @@ img {
   --BG-COLOR: #F7F4EA;
   --FONT-COLOR: black;
   --CONTAINER-COLOR: #DED9E2;
-  --BUTTON-COLOR: #75C9C8;
-  --ACCENT-COLOR: #80A1D4;
+  --BUTTON-COLOR: #80A1D4;
+  --ACCENT-COLOR: #75C9C8;
+  --PIC-COLOR: #C0B9DD;
 
   /* FONTS */
   --FONT-SIZE: 1rem;
 
   /* TRANSFORM */
-  --transition: translateX 1s ease-in-out;
+  --transition: all 1s ease-in-out;
 }
 /* /VARIABLES */
 
@@ -36,16 +49,15 @@ html {
 
 body {
   width: 100%;
-  height: 100%;
   min-height: 100vh;
   background-color: var(--BG-COLOR);
   display: flex;
 }
 
 #root {
-  flex-grow: 1;
   width: 100%;
   height: 100%;
+  flex-grow: 1;
 }
 
 .App {
@@ -53,35 +65,130 @@ body {
   max-width: 1000px;
   height: 100%;
   display: flex;
+  flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
 }
 /* /GENERAL */
 
+/* HEADER */
+.title {
+  width: 100%;
+  text-align: center;
+  padding: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.faComment {
+  color: var(--ACCENT-COLOR);
+  width: 2rem;
+  height: auto;
+}
+/* /HEADER */
+
 /* ReviewContainer */
 .section_container {
   width: 100%;
-  height: 100%;
-  max-height: 800px;
+  height: 475px;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute
+  position: relative;
+  overflow: hidden;
+  background-color: var(--CONTAINER-COLOR);
+  border-radius: 25px;
+}
+
+.nav_left,
+.nav_right {
+  width: 50px;
+  height: auto;
+  position: absolute;
+  color: var(--BUTTON-COLOR);
+  /* bring to front so can be interacted with */
+  z-index: 1; 
+}
+
+.nav_left {
+  left: 25px;
+}
+
+.nav_right {
+  right: 25px;
+}
+
+:is(.nav_left:hover, .nav_left:focus, .nav_right:hover, .nav_right:focus) {
+  color: var(--ACCENT-COLOR);
 }
 /* ReviewContainer */
-
+  
 /* Review */
 .review {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  /* this causes section_container height to go to 0px if section_container height is not hardcoded */
+  position: absolute;     
+  left: 0;
+  top: 0;
+  /* initially hide all the slides so that when sliding, the one's don't need to be seen are opague */
+  opacity: 0;
+  transition: var(--transition);
+  padding: 0 10rem;
+}
+
+.profilePic {
+  height: 200px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 4px solid var(--PIC-COLOR);
   display: flex;
   align-items: center;
   justify-content: center;
-  position:absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
-  transition: var(--transition);
+  margin: 0.5rem 0;
+}
+
+.profilePic__img {
+  max-width: 200px;
+  max-height: auto;
+}
+
+.review__h2 {
+  margin: 0.5rem 0;
+}
+
+.review__role {
+  margin: 0.5rem 0;
+}
+
+.review__content {
+  margin: 0.5rem 0;
+}
+
+.prevRev {
+  transform: translateX(-100%);
+}
+
+.currRev {
+  /* only show the current slide */
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.nextRev {
+  transform: translateX(100%);
+}
+
+.review__quote {
+  width: 100px;
+  height: auto;
+  color: var(--PIC-COLOR);
 }
 /* /Review */

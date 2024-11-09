@@ -1,6 +1,7 @@
 import React from 'react'
 import {FaCircleChevronLeft, FaCircleChevronRight} from 'react-icons/fa6'
 import Review from './Review'
+import {useState} from 'react'
 
 const createReviewComponents = (reviews, currIdx) => {
     let comps = []
@@ -16,6 +17,7 @@ const createReviewComponents = (reviews, currIdx) => {
 
         comps.push(
             <Review
+                key={rev['id']}
                 review={rev}
                 revClass={revClass}
             ></Review>
@@ -25,13 +27,36 @@ const createReviewComponents = (reviews, currIdx) => {
     return comps
 }
 
-const ReviewContainer = ( { reviews=[], currIdx=0 }) => {
+const ReviewContainer = ( { reviews=[] }) => {
+
+    const [currIdx, setCurrIdx] = useState(0)
+
+    const handleIdxChange = (idx) => {
+        if (idx < 0) {
+            setCurrIdx(reviews.length - 1)
+        } else if (idx >= reviews.length) {
+            setCurrIdx(0)
+        } else {
+            setCurrIdx(idx)
+        }
+    }
+
   return (
     <section className='section_container'>
-        <FaCircleChevronLeft className='nav_left'/>
         {reviews.length === 0 && <p className='section_container__none'>No Reviews</p>}
-        {createReviewComponents(reviews, currIdx)}
-        <FaCircleChevronRight className='nav_right'/>
+        {reviews.length !== 0 && (
+        <>
+            <FaCircleChevronLeft 
+                className='nav_left cursor_pointer'
+                onClick={() => {handleIdxChange(currIdx - 1)}}
+            />
+            {createReviewComponents(reviews, currIdx)}
+            <FaCircleChevronRight 
+                className='nav_right cursor_pointer'
+                onClick={() => {handleIdxChange(currIdx + 1)}}
+            />
+        </>
+        )}
     </section>
   )
 }

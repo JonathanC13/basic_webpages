@@ -1,23 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header'
+import ReviewContainer from './components/ReviewContainer';
+import { useState, useEffect } from 'react'
+import useAPIFetch from './hooks/useAPIFetch'
 
 function App() {
+  const url = 'http://localhost:3500/Reviews'  
+
+  const [reviews, setReviews] = useState([])
+  const {data, isLoading, APIErr} = useAPIFetch(url)
+
+  useEffect(() => {
+    setReviews(data)
+  }, [data, setReviews])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header
+        title="Reviews"
+      />
+      <ReviewContainer
+        reviews={reviews}
+      />
     </div>
   );
 }

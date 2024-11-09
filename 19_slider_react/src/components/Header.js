@@ -4,7 +4,8 @@ import { FaComment } from 'react-icons/fa'
 const Header = ({title}) => {
   return (
     <header className='title'>
-        <h1 className='title__h1'><FaComment/> {title}</h1>
+      <FaComment className='faComment'/>
+       <h1 className='title__h1'>{title}</h1>
     </header>
   )
 }

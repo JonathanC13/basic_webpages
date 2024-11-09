@@ -18,7 +18,7 @@ const useAPIFetch = (dataURL) => {
     const fetchData = useCallback(async(url) => {
         setIsLoading(true);
 
-        paramsObj = {
+        const paramsObj = {
             method: 'get',
             signal: signal.current
         }
@@ -37,7 +37,7 @@ const useAPIFetch = (dataURL) => {
 
         isMounted.current && setIsLoading(false)
 
-    }, [dataURL, setData, setIsLoading, setAPIErr])
+    }, [setData, setIsLoading, setAPIErr])
 
     // useEffect to load the initial data.
     // since this uses fetchData(), need it as a dependency and so fetchData() needs to use useCallback to cache the definition between renders so this does not fire again and again
@@ -55,7 +55,7 @@ const useAPIFetch = (dataURL) => {
 
         return cleanup
         
-    }, [fetchData])
+    }, [dataURL, fetchData])
 
     // callback function for the component that uses this hook. Also needs useCallback so the component has the same definition of the callback function
     const fetchDataCb = useCallback(() => {
@@ -63,7 +63,7 @@ const useAPIFetch = (dataURL) => {
         signal.current = controller.current.signal
 
         fetchData(dataURL)
-    }, [fetchData])
+    }, [dataURL, fetchData])
 
     return { data, isLoading, APIErr, fetchDataCb}
 }

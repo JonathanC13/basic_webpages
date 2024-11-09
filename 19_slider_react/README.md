@@ -22,5 +22,3 @@ Completed independently and then watched their implementation.
 
 2. run the app
     > npm start
-
-** todo. CSS

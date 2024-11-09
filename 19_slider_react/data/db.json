@@ -27,6 +27,13 @@
             "name": "Milk Tea",
             "role": "placeholder4",
             "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, incididunt ut labore. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        }, 
+        {
+            "id": 5,
+            "img": "https://avatar.iran.liara.run/public",
+            "name": "Taro Smoothie",
+            "role": "placeholder4",
+            "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, incididunt ut labore. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, incididunt ut labore."
         }
     ]
 }
