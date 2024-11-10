@@ -93,9 +93,9 @@ body {
 /* ReviewContainer */
 .section_container {
   width: 100%;
-  height: 475px;
+  height: 600px;
   display: flex;
-  align-items: center;
+  align-items: end;
   justify-content: center;
   position: relative;
   overflow: hidden;
@@ -111,6 +111,10 @@ body {
   color: var(--BUTTON-COLOR);
   /* bring to front so can be interacted with */
   z-index: 1; 
+}
+
+.nav_left ,.nav_right {
+  bottom: 25px;
 }
 
 .nav_left {
@@ -141,7 +145,7 @@ body {
   /* initially hide all the slides so that when sliding, the one's don't need to be seen are opague */
   opacity: 0;
   transition: var(--transition);
-  padding: 0 10rem;
+  padding: 0 1rem;
 }
 
 .profilePic {
@@ -192,3 +196,31 @@ body {
   color: var(--PIC-COLOR);
 }
 /* /Review */
+
+/* MEDIA QUERIES */
+@media screen and (min-width: 576px) {
+
+  .section_container {
+    align-items: center;
+    justify-content: center;
+  }  
+  .nav_left,
+  .nav_right  {
+    bottom:unset;
+  }
+
+  .nav_left {
+    left: 25px;
+  }
+  
+  .nav_right {
+    right: 25px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .review {
+    padding: 0 10rem;
+  }
+}
+/* /MEDIA QUERIES */

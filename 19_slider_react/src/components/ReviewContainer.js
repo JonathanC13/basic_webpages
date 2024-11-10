@@ -1,7 +1,7 @@
 import React from 'react'
 import {FaCircleChevronLeft, FaCircleChevronRight} from 'react-icons/fa6'
 import Review from './Review'
-import {useState} from 'react'
+import {useState, useEffect, useCallback} from 'react'
 
 const createReviewComponents = (reviews, currIdx) => {
     let comps = []
@@ -31,7 +31,7 @@ const ReviewContainer = ( { reviews=[] }) => {
 
     const [currIdx, setCurrIdx] = useState(0)
 
-    const handleIdxChange = (idx) => {
+    const handleIdxChange = useCallback((idx) => {
         if (idx < 0) {
             setCurrIdx(reviews.length - 1)
         } else if (idx >= reviews.length) {
@@ -39,7 +39,22 @@ const ReviewContainer = ( { reviews=[] }) => {
         } else {
             setCurrIdx(idx)
         }
-    }
+    }, [reviews.length, setCurrIdx])
+
+    // on each currIdx change the cleanup is called and then the setup is called.
+    useEffect(() => {
+        console.log('setup')
+        let intervalID = setInterval(() => {
+            handleIdxChange(currIdx + 1)
+        }, 5000)
+
+        const cleanup = () => {
+            console.log('clean')
+            clearInterval(intervalID)
+        }
+
+        return cleanup
+    }, [currIdx, handleIdxChange])
 
   return (
     <section className='section_container'>
