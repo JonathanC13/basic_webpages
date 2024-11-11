@@ -93,7 +93,8 @@ body {
 /* ReviewContainer */
 .section_container {
   width: 100%;
-  height: 600px;
+  /* height: 600px; */
+  height: 100%;
   display: flex;
   align-items: end;
   justify-content: center;
@@ -114,7 +115,7 @@ body {
 }
 
 .nav_left ,.nav_right {
-  bottom: 25px;
+  top: 25px;
 }
 
 .nav_left {
@@ -146,6 +147,18 @@ body {
   opacity: 0;
   transition: var(--transition);
   padding: 0 1rem;
+}
+
+.hidden_review {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  padding-top: 1rem;
+  padding-bottom: 5rem;
 }
 
 .profilePic {
@@ -206,7 +219,7 @@ body {
   }  
   .nav_left,
   .nav_right  {
-    bottom:unset;
+    top:25%;
   }
 
   .nav_left {

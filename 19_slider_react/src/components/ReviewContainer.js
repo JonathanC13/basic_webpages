@@ -19,12 +19,35 @@ const createReviewComponents = (reviews, currIdx) => {
             <Review
                 key={rev['id']}
                 review={rev}
-                revClass={revClass}
+                revClass={'review' + ' ' + revClass}
             ></Review>
         )
     })
 
     return comps
+}
+
+/**
+ * Gets the max length review and creates a position that is not absolute so that the parent container can encase this child. This ensures that all reviews will fit within the review container.
+ * @param {*} reviews 
+ * @returns JSX
+ */
+const maxReviewHeightComp = (reviews) => {
+    let maxLen = 0
+    let maxLenIdx = 0
+
+    reviews.forEach((rev, idx) => {
+        if (rev['review'].length > maxLen) {
+            maxLen = Math.max(maxLen, rev['review'].length)
+            maxLenIdx = idx
+        }
+    })
+
+    return <Review
+                key={reviews[maxLenIdx]['id']}
+                review={reviews[maxLenIdx]}
+                revClass={'hidden_review'}
+            ></Review>
 }
 
 const ReviewContainer = ( { reviews=[] }) => {
@@ -42,19 +65,17 @@ const ReviewContainer = ( { reviews=[] }) => {
     }, [reviews.length, setCurrIdx])
 
     // on each currIdx change the cleanup is called and then the setup is called.
-    useEffect(() => {
-        console.log('setup')
-        let intervalID = setInterval(() => {
-            handleIdxChange(currIdx + 1)
-        }, 5000)
+    // useEffect(() => {
+    //     let intervalID = setInterval(() => {
+    //         handleIdxChange(currIdx + 1)
+    //     }, 5000)
 
-        const cleanup = () => {
-            console.log('clean')
-            clearInterval(intervalID)
-        }
+    //     const cleanup = () => {
+    //         clearInterval(intervalID)
+    //     }
 
-        return cleanup
-    }, [currIdx, handleIdxChange])
+    //     return cleanup
+    // }, [currIdx, handleIdxChange])
 
   return (
     <section className='section_container'>
@@ -70,6 +91,7 @@ const ReviewContainer = ( { reviews=[] }) => {
                 className='nav_right cursor_pointer'
                 onClick={() => {handleIdxChange(currIdx + 1)}}
             />
+            {maxReviewHeightComp(reviews)}
         </>
         )}
     </section>

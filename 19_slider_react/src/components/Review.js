@@ -2,7 +2,7 @@ import React from 'react'
 import {FaQuoteRight} from 'react-icons/fa6'
 
 const Review = ({review={}, revClass=''}) => {
-    const artClass = 'review ' + revClass
+    const artClass = revClass //'review ' + revClass
 
   return (
     <article className={artClass}>
