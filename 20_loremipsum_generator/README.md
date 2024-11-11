@@ -1,4 +1,4 @@
-# React App: Slider
+# React App: LoremIpsum Generator
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -22,3 +22,5 @@ Completed independently and then watched their implementation.
 
 2. run the app
     > npm start
+
+** Todo: CSS!

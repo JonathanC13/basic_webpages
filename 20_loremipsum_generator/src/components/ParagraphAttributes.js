@@ -28,8 +28,8 @@ const ParagraphAttributes = ({paragraphs={}, paraNum=1, setParaNum=()=>{}, paraL
           <label htmlFor='paragraphNum' className="paragraphNum__label">Paragraphs</label>
           <input id='paragraphNum' name='paragraphNum' type='number' 
             form='paragraphAttributes'
-            // min={min}
-            // max={max}
+            min={min}
+            max={max}
             value={paraNum} // the current state of the input
             onChange={(e) => setParaNum(e.target.value)} // update the state as input is changed.
           ></input>

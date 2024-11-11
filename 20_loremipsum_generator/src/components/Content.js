@@ -12,7 +12,7 @@ const createPara = (content) => {
     return comps
 }
 
-const Content = ({content}) => {
+const Content = ({content = []}) => {
   return (
     <section>
         {createPara(content)}

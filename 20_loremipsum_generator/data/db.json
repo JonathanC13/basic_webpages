@@ -13,7 +13,7 @@
             "Oratio me istius philosophi non offendit; Tum ille: Ain tandem? Honesta oratio, Socratica, Platonis etiam. Sed nimis multa."
         ],
         "medium": [
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ait enim se, si uratur, Quam hoc suave! dicturum. Bonum valitudo: miser morbus. Simus igitur contenti his. Vos autem cum perspicuis dubia debeatis illustrare, dubiis perspicua conamini tollere. Duo Reges: constructio interrete. Putabam equidem satis, inquit, me dixisse. Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. Nam ista vestra: Si gravis, brevis; Sed quoniam et advesperascit et mihi ad villam revertendum est, nunc quidem hactenus; </p",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ait enim se, si uratur, Quam hoc suave! dicturum. Bonum valitudo: miser morbus. Simus igitur contenti his. Vos autem cum perspicuis dubia debeatis illustrare, dubiis perspicua conamini tollere. Duo Reges: constructio interrete. Putabam equidem satis, inquit, me dixisse. Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. Nam ista vestra: Si gravis, brevis; Sed quoniam et advesperascit et mihi ad villam revertendum est, nunc quidem hactenus;",
             "Nihil ad rem! Ne sit sane; Quae cum dixisset paulumque institisset, Quid est? At ille non pertimuit saneque fidenter: Istis quidem ipsis verbis, inquit; Nemo igitur esse beatus potest. Rhetorice igitur, inquam, nos mavis quam dialectice disputare? Nos vero, inquit ille; Primum in nostrane potestate est, quid meminerimus? An ea, quae per vinitorem antea consequebatur, per se ipsa curabit?",
             "At multis malis affectus. Quamquam haec quidem praeposita recte et reiecta dicere licebit. Illa tamen simplicia, vestra versuta. Et quidem illud ipsum non nimium probo et tantum patior, philosophum loqui de cupiditatibus finiendis. Verum esto: verbum ipsum voluptatis non habet dignitatem, nec nos fortasse intellegimus. At modo dixeras nihil in istis rebus esse, quod interesset.",
             "Ego quoque, inquit, didicerim libentius si quid attuleris, quam te reprehenderim. Facit enim ille duo seiuncta ultima bonorum, quae ut essent vera, coniungi debuerunt;",
@@ -35,6 +35,16 @@
             "Illud urgueam, non intellegere eum quid sibi dicendum sit, cum dolorem summum malum esse dixerit. Cur igitur easdem res, inquam, Peripateticis dicentibus verbum nullum est, quod non intellegatur? Et tamen tantis vectigalibus ad liberalitatem utens etiam sine hac Pyladea amicitia multorum te benivolentia praeclare tuebere et munies. Ergo id est convenienter naturae vivere, a natura discedere. An est aliquid per se ipsum flagitiosum, etiamsi nulla comitetur infamia? Satis est tibi in te, satis in legibus, satis in mediocribus amicitiis praesidii. Aliena dixit in physicis nec ea ipsa, quae tibi probarentur; Quae cum ita sint, effectum est nihil esse malum, quod turpe non sit. Quare istam quoque aggredere tractatam praesertim et ab aliis et a te ipso saepe, ut tibi deesse non possit oratio. Legimus tamen Diogenem, Antipatrum, Mnesarchum, Panaetium, multos alios in primisque familiarem nostrum Posidonium. Certe non potest. Istius modi autem res dicere ornate velle puerile est, plane autem et perspicue expedire posse docti et intellegentis viri. Dolere malum est: in crucem qui agitur, beatus esse non potest. Comprehensum, quod cognitum non habet?",
             "Qui si omnes veri erunt, ut Epicuri ratio docet, tum denique poterit aliquid cognosci et percipi. Magni enim aestimabat pecuniam non modo non contra leges, sed etiam legibus partam. Quod est, ut dixi, habere ea, quae secundum naturam sint, vel omnia vel plurima et maxima. Si enim Zenoni licuit, cum rem aliquam invenisset inusitatam, inauditum quoque ei rei nomen inponere, cur non liceat Catoni? Qui autem esse poteris, nisi te amor ipse ceperit? Quia nec honesto quic quam honestius nec turpi turpius. Sit ista in Graecorum levitate perversitas, qui maledictis insectantur eos, a quibus de veritate dissentiunt. In parvis enim saepe, qui nihil eorum cogitant, si quando iis ludentes minamur praecipitaturos alicunde, extimescunt. Nam Metrodorum non puto ipsum professum, sed, cum appellaretur ab Epicuro, repudiare tantum beneficium noluisse;",
             "Duo Reges: constructio interrete. In quibus doctissimi illi veteres inesse quiddam caeleste et divinum putaverunt. Serpere anguiculos, nare anaticulas, evolare merulas, cornibus uti videmus boves, nepas aculeis. Quae rursus dum sibi evelli ex ordine nolunt, horridiores evadunt, asperiores, duriores et oratione et moribus. Virtutibus igitur rectissime mihi videris et ad consuetudinem nostrae orationis vitia posuisse contraria. Comprehensum, quod cognitum non habet?"
+        ]
+    },
+    "lorem2": {
+        "short": [
+            "HELLO THERE",
+            "HELLO THERE",
+            "HELLO THERE",
+            "HELLO THERE",
+            "HELLO THERE",
+            "HELLO THERE"
         ]
     }
 }
