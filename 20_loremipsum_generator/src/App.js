@@ -1,6 +1,6 @@
 import './App.css';
 import Header from './components/Header'
-import ParagraphAmount from './components/ParagraphAttributes';
+import ParagraphAttributes from './components/ParagraphAttributes';
 import {useState, useEffect} from 'react'
 import useAPIFetch from './hooks/useApiFetch';
 import Content from './components/Content';
@@ -65,7 +65,7 @@ function App() {
   return (
     <div className="App">
       <Header title='Lorem Ipsum Genny'/>
-      <ParagraphAmount
+      <ParagraphAttributes
         paragraphs={paragraphs}
         paraNum={paraNum}
         setParaNum={setParaNum}

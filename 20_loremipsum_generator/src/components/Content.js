@@ -14,7 +14,7 @@ const createPara = (content) => {
 
 const Content = ({content = []}) => {
   return (
-    <section>
+    <section className='Content'>
         {createPara(content)}
     </section>
   )

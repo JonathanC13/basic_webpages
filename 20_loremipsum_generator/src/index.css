@@ -1,0 +1,157 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img,
+svg {
+    display: block;
+    width: auto;
+    height: auto;
+}
+/* /RESET */
+
+/* VARIABLES */
+:root {
+    /* COLORS */
+    --BG-COLOR: #D0A98F;
+    --HEADER-COLOR: #4D243D;
+    --COLOR: #ECDCC9;
+    --BG-ATTR-COLOR: #EDD4B2;
+    --BUTTON-BORDER-COLOR: #CAC2B5;
+
+    /* TRANSITION */
+    --transition: all 1s ease-in-out;
+
+    /* ANIMATION SETTINGS */
+    --ANI-SETTINGS: 0.75s ease-in-out 0s 1 normal forwards running
+}
+/* /VARIABLES */
+
+/* UTILITY */
+.cursor_pointer {
+    cursor: pointer;
+}
+
+.offscreen {
+    position: absolute;
+    left: -9001px;
+}
+/* /UTILITY */
+
+/* ANIMATION */
+@keyframes hov {
+    0%  {
+        color: var(--HEADER-COLOR);
+        background-color: var(--COLOR);
+    }
+    100% {
+        color: var(--COLOR);
+        background-color: var(--HEADER-COLOR);
+    }
+}
+
+@keyframes notHov {
+    0% {
+        color: var(--COLOR);
+        background-color: var(--HEADER-COLOR);
+    }
+    100%  {
+        color: var(--HEADER-COLOR);
+        background-color: var(--COLOR);
+    }
+}
+
+/* GENERAL */
+html {
+    font-size: 1.25rem;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--BG-COLOR);
+    color: var(--COLOR);
+    display: flex;
+}
+
+#root {
+    flex-grow: 1;
+    height: 100%;
+}
+
+.App {
+    max-width: 1200px;
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    gap: 0.5rem;
+}
+/* /GENERAL */
+
+/* HEADER */
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--HEADER-COLOR);
+    padding: 0.5rem 0;
+}
+/* /HEADER */
+
+/* ParagrapAttributes */
+.paragrapAttributes {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--BG-ATTR-COLOR);
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    min-width: 190px;
+    color: var(--HEADER-COLOR);
+    gap: 0.5rem;
+}
+
+.paragraphNum,
+.paragraphLength {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.paragrapAttributes__button {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--BUTTON-BORDER-COLOR);
+    border-radius: 10px;
+    color: var(--HEADER-COLOR);
+    background-color: var(--COLOR);
+    animation: var(--ANI-SETTINGS) notHov;
+}
+
+:is(.paragrapAttributes__button:hover, .paragrapAttributes__button:focus) {
+    /* @keyframes duration | easing-function | delay | iteration-count | direction | fill-mode | play-state | name */
+    animation: var(--ANI-SETTINGS) hov;
+}
+/* /ParagrapAttributes */
+
+/* Content */
+.Content {
+    width: 100%;
+    height: 100%;
+    padding: 1rem 1rem;
+    background-color: var(--HEADER-COLOR);
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1rem;
+    box-shadow: 0 0 5px 5px var(--BUTTON-BORDER-COLOR);
+    margin-bottom: 2rem;
+}
+
+/* /Content */

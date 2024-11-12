@@ -48,7 +48,7 @@ const ParagraphAttributes = ({paragraphs={}, paraNum=1, setParaNum=()=>{}, paraL
             {createSelOpt(paraLengths)}
           </select>
         </div>
-        <button type='submit' onClick={changeParaAttrHandler}>Submit</button>
+        <button className='paragrapAttributes__button cursor_pointer' type='submit' onClick={changeParaAttrHandler}>Submit</button>
     </form>
   )
 }

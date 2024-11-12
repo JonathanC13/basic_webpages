@@ -13,7 +13,7 @@ const useAPIFetch = (dataURL) => {
 
     const apiFetch = useCallback(async(url) => {
         setIsLoading(true)
-        console.log('call to: ', url)
+        // console.log('call to: ', url)
         const paramsObj = {
             method:'get',
             signal:signal.current
