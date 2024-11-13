@@ -13,14 +13,9 @@ Completed independently and then watched their implementation.
 1. abort-controller (https://www.npmjs.com/package/abort-controller)
     > npm install abort-controller -s
 
-2. react-icons (https://www.npmjs.com/package/react-icons)
-    > npm install react-icons --save
-
 ## To run
 1. start json-server (Didn't need a db, but wanted to write fetching). Understandable CORS blocked for API so used own.
     > npm run server
 
 2. run the app
     > npm start
-
-** Todo: CSS!
