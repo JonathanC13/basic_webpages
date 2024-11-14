@@ -1,7 +1,8 @@
 import React from 'react'
 import ColorGroup from './ColorGroup'
+import {useState} from 'react'
 
-const createColorGroupComps = (colors) => {
+const createColorGroupComps = (colors, copiedColor, handleColorItemClick) => {
     let comps = []
     const colorGroups = new Map()
     colors.forEach((color) => {
@@ -14,6 +15,8 @@ const createColorGroupComps = (colors) => {
                 key={key}
                 type={key}
                 colors={value}
+                copiedColor={copiedColor}
+                handleColorItemClick={handleColorItemClick}
             />
         )
     })
@@ -22,9 +25,19 @@ const createColorGroupComps = (colors) => {
 }
 
 const Colors = ({colors=[]}) => {
+
+    const [copiedColor, setCopiedColor] = useState('')
+
+    const handleColorItemClick = (colorHexAndWeight) => {
+        // console.log(colorHexAndWeight)
+        navigator.clipboard.writeText(colorHexAndWeight);
+        setCopiedColor(colorHexAndWeight)
+    }
+
+
   return (
-    <section>
-        {createColorGroupComps(colors)}
+    <section className='Colors'>
+        {createColorGroupComps(colors, copiedColor, handleColorItemClick)}
     </section>
   )
 }

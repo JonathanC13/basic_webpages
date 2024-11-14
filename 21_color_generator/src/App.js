@@ -2,7 +2,7 @@ import './App.css';
 import Header from './components/Header';
 import Colors from './components/Colors';
 import Values from 'values.js'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 function App() {
 
@@ -17,24 +17,23 @@ function App() {
       setColors(colors.all(10))
       setInputMessage('')
     } catch (err) {
-      setInputMessage(err.message)
+      //setInputMessage(err.message)
+      setInputMessage('Please enter a color string like #EE6C4D or rgb(255, 239, 213)')
     }
   }
 
   return (
     <div className="App">
-      <header className="App-header">
-        <Header
-          title='Color Generator'
-          colorStr={colorStr}
-          setColorStr={setColorStr}
-          changeColorHandler={changeColorHandler}
-          inputMessage={inputMessage}
-        />
-        <Colors 
-          colors={colors}
-        />
-      </header>
+      <Header
+        title='Color Generator'
+        colorStr={colorStr}
+        setColorStr={setColorStr}
+        changeColorHandler={changeColorHandler}
+        inputMessage={inputMessage}
+      />
+      <Colors 
+        colors={colors}
+      />
     </div>
   );
 }

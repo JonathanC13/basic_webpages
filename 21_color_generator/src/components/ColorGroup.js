@@ -1,7 +1,7 @@
 import React from 'react'
 import ColorItem from './ColorItem'
 
-const createColorItems = (colors) => {
+const createColorItems = (colors, copiedColor, handleColorItemClick) => {
   let comps = []
 
   colors.forEach((color, i) => {
@@ -9,6 +9,8 @@ const createColorItems = (colors) => {
       <ColorItem
         key={i}
         color={color}
+        copiedColor={copiedColor}
+        handleColorItemClick={handleColorItemClick}
       />
     )
   })
@@ -17,11 +19,11 @@ const createColorItems = (colors) => {
 }
 
 
-const ColorGroup = ({type='', colors=[]}) => {
+const ColorGroup = ({type='', colors=[], copiedColor='', handleColorItemClick=()=>{}}) => {
   return (
-    <section>
+    <section className='ColorGroup'>
       <h2>{type}</h2>
-      {createColorItems(colors)}
+      <section className="ColorGroup__items">{createColorItems(colors, copiedColor, handleColorItemClick)}</section>
     </section>
   )
 }

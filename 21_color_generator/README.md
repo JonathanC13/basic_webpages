@@ -16,5 +16,3 @@ Completed independently and then watched their implementation.
 ## To run
 1. run the app
     > npm start
-
-todo: CSS!
