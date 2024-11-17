@@ -1,0 +1,237 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    width: auto;
+    height: auto;
+    display: block;
+}
+/* /RESET */
+
+/* VARIABLES */
+:root {
+    /* COLORS */
+    --BG-COLOR: #293241;
+    --CONTAINER-COLOR: #98C1D9;
+    --BUTTON-COLOR: #E0FBFC;
+    --LIGHT-COLOR: #E0FBFC;
+    --ACCENT-COLOR: #EE6C4D;
+    --FONT-COLOR: #293241;
+    --DELETE-COLOR: red;
+    --CONFIRM-COLOR: green;
+    --SHADOW-COLOR: #3D5A80;
+
+    /* Transitions */
+    --BUTTON-TRANSITIONS: background-color 0.5s ease-in-out, border 0.5s ease-in-out;
+    --COLOR-TRANSITION: color 0.5s ease-in-out;
+}
+/* /VARIABLES */
+
+/* UTILITY */
+.offscreen {
+    position: absolute;
+    left: -9001px;
+}
+
+.cursor_pointer {
+    cursor: pointer;
+}
+
+.invalid {
+    border: 1px solid red;
+}
+
+.striked {
+    text-decoration: line-through;
+}
+/* /UTILITY */
+
+/* ANIMATION */
+@keyframes editAni {
+    0% {
+        color: initial;
+    }
+    100% {
+        color: var(--ACCENT-COLOR);
+    }
+}
+
+@keyframes deleteAni {
+    0% {
+        color: initial;
+    }
+    100% {
+        color: var(--DELETE-COLOR);
+    }
+}
+/* /ANIMATION */
+
+/* GENERAL */
+html {
+    font-size: 1.5rem;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    color: var(--FONT-COLOR);
+    background-color: var(--BG-COLOR);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#root {
+    flex-grow: 1;
+    height: 100%;
+}
+
+.App {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 1rem auto;
+    background-color: var(--CONTAINER-COLOR);
+    box-shadow: 0 0 5px 2px var(--SHADOW-COLOR);
+    border-radius: 10px;
+}
+
+.ListContainer {
+    width: 100%;
+    height: 100%;
+    padding: 0.5rem 1rem;
+}
+/* /GENERAL */
+
+/* AddItem */
+.AddItem__h1 {
+    margin: 0.5rem 0;
+}
+
+.AddItem {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.addForm {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.itemForm__input {
+    width: 100%;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+}
+
+.itemForm__button {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+    background-color: var(--BUTTON-COLOR);
+    border: 1px solid var(--BUTTON-COLOR);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    transition: var(--BUTTON-TRANSITIONS);
+} 
+
+.itemForm__button__span {
+    font-size: 0.7rem;
+}
+
+.itemForm__button:hover {
+    background-color: var(--ACCENT-COLOR);
+    border: 1px solid var(--ACCENT-COLOR);
+}
+/* /AddItem */
+
+/* ItemsList */
+.ItemsList {
+    display: flex;
+    flex-flow: column nowrap;
+}
+/* /ItemsList */
+
+/* Item */
+.Item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 0.5rem 0;
+}
+
+.Item__p {
+    width: 100%;
+}
+
+.Item__edit,
+.Item__delete {
+    width: 30px;
+    height: auto;
+}
+
+:is(.Item__edit:hover, .Item__edit:focus){
+    animation: 0.5s ease-in-out 0s 1 normal forwards editAni;
+}
+
+:is(.Item__delete:hover, .Item__delete:focus) {
+    animation: 0.5s ease-in-out 0s 1 normal forwards deleteAni;
+}
+/* /Item */
+
+/* EditItem */
+.EditItem__form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.editItem__input {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.25rem 0.5rem;
+}
+
+.editItem__save,
+.editItem__cancel {
+    background-color: var(--CONTAINER-COLOR);
+    border: none;
+}
+
+.editItem__save_icon,
+.editItem__cancel_icon {
+    transition: var(--COLOR-TRANSITION);
+    width: 20px;
+    height: auto;
+}
+
+:is(.editItem__save_icon:hover, .editItem__save_icon:focus){
+    color: var(--CONFIRM-COLOR);
+}
+
+:is(.editItem__cancel_icon:hover, .editItem__cancel_icon:focus) {
+    animation: 0.5s ease-in-out 0s 1 normal forwards deleteAni;
+}
+/* /EditItem */
+
+/* clearItems */
+.clearItems {
+    font-size: 1rem;
+    color: var(--DELETE-COLOR);
+    padding: 0.25rem 0;
+    margin: 1rem 0;
+}
+/* /clearItems */

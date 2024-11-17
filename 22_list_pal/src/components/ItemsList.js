@@ -4,6 +4,7 @@ import DataContext from '../Context/DataContext';
 import Item from './Item';
 
 const createItemComps = (listItems, editId, handleChangeEditId) => {
+
     let comps = []
 
     listItems.forEach((item) => {
@@ -22,16 +23,25 @@ const createItemComps = (listItems, editId, handleChangeEditId) => {
 
 const ItemsList = () => {
 
-    const {listItems} = useContext(DataContext)
-    const [editId, setEditId] = useState(false)
+    const {listItems, setListItems} = useContext(DataContext)
+    const [editId, setEditId] = useState(false) // brought state up so that only one item is edited at a time
 
     const handleChangeEditId = (id) => {
         setEditId(id)
     }
+    
+    const handleClearAllItems = () => {
+        setListItems([])
+    }
 
   return (
-    <section>
+    <section className='ItemsList'>
         {createItemComps(listItems, editId, handleChangeEditId)}
+        {listItems.length > 0 &&
+        <button className='clearItems cursor_pointer' onClick={handleClearAllItems}>
+            Clear all items
+        </button>
+        }
     </section>
   )
 }

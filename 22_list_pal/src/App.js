@@ -8,8 +8,12 @@ function App() {
   return (
     <div className="App">
       <DataProvider>
-        <AddItem />
-        <ItemsList />
+        <section className="ListContainer">
+          <AddItem 
+            title='List pal'
+          />
+          <ItemsList />
+        </section>
       </DataProvider>
     </div>
   );

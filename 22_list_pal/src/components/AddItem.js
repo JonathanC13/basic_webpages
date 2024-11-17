@@ -28,13 +28,13 @@ const AddItem = ({title}) => {
         }
     }
 
-    const inputCSSClass = 'additem__input' + (invalidInput ? ' invalid': '')
+    const inputCSSClass = 'itemForm__input' + (invalidInput ? ' invalid': '')
 
   return (
-    <section>
-        <h1>{title}</h1>
-        <form onSubmit={(e) => {e.preventDefault()}}>
-            <label htmlFor="addItem" className='offscreen'>Add item</label>
+    <section className='AddItem'>
+        <h1 className='AddItem__h1'>{title}</h1>
+        <form className='AddItem__form addForm' onSubmit={(e) => {e.preventDefault()}}>
+            <label htmlFor="addItem" className='itemForm__label offscreen'>Add item</label>
             <input 
                 className={inputCSSClass}
                 type="text" 
@@ -42,7 +42,9 @@ const AddItem = ({title}) => {
                 value={addItemDesc}
                 onChange={(e) => {setAddItemDesc(e.target.value)}}
             />
-            <button type='submit' onClick={handleAddItem}>Submit</button>
+            <button className='itemForm__button cursor_pointer' type='submit' onClick={handleAddItem}>
+                <span className='itemForm__button__span'>Submit</span>
+            </button>
         </form>
     </section>
   )
