@@ -7,7 +7,11 @@ const DataContext = createContext({})
 const DataProvider = ({children}) => {
 
     const [navData, setNavData] = useState([])
+    const [submenuOpen, setSubmenuOpen] = useState(false)
+    const [navItem, setNavItem] = useState({ category: '', subItems: [] });
+    const [location, setLocation] = useState({});
     const [sideNavOpen, setSideNavOpen] = useState(false)
+
     const {windowWidth} = useWindowWidth()
 
     const handleToggleSideNav = (action) => {
@@ -18,21 +22,35 @@ const DataProvider = ({children}) => {
         }
     }
 
+    const handleToggleSubmenu = (action, obj = null) => {
+        if (action === 'open') {
+            const navItem = navData.find((item) => item['category'] === obj['category']);
+            setNavItem(navItem);
+            setLocation(obj['location']);
+            setSubmenuOpen(true)
+        } else {
+            setSubmenuOpen(false)
+        }
+    }
+
     useEffect(() => {
         setNavData(navItemsData)
     }, [setNavData])
 
     useEffect(() => {
-        if (windowWidth > 769) {
+        if (windowWidth >= 769) {
             handleToggleSideNav('close')
+        } else if (windowWidth < 769) {
+            handleToggleSubmenu('close')
         }
     }, [windowWidth, handleToggleSideNav])
-    
 
     return (
         <DataContext.Provider
             value = {{
                 navData, setNavData,
+                submenuOpen, handleToggleSubmenu,
+                navItem, location,
                 sideNavOpen, handleToggleSideNav
             }}
         >

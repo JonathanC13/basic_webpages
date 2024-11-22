@@ -4,7 +4,7 @@ import { FaCreditCard, FaBook, FaBriefcase } from 'react-icons/fa6';
 export const navItemsData = [
         {
             category: 'products',
-            navItems: [
+            subItems: [
                 { label: 'payment', icon: <FaCreditCard />, url: '/products' },
                 { label: 'terminal', icon: <FaCreditCard />, url: '/products' },
                 { label: 'connect', icon: <FaCreditCard />, url: '/products' }
@@ -12,7 +12,7 @@ export const navItemsData = [
         },
         {
             category: 'developers',
-            navItems: [
+            subItems: [
                 { label: 'plugins', icon: <FaBook />, url: '/products' },
                 { label: 'libraries', icon: <FaBook />, url: '/products' },
                 { label: 'help', icon: <FaBook />, url: '/products' },
@@ -21,7 +21,7 @@ export const navItemsData = [
         },
         {
             category: 'company',
-            navItems: [
+            subItems: [
                 { label: 'about', icon: <FaBriefcase />, url: '/products' },
                 { label: 'customers', icon: <FaBriefcase />, url: '/products' }
             ]
