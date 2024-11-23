@@ -20,26 +20,6 @@ const Submenu = () => {
 
     const SubmenuClasses = 'Submenu' + (submenuOpen ? ' Submenu_show':'')
 
-    // const handleSubmenu = (e) => {
-    //     console.log(e.target)
-    //     const parent = document.getElementById('Submenu')
-    //     if (!parent.contains(e.target)) {
-    //         console.log('aaa')
-    //         handleToggleSubmenu('close')
-    //     }
-    // }
-
-    // useEffect(() => {
-    //     const submenu = document.getElementById('Submenu')
-    //     submenu.addEventListener('focusout', handleSubmenu)
-
-    //     const cleanUp = () => {
-    //         submenu.removeEventListener("focusout", handleSubmenu)  // remove this specific listener
-    //     }
-
-    //     return cleanUp; // exec the cleanUp func when the component is removed from the DOM
-    // }, [])
-
     // set the location of the section
     useEffect(() => {
         const submenu = submenuRef.current

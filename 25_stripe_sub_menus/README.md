@@ -21,5 +21,8 @@ Completed independently and then watched their implementation.
     > npm start
 
 
-**todo: navbar top submenus
+**todo: 
+    1. sliding transitions from navitem to navitem
+    2. fade in for submenus
+    3. better side menu fade in without modifying app
 stripe.com

@@ -3,17 +3,20 @@ import Body from './components/Body';
 import Navbar from './components/Navbar';
 import Submenu from './components/Submenu';
 import SideNav from './components/SideNav';
-import { useDataContext, DataProvider } from './context/DataContext';
+import { useDataContext } from './context/DataContext';
 
 function App() {
+
+  const {sideNavOpen} = useDataContext()
+
+  const appClasses = 'App ' + (sideNavOpen ? ' max_100vh':'')
+
   return (
-    <div className="App">
-      <DataProvider>
-        <Navbar></Navbar>
-        <Submenu></Submenu>
-        <SideNav></SideNav>
-        <Body></Body>
-      </DataProvider>
+    <div className={appClasses}>
+      <Navbar></Navbar>
+      <Submenu></Submenu>
+      <SideNav></SideNav>
+      <Body></Body>
     </div>
   );
 }

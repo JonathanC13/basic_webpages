@@ -1,8 +1,12 @@
 import React from 'react'
+import Hero from './Hero'
 
 const Body = () => {
   return (
-    <section className='Body'>This is the body</section>
+    <section className='Body'>
+      <Hero></Hero>
+      <p>This is the body</p>
+    </section>
   )
 }
 

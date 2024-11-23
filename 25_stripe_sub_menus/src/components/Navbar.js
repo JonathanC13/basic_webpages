@@ -2,7 +2,7 @@ import React from 'react'
 import { useDataContext } from '../context/DataContext'
 import {FaBars} from 'react-icons/fa6'
 import TopNavItems from './TopNavItems'
-import {useEffect} from 'react'
+import {useEffect, useCallback} from 'react'
 import Signin from './Signin'
 
 const createNavItems = (navData) => {
@@ -22,11 +22,11 @@ const Navbar = () => {
 
     const {navData, handleToggleSubmenu, handleToggleSideNav} = useDataContext()
 
-    const handleSubmenu = (e) => {
+    const handleSubmenu = useCallback((e) => {
         if (!e.target.classList.contains('TopNavItem__btn')) {
             handleToggleSubmenu('close');
         }
-    };
+    }, [handleToggleSubmenu]);
 
     // ensures the subcontainer is closed if none of the TopNavItems components are hovered/focused
     useEffect(() => {
@@ -41,7 +41,7 @@ const Navbar = () => {
         }
 
         return cleanUp; // exec the cleanUp func when the component is removed from the DOM
-    }, [])
+    }, [handleSubmenu])
 
   return (
     <div id='header-nav' className='header'>
