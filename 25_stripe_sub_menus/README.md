@@ -19,10 +19,3 @@ Completed independently and then watched their implementation.
 
 2. run the app
     > npm start
-
-
-**todo: 
-    1. sliding transitions from navitem to navitem
-    2. fade in for submenus
-    3. better side menu fade in without modifying app
-stripe.com
