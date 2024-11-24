@@ -33,10 +33,12 @@ const DataProvider = ({children}) => {
         }
     }
 
+    // sync for external resource for data. OK use of useEffect
     useEffect(() => {
         setNavData(navItemsData)
     }, [setNavData])
 
+    // sync for external interaction. OK use of useEffect
     useEffect(() => {
         if (windowWidth >= 769) {
             handleToggleSideNav('close')
