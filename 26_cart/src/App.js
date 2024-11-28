@@ -1,23 +1,41 @@
-import logo from './logo.svg';
 import './App.css';
+import {useStoreState, useStoreActions} from 'easy-peasy'
+import { useEffect } from 'react';
+import useTestHook from './hooks/useTestHook'
 
 function App() {
+
+  const storeIsLoading = useStoreState((state) => state.isLoading);
+  const storeItems = useStoreState((state) => state.items);
+  const storeApiFetchCb = useStoreState((state) => state.apiFetchCb)
+  const storeSetIsLoading = useStoreActions((actions) => actions.setIsLoading);
+  const storeSetItems = useStoreActions((actions) => actions.setItems);
+  const storeSetApiFetchCb = useStoreActions((actions) => actions.setApiFetchCb);
+
+  const {isLoading, data, apiFetchCb} = useTestHook()
+
+  useEffect(() => {
+    storeSetIsLoading(isLoading)
+  }, [isLoading, storeSetIsLoading])
+
+  useEffect(() => {
+    storeSetItems(data)
+  }, [data, storeSetItems])
+
+  useEffect(() => {
+    storeSetApiFetchCb(apiFetchCb)
+  }, [apiFetchCb, storeSetApiFetchCb])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {storeIsLoading && <p>LOADING</p>}
+      {!isLoading && 
+        <>
+        <p>{storeItems}</p>
+        <button onClick={storeApiFetchCb}>REFETCH</button>
+        </>
+      }
+
     </div>
   );
 }
