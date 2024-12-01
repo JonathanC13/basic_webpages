@@ -1,5 +1,6 @@
 import { createStore, action, thunk } from 'easy-peasy'
 import { useRef } from 'react'
+import { apiRequest } from '../api/apiRequest'
 
 const store = createStore({
     // store states
@@ -22,11 +23,9 @@ const store = createStore({
     }),
 
     // store thunks
-    fetch: thunk(async (actions, payload, helpers) => {
-        const isMounted = useRef(false)
-
-        return isMounted
-    })
+    // refetch: thunk(async (actions, payload, helpers) => {
+    //     helpers.apiFetchCb()
+    // })
     
 })
 

@@ -1,37 +1,56 @@
 import './App.css';
 import {useStoreState, useStoreActions} from 'easy-peasy'
 import { useEffect } from 'react';
-import useTestHook from './hooks/useTestHook'
+// import useTestHook from './hooks/useTestHook'
+import useApiFetch from './hooks/useApiFetch'
+
+const printTitles = (data) => {
+  const comps = data.map((itm, i) => {
+    return <p key={i}>{itm['title']}</p>
+  })
+  return comps
+}
 
 function App() {
 
-  const storeIsLoading = useStoreState((state) => state.isLoading);
+  const url = 'http://localhost:3500/items'
+  const urlReset = 'http://localhost:3500/items_original'
+
   const storeItems = useStoreState((state) => state.items);
+  const storeIsLoading = useStoreState((state) => state.isLoading);
+  const storeAPIError = useStoreState((state) => state.APIError);
   const storeApiFetchCb = useStoreState((state) => state.apiFetchCb)
-  const storeSetIsLoading = useStoreActions((actions) => actions.setIsLoading);
+
   const storeSetItems = useStoreActions((actions) => actions.setItems);
+  const storeSetIsLoading = useStoreActions((actions) => actions.setIsLoading);
+  const storeSetAPIError = useStoreActions((state) => state.setAPIError);
   const storeSetApiFetchCb = useStoreActions((actions) => actions.setApiFetchCb);
 
-  const {isLoading, data, apiFetchCb} = useTestHook()
-
-  useEffect(() => {
-    storeSetIsLoading(isLoading)
-  }, [isLoading, storeSetIsLoading])
+  const {data, isLoading, APIError, APIFetchCb} = useApiFetch(url)
 
   useEffect(() => {
     storeSetItems(data)
   }, [data, storeSetItems])
 
   useEffect(() => {
-    storeSetApiFetchCb(apiFetchCb)
-  }, [apiFetchCb, storeSetApiFetchCb])
+    storeSetIsLoading(isLoading)
+  }, [isLoading, storeSetIsLoading])
+
+  useEffect(() => {
+    storeSetAPIError(APIError)
+  }, [APIError, storeSetAPIError])
+
+  useEffect(() => {
+    storeSetApiFetchCb(APIFetchCb)
+  }, [APIFetchCb, storeSetApiFetchCb])
 
   return (
     <div className="App">
+      {storeAPIError && <p>storeAPIError</p>}
       {storeIsLoading && <p>LOADING</p>}
-      {!isLoading && 
+      {!storeAPIError && !isLoading && 
         <>
-        <p>{storeItems}</p>
+        {printTitles(storeItems)}
         <button onClick={storeApiFetchCb}>REFETCH</button>
         </>
       }

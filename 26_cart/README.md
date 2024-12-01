@@ -16,6 +16,9 @@ Completed independently and then watched their implementation.
 2. Easy Peasy Redux
     > npm install easy-peasy
 
+3. abort-controller (https://www.npmjs.com/package/abort-controller)
+    > npm install abort-controller -s
+
 ## To run
 1. Install dependencies
     > npm install
