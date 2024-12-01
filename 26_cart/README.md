@@ -28,3 +28,8 @@ Completed independently and then watched their implementation.
 
 3. run the app
     > npm start
+
+**todo
+- components structure for cart
+- CSS
+- RESTful API. Read (fetch, refetch with GET - done), Update(PATCH), delete(DELETE). Overwrite with (PUT - done)

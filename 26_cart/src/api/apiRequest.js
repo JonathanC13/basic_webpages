@@ -20,7 +20,7 @@ export const apiRequest = async(url='', paramsObj=null, result=null) => {
 
     } catch (err) {
         result['status'] = 'error'
-        result['message'] = err
+        result['message'] = err.message
     } finally {
         return result
     }

@@ -29,7 +29,7 @@ const useAPIFetch = (dataUrl='') => {
                 setData([])
                 setAPIError(response['message'])
             }
-            setTimeout(() => {setIsLoading(false)}, 2000);
+            setTimeout(() => {setIsLoading(false)}, 1000);
             
         }
 
