@@ -29,6 +29,10 @@ Completed independently and then watched their implementation.
 3. run the app
     > npm start
 
+# Sources
+## Logo
+1. https://logoipsum.com/
+
 **todo
 - components structure for cart
 - CSS

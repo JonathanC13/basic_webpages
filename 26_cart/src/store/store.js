@@ -3,6 +3,8 @@ import { apiRequest } from '../api/apiRequest'
 
 const store = createStore({
     // store states
+    url: 'http://localhost:3500/carts',
+    urlReset: 'http://localhost:3500/items_original/1',
     items: [],
     isLoading: false,
     APIError: null,
@@ -19,6 +21,19 @@ const store = createStore({
     }),
     setApiFetchCb: action((state, payload) => {
         state.apiFetchCb = payload
+    }),
+    
+    // computed
+    getItemById: computed((state) => {
+        return (id) = state.items.find((itm) => {itm['id'] === id})
+    }),
+    getTotalPrice: computed ((state) => {
+        let total = 0
+        state.items.forEach((itm) => {
+            total += itm['price']
+        })
+
+        return total
     }),
 
     // store thunks
