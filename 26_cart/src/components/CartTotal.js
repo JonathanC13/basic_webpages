@@ -3,7 +3,7 @@ import {useStoreState} from 'easy-peasy'
 
 const CartTotal = () => {
     
-    const getTotalPrice = useStoreState((state) => state.products.getTotalPrice);
+    const getTotalPrice = useStoreState((state) => state.items.getTotalPrice);
 
   return (
     <section className='cartTotal'>

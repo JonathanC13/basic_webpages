@@ -1,4 +1,4 @@
-import { createStore, action, thunk } from 'easy-peasy'
+import { createStore, action, thunk, computed } from 'easy-peasy'
 import { apiRequest } from '../api/apiRequest'
 
 const store = createStore({
@@ -25,7 +25,7 @@ const store = createStore({
     
     // computed
     getItemById: computed((state) => {
-        return (id) = state.items.find((itm) => {itm['id'] === id})
+        return (id) => state.items.find((itm) => {return itm['id'] === id.toString()})
     }),
     getTotalPrice: computed ((state) => {
         let total = 0

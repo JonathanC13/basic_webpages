@@ -1,4 +1,5 @@
 import React from 'react'
+import {useCallback} from 'react'
 import { useStoreState, useStoreActions } from 'easy-peasy'
 
 const CartOps = () => {
@@ -17,7 +18,7 @@ const CartOps = () => {
         }
 
         storeApiFetchCb()
-    }, [storeAPIError, storeReset, storeApiFetchCb])
+    }, [storeUrl, storeUrlReset, storeAPIError, storeReset, storeApiFetchCb])
 
   return (
     <section>

@@ -16,8 +16,8 @@ const Item = ( {id=-1} ) => {
             </div>
             <div className='item__div_info itemInfo'>
                 <p className='itemInfo__p itemTitle'>{item['title']}</p>
-                <p className='itemInfo__p itemPrice'>{item['price']}</p>
-                <button className='itemInfo__btn_remove'>remove</button>
+                <p className='itemInfo__p itemPrice'>$ {item['price']}</p>
+                <button className='itemInfo__btn_remove cursor_pointer'>remove</button>
             </div>
             <div className='item__div_amt amt'>
                 <div className="amt__div_up">

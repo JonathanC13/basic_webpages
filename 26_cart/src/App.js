@@ -1,6 +1,6 @@
 import './App.css';
 import {useStoreState, useStoreActions} from 'easy-peasy'
-import { useEffect, useCallback } from 'react';
+import { useEffect } from 'react';
 // import useTestHook from './hooks/useTestHook'
 import useApiFetch from './hooks/useApiFetch'
 import Header from './components/Header';
@@ -35,6 +35,9 @@ function App() {
   const {data, isLoading, APIError, APIFetchCb} = useApiFetch(storeUrl)
 
   useEffect(() => {
+    if (data.length === 0) {
+      return
+    }
     storeSetItems(data[0]['items'])
   }, [data, storeSetItems])
 
