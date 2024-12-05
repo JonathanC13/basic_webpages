@@ -9,6 +9,14 @@ import Cart from './components/Cart';
 // const printTitles = (data) => {
 //   // https://github.com/typicode/json-server#routes
 //   // **Needed to alter the data in db.json since PUT needs an id or else I would have to update individually
+//    // carts : {
+//    //  [
+//    //    id: "1",
+//    //    items: [
+//    //      ...
+//    //    ]
+//    //  ]
+//    }
   
 //   if (data.length !== 1) {
 //     return
@@ -38,7 +46,7 @@ function App() {
     if (data.length === 0) {
       return
     }
-    storeSetItems(data[0]['items'])
+    storeSetItems(data)
   }, [data, storeSetItems])
 
   useEffect(() => {
@@ -57,8 +65,8 @@ function App() {
     <div className="App">
       <Header></Header>
       {storeAPIError && <p>{storeAPIError}</p>}
-      {storeIsLoading && <p>LOADING</p>}
-      {!storeAPIError && !isLoading && 
+      {storeIsLoading && <p className='loading'>LOADING...</p>}
+      {!storeAPIError && !isLoading &&
         <>
           <Cart></Cart>
         </>

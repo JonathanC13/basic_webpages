@@ -3,9 +3,6 @@ import { useStoreState } from 'easy-peasy'
 import Item from './Item'
 
 const createItemComps = (data) => {
-    // https://github.com/typicode/json-server#routes
-    // **Needed to alter the data in db.json since PUT needs an id or else I would have to update individually
-
     if (data.length === 0) {
         return []
     }
@@ -25,9 +22,13 @@ const CartItems = () => {
     const storeItems = useStoreState((state) => state.items)
 
   return (
-    <ul className='cartItems'>
-        {createItemComps(storeItems)}
-    </ul>
+    <>
+        {storeItems.length === 0 && <p className='empty_cart'>Empty cart</p>}
+        <ul className='cartItems'>
+            {createItemComps(storeItems)}
+        </ul>
+    </>
+    
   )
 }
 

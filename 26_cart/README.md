@@ -34,6 +34,4 @@ Completed independently and then watched their implementation.
 1. https://logoipsum.com/
 
 **todo
-- components structure for cart
-- CSS
-- RESTful API. Read (fetch, refetch with GET - done), Update(PATCH), delete(DELETE). Overwrite with (PUT - done)
+- RESTful API. Read (fetch, refetch with GET - done), Update(PUT - done), delete(DELETE - done). Overwrite with (PUT - TODO)

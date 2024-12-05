@@ -21,9 +21,9 @@ const CartOps = () => {
     }, [storeUrl, storeUrlReset, storeAPIError, storeReset, storeApiFetchCb])
 
   return (
-    <section>
-        <button onClick={storeApiFetchCb}>REFETCH</button>
-        <button onClick={resetItems}>RESET</button>
+    <section className='cartOps'>
+        <button className='cartOps__btn_refetch cursor_pointer' onClick={storeApiFetchCb}>REFETCH</button>
+        <button className='cartOps__btn_reset cursor_pointer' onClick={resetItems}>RESET</button>
     </section>
   )
 }
