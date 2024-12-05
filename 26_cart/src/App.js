@@ -46,6 +46,7 @@ function App() {
     if (data.length === 0) {
       return
     }
+    data.sort((a, b) => {return a['id'] - b['id']})
     storeSetItems(data)
   }, [data, storeSetItems])
 

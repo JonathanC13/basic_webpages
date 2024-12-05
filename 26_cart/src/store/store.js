@@ -4,7 +4,7 @@ import { apiRequest } from '../api/apiRequest'
 const store = createStore({
     // store states
     url: 'http://localhost:3500/cart',
-    urlReset: 'http://localhost:3500/items_original/1',
+    urlReset: 'http://localhost:3500/items_original',
     items: [],
     isLoading: false,
     APIError: null,
@@ -27,13 +27,23 @@ const store = createStore({
     getItemById: computed((state) => {
         return (id) => state.items.find((itm) => {return itm['id'] === id.toString()})
     }),
+    getTotalQuant: computed((state) => {
+
+        let totalQuant = 0;
+
+        state.items.forEach((itm) => {
+            totalQuant += itm['amount']
+        })
+
+        return totalQuant
+    }),
     getTotalPrice: computed ((state) => {
         let total = 0
         state.items.forEach((itm) => {
-            total += itm['price']
+            total += (Number(itm['price']) * Number(itm['amount']))
         })
 
-        return total
+        return parseFloat(total).toFixed(2)
     }),
 
     // store thunks
@@ -47,13 +57,11 @@ const store = createStore({
         const url = payload['url']
         const urlReset = payload['urlReset']
 
-        console.log(url)
-
-        let paramsObj = {
+        const paramsObj = {
             method:'get'
         }
 
-        let response = await apiRequest(urlReset, paramsObj)
+        const response = await apiRequest(urlReset, paramsObj)
 
         if (response['status'] !== 'ok') {
             console.log(response['message'])
@@ -62,25 +70,31 @@ const store = createStore({
             return
         }
 
-        // PUT request to replace the data in url with the response
-        paramsObj = {
-            method:'PUT',
-            // body: JSON.stringify(response['message']),
-            body: JSON.stringify(response['message']),
-            headers: {
-                "Content-Type": "application/json",
-              }
-        }
-
-        response = await apiRequest(url + '/1', paramsObj)
-
-        if (response['status'] !== 'ok') {
-            console.log(response['message'])
-            actions.setAPIError(response['message'])
-        } else {
-            actions.setAPIError(null)
-        }
+        // PUT request to create/replace each item in resource cart
+        const { items, apiFetchCb } = helpers.getState()
+        const items_og = response['message']
         
+        for (let itm of items_og) {
+            const replace = items.find((i) => {return i['id'] === itm['id']})
+            
+            const paramsObj = {
+                method: replace ? 'PUT' : 'POST',
+                body: JSON.stringify(itm),
+                headers: {
+                    "Content-Type": "application/json",
+                  }
+            }
+
+            const urlReq = url + (replace ? `/${itm['id']}` : '')
+            const response = await apiRequest(urlReq, paramsObj)
+
+            if (response['status'] !== 'ok') {
+                console.log(response['message'])
+                actions.setAPIError(response['message'])
+            } else {
+                actions.setAPIError(null)
+            }
+        }
         actions.setIsLoading(false)
     }),
     deleteItem: thunk(async (actions, payload, helpers) => {

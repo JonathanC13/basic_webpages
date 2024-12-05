@@ -54,9 +54,7 @@ const useAPIFetch = (dataUrl='') => {
     const APIFetchCb = useCallback(() => {
         controller.current = new AbortController()
         signal.current = controller.current.signal
-        console.log('fetching')
         apiFetch(dataUrl)
-
     }, [dataUrl, apiFetch])
 
     return {data, isLoading, APIError, APIFetchCb }

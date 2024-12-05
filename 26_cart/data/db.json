@@ -1,17 +1,17 @@
 {
   "cart": [
     {
-      "id": "1",
-      "title": "Watch",
-      "price": 599.99,
-      "img": "https://via.assets.so/watch.png?id=1&q=95&w=100&h=100&fit=fill",
-      "amount": 1
-    },
-    {
       "id": "2",
       "title": "Furniture",
       "price": 499.99,
       "img": "https://via.assets.so/furniture.png?id=1&q=95&w=100&h=100&fit=fill",
+      "amount": 1
+    },
+    {
+      "id": "1",
+      "title": "Watch",
+      "price": 599.99,
+      "img": "https://via.assets.so/watch.png?id=1&q=95&w=100&h=100&fit=fill",
       "amount": 1
     },
     {

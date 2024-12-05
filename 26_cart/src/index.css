@@ -112,12 +112,14 @@ body {
   height: 1rem;
   position: absolute;
   right: 0px;
+  font-size: 0.75rem;
   z-index: 1;
   background-color: var(--ACCENT-COLOR);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: white;
 }
 
 .cart_img__svg {
@@ -288,12 +290,12 @@ body {
 .cartOps__btn_refetch,
 .cartOps__btn_reset {
   padding: 0.25rem 0.5rem;
-  border: none;
-  background-color: var(--ACCENT-COLOR);
+  border: 1px solid red;
+  color: red;
   border-radius: 10px;
 }
 
 :is(.cartOps__btn_refetch:hover, .cartOps__btn_refetch:focus, .cartOps__btn_reset:hover, .cartOps__btn_reset:focus) {
-  background-color: var(--ACCENT-BUTTON-HOVER-COLOR);
+  background-color: papayawhip;
 }
 /* /CART OPS */

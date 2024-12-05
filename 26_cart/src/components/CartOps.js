@@ -16,9 +16,9 @@ const CartOps = () => {
         if (storeAPIError) {
             return
         }
-
+        
         storeApiFetchCb()
-    }, [storeUrl, storeUrlReset, storeAPIError, storeReset, storeApiFetchCb])
+    }, [storeUrl, storeUrlReset, storeAPIError, storeReset])
 
   return (
     <section className='cartOps'>

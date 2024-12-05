@@ -33,5 +33,10 @@ Completed independently and then watched their implementation.
 ## Logo
 1. https://logoipsum.com/
 
-**todo
-- RESTful API. Read (fetch, refetch with GET - done), Update(PUT - done), delete(DELETE - done). Overwrite with (PUT - TODO)
+
+
+- CRUD. 
+    Overwrite with (GET from items_original and then PUT to replace an item back OR POST to add an item if missing to cart). Need to replace individually due to json-server limitations. https://github.com/typicode/json-server#routes
+    Read (fetch, refetch with GET - done)
+    Update (PUT - done)
+    delete (DELETE - done)
