@@ -5,7 +5,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Idea source
 Idea from:
 https://www.youtube.com/watch?v=a_7Z7C_JCyo
-(6:41:55) Cart
+(7:39:57) Cocktails
 
 Completed independently and then watched their implementation.
 
@@ -20,10 +20,7 @@ Completed independently and then watched their implementation.
 1. Install dependencies
     > npm install
 
-2. start json-server (Didn't need a db, but wanted to write fetching)
-    > npm run server
-
-3. run the app
+2. run the app
     > npm start
 
 ## API source
