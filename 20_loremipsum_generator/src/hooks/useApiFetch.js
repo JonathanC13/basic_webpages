@@ -7,7 +7,7 @@ const useAPIFetch = (dataURL) => {
     const controller = useRef(new AbortController())
     const signal = useRef(controller.current.signal)
 
-    const [data, setData] = useState({})
+    const [data, setData] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [APIErr, setAPIErr] = useState(null)
 
