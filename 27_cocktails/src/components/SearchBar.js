@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { setSearchTerm, setData } from '../store/slices/dataSlice/dataSlice'
+import { setSearchTerm } from '../store/slices/dataSlice/dataSlice'
 
 const SearchBar = () => {
     
@@ -9,7 +9,6 @@ const SearchBar = () => {
   
     const handleAddItem = () => {
       console.log('hi: ', searchTerm)
-      dispatch(setData([searchTerm]))
       return
     }
 
