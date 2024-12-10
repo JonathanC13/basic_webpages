@@ -1,13 +1,185 @@
-body {
+/* RESET */
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+img {
+  width: auto;
+  height: auto;
+  display: block;
 }
+/* /RESET */
+
+/* UTILITY */
+.cursor_pointer {
+  cursor: pointer;
+}
+/* /UTILITY */
+
+/* VARIABLES */
+:root {
+  /* COLORS */
+  --HEADER-BG-COLOR: #003844;
+  --HEADER-BORDER-COLOR: #FFEBC6;
+  --HEADER-FONT-COLOR: #FFB100;
+  --HEADER-NAV-COLOR: #F194B4;
+  --HEADER-NAV-HOVER-COLOR: #f194b5dc;
+  --BG-COLOR: #003844;
+  --CONTAINER-COLOR: #006C67;
+  --BODY-FONT-COLOR: #FFEBC6;
+  --ALCOHOLIC-FONT-COLOR: #F194B4;
+  --BUTTON-COLOR: #FFB100;
+
+  /* DIMENSIONS */
+  --CONTENT-MAX-WIDTH: 1200px;
+  --SEARCHBAR-MAX-WIDTH: 600px;
+
+  /* MARGINS */
+  --MARGIN-HOME: 1rem 0;
+  --MARGIN-CONTAINERS: 1rem;
+
+  /* PADDING */
+  --PADDING-GEN: 0.75rem 1.5rem;
+  --PADDING-CONTENT-GEN: 0.25rem 0.5rem;
+
+  /* BORDERS */
+  --BORDER-RAD-GEN: 1rem;
+
+  /* LETTERS */
+  --LETTER-SPACING: 0.1rem;
+}
+/* /VARIABLES */
+
+/* GENERAL */
+html {
+  font-size: 1rem;
+  font-family: sans-serif, 'Segoe UI', Tahoma, Geneva, Verdana;
+  letter-spacing: var(--LETTER-SPACING);
+}
+
+/* body > #root > .App */
+body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--BG-COLOR);
+  display: flex;
+}
+
+#root {
+  flex-grow: 1;
+  height: 100%;
+}
+
+.App {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+/* /GENERAL */
+
+/* HEADER */
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 1px 10px 5px var(--HEADER-BORDER-COLOR);
+  /* border-bottom: 1px solid var(--HEADER-BORDER-COLOR); */
+  color: var(--HEADER-FONT-COLOR);
+}
+
+.head {
+  width: 100%;
+  max-width: var(--CONTENT-MAX-WIDTH);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--PADDING-GEN);
+}
+
+/* .head__h1 {
+  letter-spacing: var(--LETTER-SPACING);
+} */
+
+.nav__Home,
+.nav__About {
+  color: var(--HEADER-NAV-COLOR);
+  padding: var(--PADDING-CONTENT-GEN);
+  text-decoration: none;
+}
+
+
+:is(.nav__Home:hover, .nav__Home:focus, .nav__About:hover, .nav__About:focus) {
+  color: var(--HEADER-NAV-HOVER-COLOR);
+  text-decoration: underline;
+}
+/* /HEADER */
+
+/* HOME */
+.Home {
+  width: 100%;
+  max-width: var(--CONTENT-MAX-WIDTH);
+  padding: var(--PADDING-GEN);
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  margin: var(--MARGIN-HOME);
+}
+/* /HOME */
+
+/* SEARCH BAR */
+.search_bar {
+  width: 100%;
+  max-width: var(--SEARCHBAR-MAX-WIDTH);
+  border-radius: var(--BORDER-RAD-GEN);
+  padding: var(--PADDING-GEN);
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: var(--CONTAINER-COLOR);
+  color: var(--BODY-FONT-COLOR);
+  gap: 1rem;
+  margin: var(--MARGIN-HOME);
+}
+
+.search_bar__input {
+  width: 100%;
+  border: none;
+  border-radius: calc(var(--BORDER-RAD-GEN)/2);
+  padding: 0.5rem 1rem;
+}
+/* /SEARCH BAR */
+
+/* COCKTAILS */
+.Cocktails {
+  margin: var(--MARGIN-HOME);
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  /* justify-content: space-between; */
+  gap: 1rem;
+}
+/* /COCKTAILS */
+
+/* COCKTAIL ITEMS */
+.placeholder_itm {
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis:  calc(95%/2);
+  /* aspect-ratio: 1 / 1; */
+  height: 100%;
+  padding: 0.25rem 0.5rem;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.25rem;
+  background-color: var(--CONTAINER-COLOR);
+  border-radius: var(--BORDER-RAD-GEN);
+}
+/* /COCKTAIL ITEMS */

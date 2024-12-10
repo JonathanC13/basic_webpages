@@ -9,7 +9,7 @@ const createDrinksComps = (items) => {
   }
 
   const comps = items.map((itm, idx) => {
-    return <p key={itm['idDrink']}>{itm['strDrink']}</p>
+    return <p key={itm['idDrink']} className='placeholder_itm'>{itm['strDrink']}</p>
   })
   
   return comps
@@ -33,7 +33,7 @@ const Cocktails = () => {
     const items = (isSuccess && data['drinks'] instanceof Array) ? data['drinks'] : []
 
   return (
-    <section>
+    <section className='Cocktails'>
       {isLoading && <p>LOADING</p>}
       {(!isLoading && isSuccess && items.length > 0) ? (
         <>{createDrinksComps(items)}</>

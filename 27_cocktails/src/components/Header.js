@@ -4,15 +4,17 @@ import { NavLink } from 'react-router-dom'
 const Header = () => {
   return (
     <header className='header'>
-        <h1 className='header__h1'>Cocktails!</h1>
-        <nav className="header__nav">
-            <NavLink to="/" end>
+      <div className="header__div head">
+        <h1 className='head__h1'>Cocktails!</h1>
+        <nav className="head__nav">
+            <NavLink className='nav__Home' to="/" end>
                 Home
             </NavLink>
-            <NavLink to="/about" end>
+            <NavLink className='nav__About' to="/about" end>
                 About
             </NavLink>
         </nav>
+      </div>
     </header>
   )
 }

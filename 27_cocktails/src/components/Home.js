@@ -7,8 +7,7 @@ const Home = () => {
   console.log("home rerender")
 
   return (
-    <section>
-      <h1>Home</h1>
+    <section className='Home'>
       <SearchBar></SearchBar>
       <Cocktails></Cocktails>
     </section>

@@ -26,3 +26,7 @@ Completed independently and then watched their implementation.
 ## API source
 https://www.thecocktaildb.com/
 https://www.thecocktaildb.com/api/json/v1/1/search.php?s=a
+
+todo:
+    cocktail item component
+    continue with css

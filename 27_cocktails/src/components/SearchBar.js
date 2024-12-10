@@ -6,27 +6,20 @@ const SearchBar = () => {
     
     const searchTerm = useSelector((state) => state.data.searchTerm)
     const dispatch = useDispatch()
-  
-    const handleAddItem = () => {
-      console.log('hi: ', searchTerm)
-      return
-    }
 
-    console.log('Searchbar rerender')
+    // console.log('Searchbar rerender')
 
   return (
-    <form className='AddItem__form addForm' onSubmit={(e) => {e.preventDefault()}}>
-        <label htmlFor="addItem" className='itemForm__label offscreen'>Controlled input</label>
+    <form className='search_bar__form search_bar' onSubmit={(e) => {e.preventDefault()}}>
+        <label htmlFor="search_input" className='search_bar__label'>Search Your Favourite Cocktail</label>
         <input 
-            className='placeholder'
+            id='search_input'
+            className='search_bar__input'
             type="text" 
-            placeholder='e.g. Mazda Miata'
+            placeholder=''
             value={searchTerm}
             onChange={(e) => {dispatch(setSearchTerm(e.target.value))}}
         />
-        <button className='itemForm__button cursor_pointer' type='submit' onClick={handleAddItem}>
-            <span className='itemForm__button__span'>Submit</span>
-        </button>
     </form>
   )
 }
