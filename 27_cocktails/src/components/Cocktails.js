@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useGetItemsQuery } from '../store/slices/api/apiSlice'
-// import { setData } from '../store/slices/dataSlice/dataSlice'
+import CocktailItem from './CocktailItem'
 
 const createDrinksComps = (items) => {
   if (items.length === 0) {
@@ -9,7 +9,13 @@ const createDrinksComps = (items) => {
   }
 
   const comps = items.map((itm, idx) => {
-    return <p key={itm['idDrink']} className='placeholder_itm'>{itm['strDrink']}</p>
+    return (
+      <CocktailItem 
+          key={itm['idDrink']}
+          cocktail={itm}
+      >
+      </CocktailItem>
+    )
   })
   
   return comps
@@ -38,7 +44,7 @@ const Cocktails = () => {
       {(!isLoading && isSuccess && items.length > 0) ? (
         <>{createDrinksComps(items)}</>
       ) : (
-        <p>NO DATA AVAILABLE!</p>
+        <p className='message'>NO DATA AVAILABLE!</p>
       )}
     </section>
   )

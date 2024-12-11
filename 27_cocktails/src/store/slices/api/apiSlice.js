@@ -18,9 +18,13 @@ export const apiSlice = createApi({
         getItems: build.query({
             query: (searchTerm) => `search.php?s=${searchTerm}`,
             providesTags: ['Items'],
+        }),
+        getSingleItem: build.query({
+            query: (id) => `lookup.php?i=17222`,
+            providesTags: ['Item']
         })
       })
 })
 
 // Export the auto-generated hook for the `getPosts` query endpoint
-export const { useGetItemsQuery } = apiSlice
+export const { useGetItemsQuery, useGetSingleItemQuery } = apiSlice
