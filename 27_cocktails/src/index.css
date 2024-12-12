@@ -37,20 +37,30 @@ img {
   --ALCOHOLIC-FONT-COLOR: #F194B4;
   --BUTTON-COLOR: #FFB100;
   --BUTTON-COLOR-HOVER: #FFC640;
+  --DETAILS-TAG-COLOR: #007D76;
+  --BUTTON-FONT-COLOR: #252525;
 
   /* DIMENSIONS */
   --CONTENT-MAX-WIDTH: 1200px;
   --SEARCHBAR-MAX-WIDTH: 600px;
+  --DETAILS-MAX-IMAGE-WIDTH: 350px; 
 
   /* MARGINS */
   --MARGIN-HOME: 1rem 0;
   --MARGIN-CONTAINERS: 1rem;
   --MARGIN-CONTENT: 0.5rem;
+  --MARGIN-DETAILS: 1rem;
 
   /* PADDING */
+  --PADDING-HEAD-TOP: 0.25rem;
+  --PADDING-HEAD-SIDES: 0.5rem;
   --PADDING-GEN-TOP: 0.75rem;
   --PADDING-GEN-SIDES: 1.5rem;
-  --PADDING-CONTENT-GEN: 0.25rem 0.5rem;
+  --PADDING-CONTENT-TOP: 0.5rem;
+  --PADDING-CONTENT-SIDES: 1rem;
+  --PADDING-DETAILS-TAG-TB: 0.33rem;
+  --PADDING-DETAILS-TAG-SIDES: 0.66rem;
+
 
   /* GAP */
   --GAP: 1rem;
@@ -61,6 +71,7 @@ img {
 
   /* BORDERS */
   --BORDER-RAD-GEN: 1rem;
+  --BORDER-RAD-DETAILS-TAG: 0.5rem;
 
   /* LETTERS */
   --LETTER-SPACING: 0.1rem;
@@ -114,7 +125,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--PADDING-GEN-TOP) var(--PADDING-GEN-SIDES);
+  padding: var(--PADDING-HEAD-TOP) var(--PADDING-HEAD-SIDES);
 }
 
 /* .head__h1 {
@@ -124,7 +135,7 @@ body {
 .nav__Home,
 .nav__About {
   color: var(--HEADER-NAV-COLOR);
-  padding: var(--PADDING-CONTENT-GEN);
+  padding: var(--PADDING-HEAD-TOP) var(--PADDING-HEAD-SIDES);
   text-decoration: none;
 }
 
@@ -211,7 +222,7 @@ body {
 
 .brief {
   margin: var(--MARGIN-CONTENT);
-  padding: var(--PADDING-CONTENT-GEN);
+  padding: var(--PADDING-CONTENT-TOP) var(--PADDING-CONTENT-SIDES);
   display: flex;
   flex-flow: column nowrap;
   align-items: flex-start;
@@ -233,10 +244,113 @@ body {
   background-color: var(--BUTTON-COLOR);
   border: none;
   border-radius: var(--BORDER-RAD-GEN);
-  padding: var(--PADDING-CONTENT-GEN);
+  padding: var(--PADDING-CONTENT-TOP) var(--PADDING-CONTENT-SIDES);
+  letter-spacing: var(--LETTER-SPACING);
+  color: var(--BUTTON-FONT-COLOR);
+  font-weight: bold;
 }
 
 :is(.details_btn:hover, .details_btn:focus) {
   background-color: var(--BUTTON-COLOR-HOVER);
 }
 /* /COCKTAIL ITEMS */
+
+/* COCKTAIL DETAILS */
+.CocktailDetails {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  color: var(--BODY-FONT-COLOR);
+  margin: var(--MARGIN-CONTAINERS);
+}
+
+.go_home {
+  border: none;
+  background-color: var(--BUTTON-COLOR);
+  padding: var(--PADDING-CONTENT-TOP) var(--PADDING-CONTENT-SIDES);
+  border-radius: var(--BORDER-RAD-GEN);
+  margin: var(--MARGIN-CONTENT);
+  letter-spacing: var(--LETTER-SPACING);
+  color: var(--BUTTON-FONT-COLOR);
+  font-weight: bold;
+}
+
+:is(.go_home:hover, .go_home:focus) {
+  background-color: var(--BUTTON-COLOR-HOVER);
+}
+
+.details {
+  /* background-color: var(--CONTAINER-COLOR); */
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  justify-content: center;
+  border-radius: var(--BORDER-RAD-GEN);
+  margin: var(--MARGIN-CONTENT) 0px;
+}
+
+.drink_dtl_fig {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.drink_dtl_fig__img {
+  width: 100%;
+  max-width: var(--DETAILS-MAX-IMAGE-WIDTH);
+  height: auto;
+  border-radius: var(--BORDER-RAD-GEN);
+}
+
+/* .info {
+  padding: var(--PADDING-CONTENT-TOP) var(--PADDING-CONTENT-SIDES);
+} */
+
+.info_line {
+  margin: var(--MARGIN-DETAILS) 0;
+}
+
+.info_line__p {
+  display: inline;
+  line-height: calc(var(--PADDING-DETAILS-TAG-TB) * 6);
+  margin-right: var(--MARGIN-CONTENT);
+}
+
+.info_title {
+  padding: var(--PADDING-DETAILS-TAG-TB) var(--PADDING-DETAILS-TAG-SIDES);
+  border-radius: var(--BORDER-RAD-DETAILS-TAG);
+  background-color: var(--DETAILS-TAG-COLOR);
+}
+
+/* /COCKTAIL DETAILS */
+
+/* MESSAGE */
+.message {
+  color: var(--BODY-FONT-COLOR);
+  font-weight: bold;
+}
+/* /MESSAGE */
+
+/* MEDIA QUERIES */
+@media screen and (min-width: 1025px) {
+  .details {
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    justify-content: center;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: calc(100%/2);
+    padding: var(--PADDING-CONTENT-TOP) var(--PADDING-CONTENT-SIDES);
+  }
+
+  .drink_dtl_fig {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: calc(100%/2);
+    justify-content: flex-end;
+    padding: var(--PADDING-CONTENT-TOP) var(--PADDING-CONTENT-SIDES);
+  }
+}

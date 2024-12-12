@@ -12,7 +12,7 @@ const getIngredients = (drink) => {
         }
     }
 
-    return ingredients.join(' ')
+    return ingredients.join(', ')
 }
 
 const CocktailDetails = () => {
@@ -58,7 +58,7 @@ const CocktailDetails = () => {
                         </div>
                         <div className="info__div info_line">
                             <p className="info_line__p info_title">Info:</p>
-                            <p className="info_line__p info_val">{drink['strAlcholic']}</p>
+                            <p className="info_line__p info_val">{drink['strAlcoholic']}</p>
                         </div>
                         <div className="info__div info_line">
                             <p className="info_line__p info_title">Glass:</p>
@@ -81,7 +81,7 @@ const CocktailDetails = () => {
 
   return (
     <section className='CocktailDetails'>
-        <button className="CocktailDetails__btn go_home" type='button' onClick={() => {navigate('/')}}>BACK HOME</button>
+        <button className="CocktailDetails__btn go_home cursor_pointer" type='button' onClick={() => {navigate('/')}}>BACK HOME</button>
         {render}
     </section>
   )

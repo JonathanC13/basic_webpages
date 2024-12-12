@@ -35,17 +35,24 @@ const Cocktails = () => {
       error
     } = useGetItemsQuery(searchTerm)
 
-    console.log('Cocktails rerender')
+    // console.log('Cocktails rerender')
 
     const items = (isSuccess && data['drinks'] instanceof Array) ? data['drinks'] : []
 
     let render = ''
-    if (isLoading || isFetching) {
+    if (searchTerm.length === 0) {
+      render = ''
+    }
+    else if (isLoading || isFetching) {
       render = <p className='message'>LOADING</p>
     } else if (isError) {
       <p className='message'>Error: {error}</p>
-    } else if (!isLoading && !isFetching && isSuccess && items.length > 0) {
-      render = <>{createDrinksComps(items)}</>
+    } else if (!isLoading && !isFetching && isSuccess) {
+      if (items.length > 0) {
+        render = <>{createDrinksComps(items)}</>
+      } else {
+        render = <p className='message'>No match with that search term.</p>
+      }
     } else {
       render = <p className='message'>NO DATA AVAILABLE!</p>
     }
