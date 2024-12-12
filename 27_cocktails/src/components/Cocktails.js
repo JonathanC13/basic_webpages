@@ -29,6 +29,7 @@ const Cocktails = () => {
     const {
       data: data = [],
       isLoading,
+      isFetching,
       isSuccess,
       isError,
       error
@@ -38,14 +39,20 @@ const Cocktails = () => {
 
     const items = (isSuccess && data['drinks'] instanceof Array) ? data['drinks'] : []
 
+    let render = ''
+    if (isLoading || isFetching) {
+      render = <p className='message'>LOADING</p>
+    } else if (isError) {
+      <p className='message'>Error: {error}</p>
+    } else if (!isLoading && !isFetching && isSuccess && items.length > 0) {
+      render = <>{createDrinksComps(items)}</>
+    } else {
+      render = <p className='message'>NO DATA AVAILABLE!</p>
+    }
+
   return (
     <section className='Cocktails'>
-      {isLoading && <p>LOADING</p>}
-      {(!isLoading && isSuccess && items.length > 0) ? (
-        <>{createDrinksComps(items)}</>
-      ) : (
-        <p className='message'>NO DATA AVAILABLE!</p>
-      )}
+      {render}
     </section>
   )
 }

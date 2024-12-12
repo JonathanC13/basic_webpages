@@ -36,8 +36,8 @@ const CocktailDetails = () => {
   return (
     <section className='CocktailDetails'>
         <button className="CocktailDetails__btn go_home" type='button' onClick={() => {navigate('/')}}>BACK HOME</button>
-        {isLoading && <p className='message'>LOADING</p>}
-        {!isLoading && drink ? (
+        {(isLoading || isFetching) && <p className='message'>LOADING</p>}
+        {!isLoading && !isFetching && drink ? (
             <>
                 <h1 className="CocktailDetails__h1">{drink['strDrink']}</h1>
                 <section className="CocktailDetails__section details">
