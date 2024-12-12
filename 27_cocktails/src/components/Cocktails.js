@@ -27,7 +27,7 @@ const Cocktails = () => {
 
     // Calling the `useGetPostsQuery()` hook automatically fetches data!
     const {
-      data: data = [],
+      data = [],
       isLoading,
       isFetching,
       isSuccess,

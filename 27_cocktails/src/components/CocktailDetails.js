@@ -23,7 +23,7 @@ const CocktailDetails = () => {
     const drinkId = params.id ? params.id : -1
 
     const { 
-        data: data = [], 
+        data = [], 
         isLoading,
         isFetching, 
         isSuccess,
@@ -33,16 +33,18 @@ const CocktailDetails = () => {
 
     const drink = (isSuccess && data['drinks'] instanceof Array) ? data['drinks'][0] : null
 
-  return (
-    <section className='CocktailDetails'>
-        <button className="CocktailDetails__btn go_home" type='button' onClick={() => {navigate('/')}}>BACK HOME</button>
-        {(isLoading || isFetching) && <p className='message'>LOADING</p>}
-        {!isLoading && !isFetching && drink ? (
+    let render = ''
+    if (isLoading || isFetching) {
+        render = <p className='message'>LOADING</p>
+    } else if (isError) {
+        render = <p className='message'>Error: {error}</p>
+    } else if (!isLoading && !isFetching && isSuccess && drink) {
+        render =
             <>
                 <h1 className="CocktailDetails__h1">{drink['strDrink']}</h1>
                 <section className="CocktailDetails__section details">
                     <figure className='details__figure drink_dtl_fig'>
-                        <img className='drink_dtl_fig__img' src={drink['strDrinkThumb']} alt="Drink thumbnail image" />
+                        <img className='drink_dtl_fig__img' src={drink['strDrinkThumb']} alt="Drink thumbnail" />
                         <figcaption className='offscreen'>Drink thumbnail</figcaption>
                     </figure>
                     <section className="details__section info">
@@ -73,9 +75,14 @@ const CocktailDetails = () => {
                     </section>
                 </section>
             </>
-        ) : (
-            <p className='message'>No data available.</p>
-        )}
+    } else {
+        render = <p className='message'>No data available.</p>
+    }
+
+  return (
+    <section className='CocktailDetails'>
+        <button className="CocktailDetails__btn go_home" type='button' onClick={() => {navigate('/')}}>BACK HOME</button>
+        {render}
     </section>
   )
 }
