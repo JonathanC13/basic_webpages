@@ -10,27 +10,31 @@ function App() {
   return (
     <div className="App">
       <Header></Header>
-      <Routes>
-        <Route 
-            exact path="/" 
-            element={
-              <Home></Home>
-            }
-        />
-        <Route 
-            exact path="/about" 
-            element={
-              <About></About>
-            }
-        />
-        <Route
-          exact path="/cocktail/:id"
-          element={
-            <CocktailDetails></CocktailDetails>
-          }
-        />
-        <Route path="*" element={<Missing></Missing>} /> {/* path="*" like default */}
-      </Routes>
+      <section className="BG__section">
+        <section className="content__section">
+          <Routes>
+            <Route 
+                exact path="/" 
+                element={
+                  <Home></Home>
+                }
+            />
+            <Route 
+                exact path="/about" 
+                element={
+                  <About></About>
+                }
+            />
+            <Route
+              exact path="/cocktail/:id"
+              element={
+                <CocktailDetails></CocktailDetails>
+              }
+            />
+            <Route path="*" element={<Missing></Missing>} /> {/* path="*" like default */}
+          </Routes>
+        </section>
+      </section>
     </div>
   );
 }

@@ -8,7 +8,7 @@ const Missing = () => {
   return (
     <section className='Missing'>
         <h1 className='Missing__h1 message'>Oops, this page is not valid!</h1>
-        <button className="CocktailDetails__btn go_home" type='button' onClick={() => {navigate('/Home')}}>BACK HOME</button>
+        <button className="CocktailDetails__btn go_home cursor_pointer" type='button' onClick={() => {navigate('/')}}>BACK HOME</button>
     </section>
   )
 }

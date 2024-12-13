@@ -49,7 +49,7 @@ img {
   --MARGIN-HOME: 1rem 0;
   --MARGIN-CONTAINERS: 1rem;
   --MARGIN-CONTENT: 0.5rem;
-  --MARGIN-DETAILS: 1rem;
+  --MARGIN-DETAILS: 0.25rem;
 
   /* PADDING */
   --PADDING-HEAD-TOP: 0.25rem;
@@ -60,6 +60,7 @@ img {
   --PADDING-CONTENT-SIDES: 1rem;
   --PADDING-DETAILS-TAG-TB: 0.33rem;
   --PADDING-DETAILS-TAG-SIDES: 0.66rem;
+  --PADDING-CONTAINER: 1rem;
 
 
   /* GAP */
@@ -95,16 +96,29 @@ body {
 
 #root {
   flex-grow: 1;
-  height: 100%;
+  min-height: 100%;
 }
 
 .App {
   width: 100%;
   height: 100%;
+  
+  
+}
+
+.BG__section {
+  width: 100%;
+  padding: 0 var(--PADDING-CONTENT-SIDES);
   display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
+}
+
+.content__section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: var(--CONTENT-MAX-WIDTH);
 }
 /* /GENERAL */
 
@@ -117,6 +131,7 @@ body {
   box-shadow: 0px 1px 10px 5px var(--HEADER-BORDER-COLOR);
   /* border-bottom: 1px solid var(--HEADER-BORDER-COLOR); */
   color: var(--HEADER-FONT-COLOR);
+  margin-bottom: var(--MARGIN-CONTAINERS);
 }
 
 .head {
@@ -149,8 +164,7 @@ body {
 /* HOME */
 .Home {
   width: 100%;
-  max-width: var(--CONTENT-MAX-WIDTH);
-  padding: var(--PADDING-GEN-TOP) var(--PADDING-GEN-SIDES);
+  /* padding: var(--PADDING-GEN-TOP) var(--PADDING-GEN-SIDES); */
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -184,21 +198,32 @@ body {
 /* /SEARCH BAR */
 
 /* COCKTAILS */
+/* .main_section {
+  max-width: var(--CONTENT-MAX-WIDTH);
+} */
+
 .Cocktails {
   margin: var(--MARGIN-HOME);
   display: flex;
   flex-flow: row wrap;
   align-items: flex-start;
   justify-content: center;
-  gap: var(--GAP);
+  /* gap: var(--GAP); */
 }
 /* /COCKTAILS */
 
 /* COCKTAIL ITEMS */
+.CocktailItem_externalSect {
+  padding: var(--PADDING-CONTAINER) 0;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: calc(var(--CONTENT-MAX-WIDTH) / (var(--NUM-OF-COLS)));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .CocktailItem {
-  flex-grow: 1;
-  flex-shrink: 0;
-  flex-basis: calc(var(--CONTENT-MAX-WIDTH) / (var(--NUM-OF-COLS) + 1));
   /* calc(95%/2); */
   /* aspect-ratio: 1 / 1; */
   height: 100%;
@@ -262,7 +287,7 @@ body {
   align-items: center;
   justify-content: flex-start;
   color: var(--BODY-FONT-COLOR);
-  margin: var(--MARGIN-CONTAINERS);
+  /* margin: var(--MARGIN-CONTAINERS); */
 }
 
 .go_home {
@@ -278,6 +303,10 @@ body {
 
 :is(.go_home:hover, .go_home:focus) {
   background-color: var(--BUTTON-COLOR-HOVER);
+}
+
+.CocktailDetails__h1 {
+  margin: var(--MARGIN-CONTENT);
 }
 
 .details {
@@ -305,9 +334,9 @@ body {
   border-radius: var(--BORDER-RAD-GEN);
 }
 
-/* .info {
-  padding: var(--PADDING-CONTENT-TOP) var(--PADDING-CONTENT-SIDES);
-} */
+.info {
+  margin: var(--MARGIN-CONTENT) 0;
+}
 
 .info_line {
   margin: var(--MARGIN-DETAILS) 0;
@@ -327,23 +356,82 @@ body {
 
 /* /COCKTAIL DETAILS */
 
+/* ABOUT */
+.about {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  color: var(--BODY-FONT-COLOR);
+  /* padding: var(--PADDING-CONTENT-TOP) var(--PADDING-CONTENT-SIDES); */
+}
+
+.about__h1 {
+  color: var(--HEADER-NAV-COLOR);
+  margin: var(--MARGIN-CONTENT);
+  font-size: 2rem;
+}
+
+.about__p {
+  text-indent: 2rem;
+  color: var(--BODY-FONT-COLOR);
+  margin: var(--MARGIN-CONTENT);
+}
+
+
+/* /ABOUT */
+
 /* MESSAGE */
 .message {
   color: var(--BODY-FONT-COLOR);
   font-weight: bold;
+  margin: var(--MARGIN-CONTAINERS);
 }
 /* /MESSAGE */
 
+/* MISSING */
+.Missing {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+}
+/* /MISSING */
+
 /* MEDIA QUERIES */
+@media screen and (min-width: 481px) {
+  .CocktailItem_externalSect {
+    padding: var(--PADDING-CONTAINER);
+  }
+}
+
 @media screen and (min-width: 1025px) {
+
   .details {
     flex-flow: row nowrap;
     align-items: flex-start;
     justify-content: center;
+    /* flex-grow: 1; */
+    /* flex-shrink: 0; */
+    flex-basis: calc(100%/2);
+    align-items: stretch;
+  }
+
+  .info {
     flex-grow: 1;
     flex-shrink: 0;
     flex-basis: calc(100%/2);
+    margin: 0;
     padding: var(--PADDING-CONTENT-TOP) var(--PADDING-CONTENT-SIDES);
+    
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    justify-content: center;
   }
 
   .drink_dtl_fig {
@@ -352,5 +440,12 @@ body {
     flex-basis: calc(100%/2);
     justify-content: flex-end;
     padding: var(--PADDING-CONTENT-TOP) var(--PADDING-CONTENT-SIDES);
+  }
+}
+
+@media screen and (min-width: 1232px) {
+  
+  .Cocktails {
+    justify-content: flex-start;
   }
 }

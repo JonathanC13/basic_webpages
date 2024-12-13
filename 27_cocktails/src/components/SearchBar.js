@@ -1,11 +1,19 @@
 import React from 'react'
+import { useEffect, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { setSearchTerm } from '../store/slices/dataSlice/dataSlice'
 
 const SearchBar = () => {
     
+    const initialAppMount = useSelector((state) => state.data.initialAppMount)  // Just used to hide the initial search term
     const searchTerm = useSelector((state) => state.data.searchTerm)
     const dispatch = useDispatch()
+
+    const searchInput = useRef('')
+
+    useEffect(() => {
+      searchInput.current.focus()
+    }, [])
 
     // console.log('Searchbar rerender')
 
@@ -17,7 +25,8 @@ const SearchBar = () => {
             className='search_bar__input'
             type="text" 
             placeholder=''
-            value={searchTerm}
+            ref={searchInput}
+            value={(initialAppMount) ? '' : searchTerm}
             onChange={(e) => {dispatch(setSearchTerm(e.target.value))}}
         />
     </form>

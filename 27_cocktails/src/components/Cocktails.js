@@ -58,8 +58,10 @@ const Cocktails = () => {
     }
 
   return (
-    <section className='Cocktails'>
-      {render}
+    <section className="main_section">
+      <section className='Cocktails'>
+        {render}
+      </section>
     </section>
   )
 }

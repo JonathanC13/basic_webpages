@@ -26,8 +26,3 @@ Completed independently and then watched their implementation.
 ## API source
 https://www.thecocktaildb.com/
 https://www.thecocktaildb.com/api/json/v1/1/search.php?s=a
-
-todo:
-    ABOut page
-    search box. on start hide the initial serach term?
-    search box. if 'empty', show previous results and don't empty.

@@ -4,7 +4,7 @@ import Cocktails from './Cocktails'
 
 const Home = () => {
 
-  console.log("home rerender")
+  // console.log("home rerender")
 
   return (
     <section className='Home'>
