@@ -13,9 +13,6 @@ Completed independently and then watched their implementation.
 1. react-router (https://reactrouter.com/)
     > npm install react-router-dom -save
 
-2. abort-controller (https://www.npmjs.com/package/abort-controller)
-    > npm install abort-controller -s
-
 ## To run
 1. Install dependencies
     > npm install
@@ -24,5 +21,5 @@ Completed independently and then watched their implementation.
     > npm start
 
 ## API source
-https://www.thecocktaildb.com/
-https://www.thecocktaildb.com/api/json/v1/1/search.php?s=a
+- https://www.thecocktaildb.com/
+- https://www.thecocktaildb.com/api/json/v1/1/search.php?s=a
